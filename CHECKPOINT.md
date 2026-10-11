@@ -153,3 +153,7 @@ Choix utilisateur : chiffres de style épais, sans yeux ni couleur vive avant r�
 
 ## 2026-10-11 — Validation automatique et effacement du tracé réussi
 Commit `d8d4f3f` : extraction de la validation dans `validateTrace()`, déclenchée automatiquement à la fin d'un geste lorsque suffisamment de points ont été tracés. En cas de réussite, les points et traits temporaires sont effacés avant l'animation du chiffre; le bouton de vérification reste disponible en secours. Contrôles statiques : fonction de validation présente, liaison automatique présente, bouton de secours présent, accolades équilibrées, aucune déclaration `smooth` en double. Test navigateur non effectué. Les silhouettes ne correspondent toujours pas exactement à la référence visuelle et restent à concevoir proprement.
+
+
+## Correctif de suivi — nettoyage du gestionnaire de validation
+Après refactorisation pour la validation automatique, un fragment de l'ancien gestionnaire est resté par erreur dans le fichier. Il a été supprimé dans le commit `c701b07`. Le fichier a été relu autour de `validateTrace()` et à sa fin; un contrôle syntaxique par moteur JavaScript et un test navigateur restent nécessaires.

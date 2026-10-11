@@ -2,6 +2,7 @@
   "use strict";
 
   const canvas = document.getElementById("trace-canvas");
+  const characterFace = document.getElementById("character-face");
   const ctx = canvas.getContext("2d");
   const feedback = document.getElementById("feedback");
   const clearButton = document.getElementById("clear-button");
@@ -55,102 +56,32 @@
         for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
         ctx.stroke();
       }
-      // Put the face on the character's upper end, oriented toward the inside of its silhouette.
-      // Face coordinates are attached to the upper stroke of each numeral.
-      // Manually calibrated eye centers: they sit on the upper outside contour.
-      // Coordinates are specific to each digit; do not derive these from random offsets.
-      const faceAnchors = {
-        0:{x:225,y:17,dx:0,dy:0}, 1:{x:229,y:27,dx:0,dy:0},
-        2:{x:224,y:19,dx:0,dy:0}, 3:{x:224,y:19,dx:0,dy:0},
-        4:{x:239,y:20,dx:0,dy:0}, 5:{x:260,y:23,dx:0,dy:0},
-        6:{x:231,y:19,dx:0,dy:0}, 7:{x:193,y:23,dx:0,dy:0},
-        8:{x:225,y:18,dx:0,dy:0}, 9:{x:226,y:20,dx:0,dy:0}
+      // Vector face overlay, manually calibrated per numeral.
+      const eyeAnchors = {
+        0:{x:225,y:18}, 1:{x:229,y:26}, 2:{x:224,y:19}, 3:{x:224,y:19},
+        4:{x:239,y:20}, 5:{x:260,y:23}, 6:{x:231,y:19}, 7:{x:193,y:23},
+        8:{x:225,y:18}, 9:{x:226,y:20}
       };
-      const anchor = faceAnchors[selectedDigit] || {x:225,y:42,dx:0,dy:1};
-      const transformPoint = point => {
-        const rect = canvas.getBoundingClientRect();
-        const scale = Math.min(rect.width / 450, rect.height / 250);
-        return {x:(rect.width-450*scale)/2+point.x*scale,y:(rect.height-250*scale)/2+point.y*scale};
+      const mouthAnchors = {
+        0:{x:225,y:48}, 1:{x:229,y:56}, 2:{x:222,y:51}, 3:{x:224,y:50},
+        4:{x:239,y:51}, 5:{x:257,y:53}, 6:{x:233,y:52}, 7:{x:191,y:51},
+        8:{x:225,y:50}, 9:{x:226,y:51}
       };
-      const faceAnchor = transformPoint(anchor);
-      if (faceAnchor) {
-        const ex = faceAnchor.x + anchor.dx * width * 0.1;
-        const ey = faceAnchor.y + anchor.dy * width * 0.14;
-        const blink = celebrationElapsed % 2400 > 2200;
-        const wink = celebrationMode.includes("wink") && celebrationElapsed % 3200 > 2850;
-        const eyeGap = Math.max(25, width * 0.62);
-        const bob = celebrationMode.includes("jump") ? Math.sin(celebrationElapsed / 230) * 2 : Math.sin(celebrationElapsed / 500) * 1.2;
-        const eyeY = ey + bob;
-        for (const [index,x,y] of [[0,ex-eyeGap/2,eyeY],[1,ex+eyeGap/2,eyeY]]) {
-          ctx.strokeStyle = "#243344"; ctx.fillStyle = "#fff"; ctx.lineWidth = 2.5;
-          ctx.beginPath();
-          if (blink || (wink && index === 1)) {
-            ctx.lineWidth = 3.5;
-            ctx.moveTo(x-8,y); ctx.quadraticCurveTo(x,y+3,x+8,y); ctx.stroke();
-          } else {
-            ctx.ellipse(x,y,12,15,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
-            ctx.fillStyle = "#243344"; ctx.beginPath(); ctx.ellipse(x+2,y+2,4.5,7,0,0,Math.PI*2); ctx.fill();
-            ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(x+3,y-1,2.2,0,Math.PI*2); ctx.fill();
-          }
-        }
-        // Keep the mouth attached to each numeral's face area, not merely under the eyes.
-        // Per-digit offsets account for the different head shapes of 3, 5, 6, 7, 8 and 9.
-        // Mouth positions are calibrated independently in the same 450x250 numeral space.
-        // They sit on the colored stroke, not in the empty counters/holes of rounded digits.
-        // Each mouth is placed directly on the numeral's centerline near its first stroke.
-        // Coordinates use the same 450x250 viewBox as tracePaths(), not eye-relative offsets.
-        // Mouth sits immediately below the eyes, on the same upper stroke.
-        // Keep every mouth centered on the thick upper stroke; never place it in an open counter.
-        // Mouth is deliberately lower than the eyes, fully separated from them,
-        // and kept inside the thick upper stroke of each numeral.
-        // Each mouth is manually placed on the colored body below the eyes.
-        // These positions are tuned per numeral to avoid holes and the outer contour.
-        const mouthAnchors = {
-          0:{x:225,y:49}, 1:{x:229,y:57}, 2:{x:222,y:49}, 3:{x:224,y:49},
-          4:{x:239,y:49}, 5:{x:257,y:51}, 6:{x:233,y:51}, 7:{x:191,y:49},
-          8:{x:225,y:49}, 9:{x:226,y:49}
-        };
-        const mouthPoint = transformPoint(mouthAnchors[selectedDigit] || {x:225,y:64});
-        const mouthX = mouthPoint.x;
-        const mouthY = mouthPoint.y + bob;
-        const mouthOpen = (Math.sin(celebrationElapsed / 260) + 1) / 2;
-        const mouthW = 8;
-        ctx.lineWidth = 2.2;
-        ctx.strokeStyle = "#243344";
-        ctx.fillStyle = "#243344";
-        if (faceExpression === "tongue") {
-          ctx.beginPath();
-          ctx.moveTo(mouthX-mouthW, mouthY);
-          ctx.quadraticCurveTo(mouthX, mouthY+3+mouthOpen*1.5, mouthX+mouthW, mouthY);
-          ctx.quadraticCurveTo(mouthX+mouthW-1, mouthY+7+mouthOpen*1.5, mouthX, mouthY+10+mouthOpen*2);
-          ctx.quadraticCurveTo(mouthX-mouthW+1, mouthY+14+mouthOpen*3, mouthX-mouthW, mouthY);
-          ctx.closePath(); ctx.fill(); ctx.stroke();
-          ctx.fillStyle = "#fff";
-          ctx.beginPath(); ctx.moveTo(mouthX-mouthW+3,mouthY+2);
-          ctx.quadraticCurveTo(mouthX,mouthY+5,mouthX+mouthW-3,mouthY+2);
-          ctx.lineTo(mouthX+mouthW-3,mouthY+5); ctx.quadraticCurveTo(mouthX,mouthY+8,mouthX-mouthW+3,mouthY+5); ctx.closePath(); ctx.fill();
-          ctx.fillStyle = "#f04483"; ctx.strokeStyle = "#b72c60";
-          ctx.beginPath(); ctx.moveTo(mouthX-3,mouthY+10);
-          ctx.quadraticCurveTo(mouthX+8,mouthY+10,mouthX+5+Math.sin(celebrationElapsed/220)*2,mouthY+14+mouthOpen*2);
-          ctx.quadraticCurveTo(mouthX-1,mouthY+11+mouthOpen*2,mouthX-3,mouthY+10);
-          ctx.closePath(); ctx.fill(); ctx.stroke();
-        } else {
-          ctx.beginPath();
-          ctx.moveTo(mouthX-mouthW, mouthY);
-          ctx.quadraticCurveTo(mouthX, mouthY+6+mouthOpen*2, mouthX+mouthW, mouthY);
-          ctx.quadraticCurveTo(mouthX+mouthW-1, mouthY+7+mouthOpen*2, mouthX, mouthY+10+mouthOpen*4);
-          ctx.quadraticCurveTo(mouthX-mouthW+1, mouthY+10+mouthOpen*4, mouthX-mouthW, mouthY);
-          ctx.closePath(); ctx.fill(); ctx.stroke();
-          ctx.fillStyle = "#fff";
-          ctx.beginPath();
-          ctx.moveTo(mouthX-8,mouthY+2);
-          ctx.quadraticCurveTo(mouthX,mouthY+5,mouthX+8,mouthY+2);
-          ctx.lineTo(mouthX+7,mouthY+5);
-          ctx.quadraticCurveTo(mouthX,mouthY+8,mouthX-7,mouthY+5);
-          ctx.closePath(); ctx.fill();
-        }
-      }
+      const eyes = eyeAnchors[selectedDigit];
+      const mouth = mouthAnchors[selectedDigit];
+      const blink = celebrationElapsed % 2400 > 2200;
+      const wink = celebrationMode.includes("wink") && celebrationElapsed % 3200 > 2850;
+      const eyeMarkup = blink
+        ? '<path d="M '+(eyes.x-22)+' '+eyes.y+' q 7 5 14 0 M '+(eyes.x+8)+' '+eyes.y+' q 7 5 14 0" fill="none" stroke="#243344" stroke-width="3" stroke-linecap="round"/>'
+        : '<ellipse class="face-eye" cx="'+(eyes.x-11)+'" cy="'+eyes.y+'" rx="11" ry="14"/><ellipse class="face-eye" cx="'+(eyes.x+11)+'" cy="'+eyes.y+'" rx="11" ry="14"/><ellipse class="face-pupil" cx="'+(eyes.x-9)+'" cy="'+(eyes.y+2)+'" rx="4" ry="7"/><ellipse class="face-pupil" cx="'+(eyes.x+13)+'" cy="'+(eyes.y+2)+'" rx="4" ry="7"/><circle class="face-glint" cx="'+(eyes.x-10)+'" cy="'+(eyes.y-2)+'" r="2"/><circle class="face-glint" cx="'+(eyes.x+12)+'" cy="'+(eyes.y-2)+'" r="2"/>';
+      const mouthMarkup = faceExpression === "tongue"
+        ? '<path class="face-mouth" d="M '+(mouth.x-8)+' '+mouth.y+' Q '+mouth.x+' '+(mouth.y+5)+' '+(mouth.x+8)+' '+mouth.y+' Q '+(mouth.x+8)+' '+(mouth.y+10)+' '+mouth.x+' '+(mouth.y+9)+' Q '+(mouth.x-8)+' '+(mouth.y+9)+' '+(mouth.x-8)+' '+mouth.y+' Z"/><path class="face-teeth" d="M '+(mouth.x-5)+' '+(mouth.y+2)+' Q '+mouth.x+' '+(mouth.y+4)+' '+(mouth.x+5)+' '+(mouth.y+2)+' L '+(mouth.x+4)+' '+(mouth.y+5)+' L '+(mouth.x-4)+' '+(mouth.y+5)+' Z"/><path class="face-tongue" d="M '+(mouth.x-2)+' '+(mouth.y+7)+' Q '+(mouth.x+5)+' '+(mouth.y+7)+' '+(mouth.x+3)+' '+(mouth.y+13)+' Q '+(mouth.x-1)+' '+(mouth.y+13)+' '+(mouth.x-2)+' '+(mouth.y+7)+' Z"/>'
+        : '<path class="face-mouth" d="M '+(mouth.x-8)+' '+mouth.y+' Q '+mouth.x+' '+(mouth.y+6)+' '+(mouth.x+8)+' '+mouth.y+' Q '+(mouth.x+6)+' '+(mouth.y+10)+' '+mouth.x+' '+(mouth.y+10)+' Q '+(mouth.x-6)+' '+(mouth.y+10)+' '+(mouth.x-8)+' '+mouth.y+' Z"/><path class="face-teeth" d="M '+(mouth.x-5)+' '+(mouth.y+2)+' Q '+mouth.x+' '+(mouth.y+5)+' '+(mouth.x+5)+' '+(mouth.y+2)+' L '+(mouth.x+4)+' '+(mouth.y+5)+' L '+(mouth.x-4)+' '+(mouth.y+5)+' Z"/>';
+      const winkMarkup = wink ? '<path d="M '+(eyes.x+5)+' '+eyes.y+' q 7 5 14 0" fill="none" stroke="#243344" stroke-width="3" stroke-linecap="round"/>' : '';
+      characterFace.innerHTML = '<g class="face-group">'+eyeMarkup+winkMarkup+mouthMarkup+'</g>';
+      characterFace.classList.add("is-visible");
     }
+    if (!celebrating) { characterFace.classList.remove("is-visible"); characterFace.innerHTML = ""; }
     ctx.restore();
   }
 

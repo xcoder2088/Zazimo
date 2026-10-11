@@ -326,3 +326,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Garder le placement dans le même repère que les tracés afin de limiter les bouches flottantes.
 - [x] Vérifier la syntaxe JavaScript.
 - [ ] Inspecter visuellement les dix chiffres dans le navigateur et ajuster les cas restants.
+
+
+## Visage ancré au tracé — correctif 2026-10-11
+- [x] Positionner chaque bouche sur un point réel de la ligne centrale du chiffre, avec coordonnées par chiffre.
+- [x] Réduire la bouche pour éviter qu'elle déborde dans les espaces vides.
+- [x] Vérifier la syntaxe JavaScript après modification.
+- [ ] Contrôle visuel dans le navigateur sur les chiffres 0 à 9 encore nécessaire.

@@ -168,3 +168,7 @@
 ## 2026-10-11 — Visage animé
 - Espacement accru entre les yeux et alignement de la bouche sous ceux-ci.
 - Animation continue et discrète des clignements, du sourire ou de la langue tirée pendant l'état de réussite.
+
+
+## 2026-10-11 — Amélioration des expressions
+- Bouche cartoon plus lisible, sourire avec dents et variante langue tirée animée.

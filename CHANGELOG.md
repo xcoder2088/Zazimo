@@ -58,3 +58,11 @@
 - Le thème Mixte est sélectionné par défaut.
 - Les symboles décoratifs sont temporaires; les illustrations originales restent à créer.
 - Tests visuels et fonctionnels encore requis.
+
+
+## 2026-10-11 — Sélection des chiffres 0 à 9
+- Ajout d'un sélecteur interactif de 0 à 9.
+- Le titre, le glyphe de guide et la démonstration changent selon le chiffre sélectionné.
+- Le tracé et le message de récompense sont réinitialisés lors d'un changement de chiffre.
+- Ajout de routes de démonstration distinctes, à contrôler et ajuster visuellement.
+- La validation du tracé reste expérimentale; aucun test en navigateur réel n'est déclaré réussi.

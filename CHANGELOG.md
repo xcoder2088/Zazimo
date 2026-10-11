@@ -110,3 +110,9 @@
 ## 2026-10-11 — Correctif d'urgence : prototype non interactif
 - Suppression d'une déclaration `const smooth` en double qui bloquait l'exécution de `app.js`.
 - Vérification des interactions dans le navigateur encore requise après mise à jour locale.
+
+
+## 2026-10-11 — Raffinement esthétique des chiffres arrondis
+- Proportions retravaillées pour 0, 2, 3, 6, 8 et 9.
+- Épaisseur du modèle réduite pour un rendu moins massif.
+- Validation visuelle requise avant acceptation.

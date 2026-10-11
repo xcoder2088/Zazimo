@@ -125,3 +125,7 @@ Les captures montraient que le glyphe plein provenait d'une police tandis que le
 
 ## 2026-10-11 — Raffinement des chiffres arrondis
 Les chiffres angulaires ayant été jugés satisfaisants, le travail porte maintenant sur les formes arrondies. Commit `19a8e4c` : épaisseur du modèle réduite de 28–40 px à 24–32 px selon la largeur du canevas; routes 0, 2, 3, 6, 8 et 9 resserrées et ajustées pour des boucles plus régulières. Les changements sont commités sur `main`; la confirmation visuelle dans le navigateur reste à faire.
+
+
+## 2026-10-11 — Chiffre 1 en deux traits distincts
+À partir de la référence fournie, le chiffre 1 doit être appris en deux gestes : d'abord la diagonale, puis la verticale. `prototype/app.js` représente désormais le 1 comme deux routes distinctes; le modèle translucide et le pointillé sont dessinés séparément sur chaque route, et l'animation avance séquentiellement sans tracer de liaison entre les traits. Commits `cde38eb` et `39f8a4e`. À valider dans le navigateur après `git pull origin main` et `Ctrl+F5`; aucun test réel n'a été exécuté ici.

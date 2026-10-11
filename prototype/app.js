@@ -26,9 +26,9 @@
   function tracePath() {
     const rect = canvas.getBoundingClientRect();
     return [
-      { x: rect.width * 0.435, y: rect.height * 0.335 },
-      { x: rect.width * 0.515, y: rect.height * 0.255 },
-      { x: rect.width * 0.515, y: rect.height * 0.755 }
+      { x: rect.width * 0.33, y: rect.height * 0.33 },
+      { x: rect.width * 0.545, y: rect.height * 0.24 },
+      { x: rect.width * 0.545, y: rect.height * 0.80 }
     ];
   }
 

@@ -99,3 +99,9 @@
 - Modèle de traçage légèrement aminci.
 - Routes 0, 2, 3, 6, 8 et 9 resserrées et régularisées.
 - Validation visuelle après actualisation requise.
+
+
+## 2026-10-11 — Démonstration du chiffre 1 en deux traits
+- Séparation du chiffre 1 en un trait diagonal puis un trait vertical.
+- Guide pointillé, modèle et démonstration utilisent les deux traits indépendants dans l'ordre.
+- Validation dans le navigateur encore requise.

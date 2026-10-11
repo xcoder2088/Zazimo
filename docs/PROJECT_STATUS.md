@@ -129,3 +129,10 @@ Ne pas figer cette architecture avant d'avoir vérifié compatibilité, capacit�
 
 ## Prototype — sélecteur de thèmes
 Un premier sélecteur Garçon, Fille et Mixte a été ajouté au prototype. Le thème Mixte est actif par défaut; les thèmes modifient seulement l'apparence. Les symboles emoji sont temporaires et doivent être remplacés progressivement par des illustrations originales. L'affichage responsive et l'absence de régression restent à vérifier dans un navigateur.
+
+
+## Prototype — premier sélecteur de chiffres 0 à 9
+- Le prototype propose maintenant les dix chiffres et une route initiale spécifique à chacun.
+- Le changement de chiffre actualise le titre et le glyphe de guide, efface l'ancien tracé et relance la démonstration.
+- **Statut : implémentation commitée, validation en attente.** Les routes doivent être vérifiées visuellement contre les chiffres affichés. La validation demeure heuristique et ne doit pas être considérée comme un outil pédagogique fiable avant amélioration et tests.
+- À vérifier : ordinateur et téléphone, sélection de tous les chiffres, changement pendant/après un tracé, bouton de remise à zéro, thèmes, mode Sérénité, démonstration et son facultatif.

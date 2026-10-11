@@ -6,43 +6,104 @@
   const feedback = document.getElementById("feedback");
   const clearButton = document.getElementById("clear-button");
   const checkButton = document.getElementById("check-button");
+  const demoButton = document.getElementById("demo-button");
   const calmToggle = document.getElementById("calm-toggle");
   const rewardStar = document.getElementById("reward-star");
   const rewardTitle = document.getElementById("reward-title");
   const rewardText = document.getElementById("reward-text");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   let drawing = false;
   let points = [];
   let strokes = [];
   let activeStroke = [];
+  let demoActive = false;
+  let demoStart = 0;
+  let demoFrame = 0;
+  const demoDuration = reducedMotion.matches ? 0 : 1800;
+
+  // Centerline of the numeral: diagonal to the top, then straight down.
+  function tracePath() {
+    const rect = canvas.getBoundingClientRect();
+    return [
+      { x: rect.width * 0.435, y: rect.height * 0.335 },
+      { x: rect.width * 0.515, y: rect.height * 0.255 },
+      { x: rect.width * 0.515, y: rect.height * 0.755 }
+    ];
+  }
 
   function resizeCanvas() {
     const rect = canvas.getBoundingClientRect();
     const ratio = Math.max(1, window.devicePixelRatio || 1);
-    const oldPoints = points.slice();
     canvas.width = Math.round(rect.width * ratio);
     canvas.height = Math.round(rect.height * ratio);
     ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     drawStrokes();
-    if (oldPoints.length && !strokes.length) points = oldPoints;
   }
 
   function drawGuide() {
-    const rect = canvas.getBoundingClientRect();
+    const path = tracePath();
     ctx.save();
-    ctx.strokeStyle = "#b7c6d9";
+    ctx.strokeStyle = document.body.classList.contains("calm") ? "#a8c5b6" : "#b7c6d9";
     ctx.lineWidth = 3;
-    ctx.setLineDash([5, 9]);
+    ctx.setLineDash([5, 8]);
     ctx.lineCap = "round";
+    ctx.lineJoin = "round";
     ctx.beginPath();
-    ctx.moveTo(rect.width * 0.53, rect.height * 0.26);
-    ctx.lineTo(rect.width * 0.53, rect.height * 0.75);
+    ctx.moveTo(path[0].x, path[0].y);
+    for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
     ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawDemo(progress) {
+    const path = tracePath();
+    const lengths = [];
+    let totalLength = 0;
+    for (let i = 1; i < path.length; i++) {
+      const length = Math.hypot(path[i].x - path[i - 1].x, path[i].y - path[i - 1].y);
+      lengths.push(length);
+      totalLength += length;
+    }
+
+    let remaining = totalLength * Math.max(0, Math.min(1, progress));
+    const drawn = [path[0]];
+    let dot = path[0];
+    for (let i = 0; i < lengths.length; i++) {
+      const from = path[i];
+      const to = path[i + 1];
+      const length = lengths[i];
+      if (remaining >= length) {
+        drawn.push(to);
+        remaining -= length;
+        dot = to;
+      } else {
+        const t = length === 0 ? 0 : remaining / length;
+        dot = { x: from.x + (to.x - from.x) * t, y: from.y + (to.y - from.y) * t };
+        drawn.push(dot);
+        break;
+      }
+    }
+
+    ctx.save();
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.strokeStyle = document.body.classList.contains("calm") ? "#6d9d87" : "#f16c91";
+    ctx.lineWidth = Math.max(7, Math.min(12, canvas.clientWidth * 0.018));
+    ctx.globalAlpha = 0.8;
     ctx.beginPath();
-    ctx.moveTo(rect.width * 0.44, rect.height * 0.34);
-    ctx.lineTo(rect.width * 0.53, rect.height * 0.25);
-    ctx.lineTo(rect.width * 0.53, rect.height * 0.75);
+    ctx.moveTo(drawn[0].x, drawn[0].y);
+    for (let i = 1; i < drawn.length; i++) ctx.lineTo(drawn[i].x, drawn[i].y);
     ctx.stroke();
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = "#ffffff";
+    ctx.beginPath();
+    ctx.arc(dot.x, dot.y, 9, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = document.body.classList.contains("calm") ? "#4e866d" : "#ec5f8c";
+    ctx.beginPath();
+    ctx.arc(dot.x, dot.y, 6, 0, Math.PI * 2);
+    ctx.fill();
     ctx.restore();
   }
 
@@ -69,6 +130,44 @@
       ctx.stroke();
     }
     ctx.restore();
+    if (demoActive) {
+      const elapsed = performance.now() - demoStart;
+      drawDemo(demoDuration === 0 ? 1 : Math.min(1, elapsed / demoDuration));
+    }
+  }
+
+  function startDemo() {
+    if (demoFrame) cancelAnimationFrame(demoFrame);
+    drawing = false;
+    activeStroke = [];
+    demoActive = true;
+    demoStart = performance.now();
+    feedback.textContent = "Regarde le point : il monte en diagonale, puis descend tout droit.";
+    demoButton.disabled = true;
+
+    if (demoDuration === 0) {
+      drawStrokes();
+      demoActive = false;
+      drawStrokes();
+      feedback.textContent = "À toi de jouer ! Suis le chemin pointillé.";
+      demoButton.disabled = false;
+      return;
+    }
+
+    function frame(now) {
+      const progress = Math.min(1, (now - demoStart) / demoDuration);
+      drawStrokes();
+      if (progress < 1) {
+        demoFrame = requestAnimationFrame(frame);
+      } else {
+        demoActive = false;
+        demoFrame = 0;
+        drawStrokes();
+        feedback.textContent = "À toi de jouer ! Suis le chemin pointillé.";
+        demoButton.disabled = false;
+      }
+    }
+    demoFrame = requestAnimationFrame(frame);
   }
 
   function position(event) {
@@ -77,6 +176,7 @@
   }
 
   canvas.addEventListener("pointerdown", event => {
+    if (demoActive) return;
     event.preventDefault();
     drawing = true;
     activeStroke = [position(event)];
@@ -115,12 +215,14 @@
     points = [];
     strokes = [];
     activeStroke = [];
-    feedback.textContent = "Pas de souci. Essaie encore à ton rythme.";
+    feedback.textContent = "Pas de souci. Regarde la démonstration ou essaie encore.";
     rewardStar.textContent = "★";
     rewardTitle.textContent = "Chaque essai compte !";
-    rewardText.textContent = "Prends ton temps. Tu peux recommencer autant que tu veux.";
+    rewardText.textContent = "Prends ton temps. Tu peux recommencer autant de fois que tu veux.";
     drawStrokes();
   });
+
+  demoButton.addEventListener("click", startDemo);
 
   checkButton.addEventListener("click", () => {
     const rect = canvas.getBoundingClientRect();
@@ -130,10 +232,9 @@
     }
     const xs = points.map(p => p.x);
     const ys = points.map(p => p.y);
-    const xRange = Math.max(...xs) - Math.min(...xs);
     const yRange = Math.max(...ys) - Math.min(...ys);
-    const centerX = rect.width * 0.53;
-    const nearCenter = Math.abs((xs.reduce((a, b) => a + b, 0) / xs.length) - centerX) < rect.width * 0.24;
+    const centerX = rect.width * 0.515;
+    const nearCenter = Math.abs((xs.reduce((a, b) => a + b, 0) / xs.length) - centerX) < rect.width * 0.2;
     if (yRange > rect.height * 0.22 && nearCenter) {
       feedback.textContent = "Bravo ! Tu as essayé le chiffre 1 !";
       rewardStar.textContent = "★";
@@ -173,4 +274,5 @@
 
   window.addEventListener("resize", resizeCanvas);
   resizeCanvas();
- })();
+  startDemo();
+})();

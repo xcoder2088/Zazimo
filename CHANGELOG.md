@@ -194,3 +194,7 @@
 
 ## 2026-10-11 — Alignement des bouches
 - Coordonnées de bouche personnalisées pour chaque chiffre afin de mieux suivre la forme du tracé.
+
+
+## 2026-10-11 — Bouche attachée au chiffre
+- Repositionnement individuel des bouches sur la ligne centrale des chiffres 0 à 9; bouche réduite pour limiter les débordements.

@@ -90,42 +90,50 @@
             ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(x+3,y-1,2.2,0,Math.PI*2); ctx.fill();
           }
         }
-        // A readable cartoon mouth: a filled smile or open grin, with a distinct tongue.
-        const mouthY = eyeY + 23;
+        // Keep the mouth attached to each numeral's face area, not merely under the eyes.
+        // Per-digit offsets account for the different head shapes of 3, 5, 6, 7, 8 and 9.
+        const mouthOffsets = {
+          0:{x:0,y:21}, 1:{x:1,y:20}, 2:{x:0,y:22}, 3:{x:-1,y:21},
+          4:{x:1,y:21}, 5:{x:-1,y:19}, 6:{x:0,y:20}, 7:{x:1,y:20},
+          8:{x:0,y:21}, 9:{x:0,y:20}
+        };
+        const mouthOffset = mouthOffsets[selectedDigit] || {x:0,y:21};
+        const mouthX = ex + mouthOffset.x;
+        const mouthY = eyeY + mouthOffset.y;
         const mouthOpen = (Math.sin(celebrationElapsed / 260) + 1) / 2;
-        const mouthW = 13;
+        const mouthW = 11.5;
         ctx.lineWidth = 2.2;
         ctx.strokeStyle = "#243344";
         ctx.fillStyle = "#243344";
         if (faceExpression === "tongue") {
           ctx.beginPath();
-          ctx.moveTo(ex-mouthW, mouthY);
-          ctx.quadraticCurveTo(ex, mouthY+5+mouthOpen*4, ex+mouthW, mouthY);
-          ctx.quadraticCurveTo(ex+mouthW-1, mouthY+14+mouthOpen*3, ex, mouthY+14+mouthOpen*3);
-          ctx.quadraticCurveTo(ex-mouthW+1, mouthY+14+mouthOpen*3, ex-mouthW, mouthY);
+          ctx.moveTo(mouthX-mouthW, mouthY);
+          ctx.quadraticCurveTo(mouthX, mouthY+5+mouthOpen*4, mouthX+mouthW, mouthY);
+          ctx.quadraticCurveTo(mouthX+mouthW-1, mouthY+14+mouthOpen*3, mouthX, mouthY+14+mouthOpen*3);
+          ctx.quadraticCurveTo(mouthX-mouthW+1, mouthY+14+mouthOpen*3, mouthX-mouthW, mouthY);
           ctx.closePath(); ctx.fill(); ctx.stroke();
           ctx.fillStyle = "#fff";
-          ctx.beginPath(); ctx.moveTo(ex-mouthW+3,mouthY+2);
-          ctx.quadraticCurveTo(ex,mouthY+5,ex+mouthW-3,mouthY+2);
-          ctx.lineTo(ex+mouthW-3,mouthY+5); ctx.quadraticCurveTo(ex,mouthY+8,ex-mouthW+3,mouthY+5); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(mouthX-mouthW+3,mouthY+2);
+          ctx.quadraticCurveTo(mouthX,mouthY+5,mouthX+mouthW-3,mouthY+2);
+          ctx.lineTo(mouthX+mouthW-3,mouthY+5); ctx.quadraticCurveTo(mouthX,mouthY+8,mouthX-mouthW+3,mouthY+5); ctx.closePath(); ctx.fill();
           ctx.fillStyle = "#f04483"; ctx.strokeStyle = "#b72c60";
-          ctx.beginPath(); ctx.moveTo(ex-3,mouthY+10);
-          ctx.quadraticCurveTo(ex+8,mouthY+10,ex+5+Math.sin(celebrationElapsed/220)*2,mouthY+19+mouthOpen*2);
-          ctx.quadraticCurveTo(ex-1,mouthY+22+mouthOpen*2,ex-3,mouthY+10);
+          ctx.beginPath(); ctx.moveTo(mouthX-3,mouthY+10);
+          ctx.quadraticCurveTo(mouthX+8,mouthY+10,mouthX+5+Math.sin(celebrationElapsed/220)*2,mouthY+19+mouthOpen*2);
+          ctx.quadraticCurveTo(mouthX-1,mouthY+22+mouthOpen*2,mouthX-3,mouthY+10);
           ctx.closePath(); ctx.fill(); ctx.stroke();
         } else {
           ctx.beginPath();
-          ctx.moveTo(ex-mouthW, mouthY);
-          ctx.quadraticCurveTo(ex, mouthY+9+mouthOpen*4, ex+mouthW, mouthY);
-          ctx.quadraticCurveTo(ex+mouthW-1, mouthY+10+mouthOpen*4, ex, mouthY+10+mouthOpen*4);
-          ctx.quadraticCurveTo(ex-mouthW+1, mouthY+10+mouthOpen*4, ex-mouthW, mouthY);
+          ctx.moveTo(mouthX-mouthW, mouthY);
+          ctx.quadraticCurveTo(mouthX, mouthY+9+mouthOpen*4, mouthX+mouthW, mouthY);
+          ctx.quadraticCurveTo(mouthX+mouthW-1, mouthY+10+mouthOpen*4, mouthX, mouthY+10+mouthOpen*4);
+          ctx.quadraticCurveTo(mouthX-mouthW+1, mouthY+10+mouthOpen*4, mouthX-mouthW, mouthY);
           ctx.closePath(); ctx.fill(); ctx.stroke();
           ctx.fillStyle = "#fff";
           ctx.beginPath();
-          ctx.moveTo(ex-8,mouthY+2);
-          ctx.quadraticCurveTo(ex,mouthY+5,ex+8,mouthY+2);
-          ctx.lineTo(ex+7,mouthY+5);
-          ctx.quadraticCurveTo(ex,mouthY+8,ex-7,mouthY+5);
+          ctx.moveTo(mouthX-8,mouthY+2);
+          ctx.quadraticCurveTo(mouthX,mouthY+5,mouthX+8,mouthY+2);
+          ctx.lineTo(mouthX+7,mouthY+5);
+          ctx.quadraticCurveTo(mouthX,mouthY+8,mouthX-7,mouthY+5);
           ctx.closePath(); ctx.fill();
         }
       }

@@ -13,49 +13,48 @@
   const numberTitle = document.getElementById("number-title");
   const guideGlyph = document.querySelector(".guide-glyph");
   let selectedDigit = 1;
-  // Friendly numeral artwork: a bright fill and a clean outline sit behind
-  // the existing tracing centerline. Faces are decorative and never affect input.
+  // Playful color is applied directly to the validated centerline routes.
+  // This prevents decorative silhouettes from drifting away from the tracing path.
   const numeralPalette = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83"];
-  const numeralPaths = {
-    0:"M225 39 C191 39 176 69 176 123 C176 174 194 207 225 208 C256 207 274 174 274 123 C274 69 259 39 225 39 Z",
-    1:"M190 76 L229 48 L229 204",
-    2:"M187 72 C191 48 216 38 239 46 C268 57 270 82 253 105 C236 128 194 161 188 181 L270 188",
-    3:"M194 61 C209 39 245 38 258 60 C271 82 250 98 229 108 C254 116 267 137 262 160 C257 188 225 204 196 193",
-    4:"M239 214 L239 43 L177 145 L278 145",
-    5:"M267 47 L187 47 L183 102 C220 90 258 108 265 139 C274 177 246 202 215 198 C201 197 190 192 183 186",
-    6:"M250 49 C207 31 178 75 176 132 C174 176 194 201 224 200 C257 199 273 169 262 143 C251 116 211 111 192 140",
-    7:"M177 48 L273 48 L210 214",
-    8:"M225 121 C194 109 183 89 188 68 C193 46 214 39 230 43 C256 48 266 72 258 91 C252 106 238 116 225 121 C194 136 181 156 185 177 C189 199 211 208 230 203 C256 198 269 177 263 156 C258 139 241 128 225 121 Z",
-    9:"M245 121 C218 145 186 127 180 101 C174 73 193 48 221 45 C252 42 272 64 275 94 C281 143 263 186 225 210"
-  };
   function drawFriendlyNumeral() {
-    const rect = canvas.getBoundingClientRect();
-    const scale = Math.min(rect.width / 450, rect.height / 250);
-    const ox = (rect.width - 450 * scale) / 2;
-    const oy = (rect.height - 250 * scale) / 2;
+    const routes = tracePaths();
     ctx.save();
-    ctx.translate(ox, oy);
-    ctx.scale(scale, scale);
-    const path = new Path2D(numeralPaths[selectedDigit]);
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
+    const width = Math.max(22, Math.min(29, canvas.clientWidth * 0.05));
+    ctx.setLineDash([]);
+    // Dark outline, then bright fill: both follow the exact same centerline as the guide.
     ctx.strokeStyle = "#243344";
-    ctx.lineWidth = 3.5;
-    ctx.fillStyle = numeralPalette[selectedDigit];
-    ctx.fill(path);
-    ctx.stroke(path);
-    // Small friendly eyes above the upper area, kept away from the tracing line.
-    const eyeX = selectedDigit === 1 || selectedDigit === 4 || selectedDigit === 7 ? 231 : 219;
-    const eyeY = selectedDigit === 1 || selectedDigit === 4 || selectedDigit === 7 ? 37 : 35;
-    for (const [x,y] of [[eyeX,eyeY],[eyeX+17,eyeY-1]]) {
-      ctx.fillStyle = "#fff";
-      ctx.strokeStyle = "#243344";
-      ctx.lineWidth = 1.8;
-      ctx.beginPath(); ctx.ellipse(x,y,9,12,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
-      ctx.fillStyle = "#243344";
-      ctx.beginPath(); ctx.ellipse(x+1,y+2,3,5,0,0,Math.PI*2); ctx.fill();
-      ctx.fillStyle = "#fff";
-      ctx.beginPath(); ctx.arc(x+2,y,1.5,0,Math.PI*2); ctx.fill();
+    ctx.lineWidth = width + 5;
+    for (const path of routes) {
+      if (path.length < 2) continue;
+      ctx.beginPath();
+      ctx.moveTo(path[0].x, path[0].y);
+      for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
+      ctx.stroke();
+    }
+    ctx.strokeStyle = numeralPalette[selectedDigit];
+    ctx.lineWidth = width;
+    for (const path of routes) {
+      if (path.length < 2) continue;
+      ctx.beginPath();
+      ctx.moveTo(path[0].x, path[0].y);
+      for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
+      ctx.stroke();
+    }
+    // Eyes are separate decorative elements, never part of the trace route.
+    const first = routes[0]?.[0];
+    if (first) {
+      const ex = first.x + (selectedDigit === 1 ? 25 : 0);
+      const ey = Math.max(18, first.y - width * 0.7);
+      for (const [x,y] of [[ex-7,ey],[ex+9,ey-1]]) {
+        ctx.fillStyle = "#fff";
+        ctx.strokeStyle = "#243344";
+        ctx.lineWidth = 1.8;
+        ctx.beginPath(); ctx.ellipse(x,y,7,9,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = "#243344";
+        ctx.beginPath(); ctx.ellipse(x+1,y+1,2.5,4,0,0,Math.PI*2); ctx.fill();
+      }
     }
     ctx.restore();
   }

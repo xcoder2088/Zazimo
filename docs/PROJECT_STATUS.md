@@ -125,3 +125,7 @@ Ne pas figer cette architecture avant d'avoir vérifié compatibilité, capacit�
 - Le chiffre pâle est maintenant une silhouette SVG explicite, et le guide pointillé ainsi que l'animation utilisent des coordonnées dans le même repère SVG (viewBox 450 × 250).
 - Cela élimine la désynchronisation entre un chiffre rendu par police et un chemin codé indépendamment.
 - État : correctif poussé; vérification visuelle après actualisation toujours requise. Le modèle SVG est une première géométrie dessinée à la main, à contrôler avant extension aux autres caractères.
+
+
+## Prototype — sélecteur de thèmes
+Un premier sélecteur Garçon, Fille et Mixte a été ajouté au prototype. Le thème Mixte est actif par défaut; les thèmes modifient seulement l'apparence. Les symboles emoji sont temporaires et doivent être remplacés progressivement par des illustrations originales. L'affichage responsive et l'absence de régression restent à vérifier dans un navigateur.

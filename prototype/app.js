@@ -41,14 +41,18 @@
 
   // The guide silhouette and this centerline share one SVG viewBox.
   // This keeps the dotted route geometrically tied to the visible numeral.
-  function tracePath() {
+  function tracePaths() {
     const rect = canvas.getBoundingClientRect();
     const viewWidth = 450;
     const viewHeight = 250;
     const scale = Math.min(rect.width / viewWidth, rect.height / viewHeight);
     const offsetX = (rect.width - viewWidth * scale) / 2;
     const offsetY = (rect.height - viewHeight * scale) / 2;
-    const svgPoints = digitRoutes[selectedDigit];
+    const rawRoutes = selectedDigit === 1
+      ? [[{x:190,y:76},{x:229,y:48}], [{x:229,y:48},{x:229,y:204}]]
+      : [digitRoutes[selectedDigit]];
+    return rawRoutes.map(svgPoints => {
+    const smooth = [];
     const smooth = [];
     if (svgPoints.length < 3) {
       for (const point of svgPoints) smooth.push(point);
@@ -76,6 +80,11 @@
       x: offsetX + point.x * scale,
       y: offsetY + point.y * scale
     }));
+    });
+  }
+
+  function tracePath() {
+    return tracePaths().flat();
   }
 
   function resizeCanvas() {
@@ -88,77 +97,82 @@
   }
 
   function drawGuide() {
-    const path = tracePath();
+    const routes = tracePaths();
     ctx.save();
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
-    // The visible tracing model and the dotted guide now share this exact path.
-    // This removes the mismatch caused by drawing a font glyph behind a hand-built route.
+    const modelWidth = Math.max(24, Math.min(32, canvas.clientWidth * 0.06));
     ctx.strokeStyle = document.body.classList.contains("calm") ? "#d7e7de" : "#c8d3e3";
-    ctx.lineWidth = Math.max(24, Math.min(32, canvas.clientWidth * 0.06));
+    ctx.lineWidth = modelWidth;
     ctx.setLineDash([]);
-    ctx.beginPath();
-    ctx.moveTo(path[0].x, path[0].y);
-    for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
-    ctx.stroke();
+    for (const path of routes) {
+      if (!path.length) continue;
+      ctx.beginPath();
+      ctx.moveTo(path[0].x, path[0].y);
+      for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
+      ctx.stroke();
+    }
     ctx.strokeStyle = document.body.classList.contains("calm") ? "#8eae9d" : "#9fb4d0";
     ctx.lineWidth = 3;
     ctx.setLineDash([5, 8]);
-    ctx.beginPath();
-    ctx.moveTo(path[0].x, path[0].y);
-    for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
-    ctx.stroke();
+    for (const path of routes) {
+      if (!path.length) continue;
+      ctx.beginPath();
+      ctx.moveTo(path[0].x, path[0].y);
+      for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
+      ctx.stroke();
+    }
     ctx.restore();
   }
 
   function drawDemo(progress) {
-    const path = tracePath();
-    const lengths = [];
-    let totalLength = 0;
-    for (let i = 1; i < path.length; i++) {
-      const length = Math.hypot(path[i].x - path[i - 1].x, path[i].y - path[i - 1].y);
-      lengths.push(length);
-      totalLength += length;
-    }
-
-    let remaining = totalLength * Math.max(0, Math.min(1, progress));
-    const drawn = [path[0]];
-    let dot = path[0];
-    for (let i = 0; i < lengths.length; i++) {
-      const from = path[i];
-      const to = path[i + 1];
-      const length = lengths[i];
-      if (remaining >= length) {
-        drawn.push(to);
-        remaining -= length;
-        dot = to;
-      } else {
-        const t = length === 0 ? 0 : remaining / length;
-        dot = { x: from.x + (to.x - from.x) * t, y: from.y + (to.y - from.y) * t };
-        drawn.push(dot);
-        break;
+    const routes = tracePaths();
+    const routeLengths = routes.map(path => {
+      let length = 0;
+      for (let i = 1; i < path.length; i++) length += Math.hypot(path[i].x-path[i-1].x,path[i].y-path[i-1].y);
+      return length;
+    });
+    const totalLength = routeLengths.reduce((sum,length)=>sum+length,0);
+    let remaining = totalLength * Math.max(0,Math.min(1,progress));
+    let dot = routes[0][0];
+    const drawnRoutes = [];
+    for(let r=0;r<routes.length;r++){
+      const path=routes[r], drawn=[path[0]];
+      for(let i=1;i<path.length;i++){
+        const from=path[i-1],to=path[i];
+        const length=Math.hypot(to.x-from.x,to.y-from.y);
+        if(remaining>=length){drawn.push(to);remaining-=length;dot=to;}
+        else{
+          const t=length===0?0:remaining/length;
+          dot={x:from.x+(to.x-from.x)*t,y:from.y+(to.y-from.y)*t};
+          drawn.push(dot);
+          remaining=0;
+          drawnRoutes.push(drawn);
+          for(let j=r+1;j<routes.length;j++) drawnRoutes.push([]);
+          r=routes.length;
+          break;
+        }
       }
+      if(drawnRoutes.length===0) drawnRoutes.push(drawn);
+      if(remaining<=0 && progress<1) break;
+      dot=path[path.length-1];
     }
-
     ctx.save();
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    ctx.strokeStyle = document.body.classList.contains("calm") ? "#6d9d87" : "#f16c91";
-    ctx.lineWidth = Math.max(7, Math.min(12, canvas.clientWidth * 0.018));
-    ctx.globalAlpha = 0.8;
-    ctx.beginPath();
-    ctx.moveTo(drawn[0].x, drawn[0].y);
-    for (let i = 1; i < drawn.length; i++) ctx.lineTo(drawn[i].x, drawn[i].y);
-    ctx.stroke();
-    ctx.globalAlpha = 1;
-    ctx.fillStyle = "#ffffff";
-    ctx.beginPath();
-    ctx.arc(dot.x, dot.y, 9, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = document.body.classList.contains("calm") ? "#4e866d" : "#ec5f8c";
-    ctx.beginPath();
-    ctx.arc(dot.x, dot.y, 6, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.lineCap="round";
+    ctx.lineJoin="round";
+    ctx.strokeStyle=document.body.classList.contains("calm")?"#6d9d87":"#f16c91";
+    ctx.lineWidth=Math.max(7,Math.min(12,canvas.clientWidth*0.018));
+    ctx.globalAlpha=0.8;
+    for(const path of drawnRoutes){
+      if(path.length<2) continue;
+      ctx.beginPath();ctx.moveTo(path[0].x,path[0].y);
+      for(let i=1;i<path.length;i++)ctx.lineTo(path[i].x,path[i].y);
+      ctx.stroke();
+    }
+    ctx.globalAlpha=1;
+    ctx.fillStyle="#ffffff";ctx.beginPath();ctx.arc(dot.x,dot.y,9,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle=document.body.classList.contains("calm")?"#4e866d":"#ec5f8c";
+    ctx.beginPath();ctx.arc(dot.x,dot.y,6,0,Math.PI*2);ctx.fill();
     ctx.restore();
   }
 

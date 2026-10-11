@@ -340,3 +340,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Placer la bouche juste sous les yeux, sur le trait supérieur, avec des coordonnées propres à chaque chiffre.
 - [x] Vérifier la syntaxe JavaScript après modification.
 - [ ] Vérification visuelle navigateur des chiffres 0 à 9 à effectuer.
+
+
+## Ajustement bouche sur le trait — 2026-10-11
+- [x] Rapprocher la bouche du centre du trait supérieur pour les chiffres 0 à 9.
+- [x] Réduire la hauteur de la bouche afin qu'elle reste dans l'épaisseur du chiffre.
+- [x] Vérifier la syntaxe JavaScript.
+- [ ] Confirmer visuellement les dix chiffres dans le navigateur.

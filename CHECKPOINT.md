@@ -121,3 +121,7 @@ Après les captures des chiffres 6, 3, 2 et 1, les routes des chiffres 0, 2, 3 e
 
 ## 2026-10-11 — Changement de méthode pour corriger le décalage
 Les captures montraient que le glyphe plein provenait d'une police tandis que le pointillé suivait une route manuelle différente. Au lieu de continuer à ajuster deux géométries séparées, le modèle visible est maintenant dessiné comme un trait large translucide et le guide pointillé est superposé exactement sur le même chemin. Modifications `prototype/app.js` et `prototype/styles.css`, commits `93f8868` et `3850645`. Cette méthode garantit l'alignement modèle/pointillé, mais la forme pédagogique de chaque route et son apparence doivent encore être validées dans le navigateur. Faire `git pull origin main`, puis `Ctrl+F5`.
+
+
+## 2026-10-11 — Raffinement des chiffres arrondis
+Les chiffres angulaires ayant été jugés satisfaisants, le travail porte maintenant sur les formes arrondies. Commit `19a8e4c` : épaisseur du modèle réduite de 28–40 px à 24–32 px selon la largeur du canevas; routes 0, 2, 3, 6, 8 et 9 resserrées et ajustées pour des boucles plus régulières. Les changements sont commités sur `main`; la confirmation visuelle dans le navigateur reste à faire.

@@ -221,3 +221,7 @@ Commit `6d45527` : les coordonnées des yeux et des bouches sont définies sépa
 
 ## 2026-10-11 — Visages en SVG
 Commit `55b6244` : les yeux et la bouche sont désormais dessinés dans une couche SVG indépendante du Canvas de traçage. Les positions restent manuelles par chiffre. Syntaxe JavaScript validée; test visuel navigateur non effectué.
+
+
+## Correctif d’affichage — 2026-10-11
+Commit CSS `e46d203` : masquage du SVG décoratif `.guide`, qui recouvrait le Canvas et pouvait cacher le chemin pointillé. Le Canvas reste responsable du chiffre et du chemin; la couche SVG du visage reste au-dessus pour l’état de réussite. Syntaxe JavaScript revérifiée; test navigateur non effectué.

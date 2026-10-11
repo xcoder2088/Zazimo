@@ -171,3 +171,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Augmenter le contraste du chiffre-guide afin qu'il reste visible sous les pointillés.
 - [ ] Vérifier le rendu de 0, 2, 3, 6, 8 et 9 dans le navigateur et ajuster les routes au besoin.
 - [ ] Vérifier que le lissage n'introduit pas de dépassement gênant dans les angles ou aux extrémités.
+
+
+## Ajustement des routes après captures des chiffres 1 et 3
+- [x] Recentrer les routes du 1 et du 3 pour viser la ligne médiane du glyphe plutôt que son bord.
+- [x] Désactiver le lissage automatique pour les chiffres 1, 4 et 7 afin de préserver leurs segments angulaires.
+- [ ] Vérifier les routes sur capture et ajuster encore les points de départ, de jonction et d'arrivée.
+- [ ] Étendre la vérification de centrage aux autres chiffres et à plusieurs polices/tailles d'écran.

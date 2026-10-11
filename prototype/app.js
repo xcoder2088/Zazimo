@@ -69,23 +69,43 @@
             ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(x+3,y-1,2.2,0,Math.PI*2); ctx.fill();
           }
         }
-        // Mouth is centered below the eyes and animates with the same character.
-        const mouthY = eyeY + 21;
-        const mouthOpen = (Math.sin(celebrationElapsed / 180) + 1) / 2;
-        ctx.strokeStyle = "#243344"; ctx.fillStyle = "#243344"; ctx.lineWidth = 2.5;
+        // A readable cartoon mouth: a filled smile or open grin, with a distinct tongue.
+        const mouthY = eyeY + 25;
+        const mouthOpen = (Math.sin(celebrationElapsed / 260) + 1) / 2;
+        const mouthW = 13;
+        ctx.lineWidth = 2.2;
+        ctx.strokeStyle = "#243344";
+        ctx.fillStyle = "#243344";
         if (faceExpression === "tongue") {
           ctx.beginPath();
-          ctx.moveTo(ex-9,mouthY);
-          ctx.quadraticCurveTo(ex,mouthY+7+mouthOpen*5,ex+9,mouthY);
-          ctx.stroke();
-          ctx.fillStyle = "#f04483";
-          const tongueY = mouthY + 5 + mouthOpen*3;
-          ctx.beginPath(); ctx.ellipse(ex+2,mouthY+7+mouthOpen*3,5,6,Math.sin(celebrationElapsed/130)*0.15,0,Math.PI*2); ctx.fill();
-          ctx.strokeStyle = "#b72c60"; ctx.stroke();
+          ctx.moveTo(ex-mouthW, mouthY);
+          ctx.quadraticCurveTo(ex, mouthY+5+mouthOpen*4, ex+mouthW, mouthY);
+          ctx.quadraticCurveTo(ex+mouthW-1, mouthY+14+mouthOpen*3, ex, mouthY+14+mouthOpen*3);
+          ctx.quadraticCurveTo(ex-mouthW+1, mouthY+14+mouthOpen*3, ex-mouthW, mouthY);
+          ctx.closePath(); ctx.fill(); ctx.stroke();
+          ctx.fillStyle = "#fff";
+          ctx.beginPath(); ctx.moveTo(ex-mouthW+3,mouthY+2);
+          ctx.quadraticCurveTo(ex,mouthY+5,ex+mouthW-3,mouthY+2);
+          ctx.lineTo(ex+mouthW-3,mouthY+5); ctx.quadraticCurveTo(ex,mouthY+8,ex-mouthW+3,mouthY+5); ctx.closePath(); ctx.fill();
+          ctx.fillStyle = "#f04483"; ctx.strokeStyle = "#b72c60";
+          ctx.beginPath(); ctx.moveTo(ex-3,mouthY+10);
+          ctx.quadraticCurveTo(ex+8,mouthY+10,ex+5+Math.sin(celebrationElapsed/220)*2,mouthY+19+mouthOpen*2);
+          ctx.quadraticCurveTo(ex-1,mouthY+22+mouthOpen*2,ex-3,mouthY+10);
+          ctx.closePath(); ctx.fill(); ctx.stroke();
         } else {
-          ctx.beginPath(); ctx.moveTo(ex-10,mouthY);
-          ctx.quadraticCurveTo(ex,mouthY+8+mouthOpen*7,ex+10,mouthY); ctx.stroke();
-          ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.ellipse(ex,mouthY+4+mouthOpen*2,7,3+mouthOpen*3,0,0,Math.PI*2); ctx.fill();
+          ctx.beginPath();
+          ctx.moveTo(ex-mouthW, mouthY);
+          ctx.quadraticCurveTo(ex, mouthY+9+mouthOpen*4, ex+mouthW, mouthY);
+          ctx.quadraticCurveTo(ex+mouthW-1, mouthY+10+mouthOpen*4, ex, mouthY+10+mouthOpen*4);
+          ctx.quadraticCurveTo(ex-mouthW+1, mouthY+10+mouthOpen*4, ex-mouthW, mouthY);
+          ctx.closePath(); ctx.fill(); ctx.stroke();
+          ctx.fillStyle = "#fff";
+          ctx.beginPath();
+          ctx.moveTo(ex-8,mouthY+2);
+          ctx.quadraticCurveTo(ex,mouthY+5,ex+8,mouthY+2);
+          ctx.lineTo(ex+7,mouthY+5);
+          ctx.quadraticCurveTo(ex,mouthY+8,ex-7,mouthY+5);
+          ctx.closePath(); ctx.fill();
         }
       }
     }

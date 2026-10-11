@@ -319,3 +319,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Réduire légèrement sa largeur pour éviter qu'elle déborde visuellement.
 - [x] Vérifier la syntaxe JavaScript.
 - [ ] Confirmer le rendu visuel dans le navigateur.
+
+
+## Calibration individuelle du visage — 2026-10-11
+- [x] Remplacer le décalage de bouche générique par des coordonnées dédiées pour chacun des chiffres 0 à 9.
+- [x] Garder le placement dans le même repère que les tracés afin de limiter les bouches flottantes.
+- [x] Vérifier la syntaxe JavaScript.
+- [ ] Inspecter visuellement les dix chiffres dans le navigateur et ajuster les cas restants.

@@ -56,3 +56,7 @@ Le prototype présente un exercice de tracé du chiffre 1, une interface adaptat
 
 ### Prochaine action précise
 Tester le prototype en navigateur sur téléphone et tablette, corriger les bogues observés, puis améliorer le moteur de validation et ajouter une aide accessible. Ensuite seulement, valider le parcours et avancer vers les lettres et les défis.
+
+
+## Dernière modification — guide de traçage
+Le guide pointillé a été corrigé dans `prototype/app.js` pour suivre le chiffre 1 : diagonale vers le sommet, puis trait vertical vers le bas. La branche de droite et la petite flèche séparée ont été retirées de `prototype/index.html` et `prototype/styles.css`. Commits enregistrés sur `main`; la validation visuelle locale reste à effectuer après actualisation.

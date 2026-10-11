@@ -14,3 +14,9 @@
 - Ajout d'une interface responsive et de commandes tactiles/pointeur.
 - Ajout d'un retour de réussite expérimental et d'un son facultatif.
 - Tests en navigateur et sur appareils encore à réaliser.
+
+
+## 2026-10-11 — Correction du guide de traçage
+- Le chemin pointillé du chiffre 1 suit désormais la diagonale et le trait vertical.
+- Suppression de la branche visuelle en forme de flèche et de la flèche séparée sous le chiffre.
+- Vérification visuelle après actualisation encore requise.

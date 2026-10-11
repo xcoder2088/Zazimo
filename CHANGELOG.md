@@ -122,3 +122,9 @@
 - Ajout de formes vectorielles colorées avec contour et yeux expressifs.
 - Suppression du large trait translucide qui masquait les nouvelles couleurs; le pointillé précis reste visible au-dessus.
 - Vérification visuelle et fonctionnelle encore requise.
+
+
+## 2026-10-11 — Alignement du style ludique avec le tracé
+- Suppression des silhouettes décoratives indépendantes qui ne correspondaient pas au chemin de traçage.
+- Couleur et contour appliqués aux routes centrales afin de préserver leur alignement.
+- Test visuel navigateur encore requis.

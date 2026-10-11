@@ -421,9 +421,7 @@
     }
   }
 
-  checkButton.addEventListener("click", validateTrace);nder de l'aide à ton éducateur.";
-    }
-  });
+  checkButton.addEventListener("click", validateTrace);
 
   themeButtons.forEach(button => {
     button.addEventListener("click", () => {

@@ -161,3 +161,7 @@ Après refactorisation pour la validation automatique, un fragment de l'ancien g
 
 ## 2026-10-11 — Restauration des commandes après écran vide
 Le défaut était localisé dans `prototype/app.js` : la fonction `validateTrace()` avait été accidentellement imbriquée dans le gestionnaire de clic des chiffres, ce qui cassait la syntaxe du fichier. Commit `7376c24` : fonctions de validation et de sélection des chiffres séparées, gestionnaire de clic rétabli. Commit `0d7db61` : validation de proximité étendue à toutes les routes actives. Contrôle effectué après récupération depuis GitHub avec `new Function(appJs)` : **syntaxe JavaScript valide**; gestionnaire de sélection, validation manuelle et validation automatique présents; accolades équilibrées. Le test visuel dans le navigateur de l'utilisateur reste à faire.
+
+
+## 2026-10-11 — Ajustement visuel Zazimo Épais et réussite persistante
+Commit `f8e7c3c` : largeur du trait de silhouette augmentée, yeux et pupilles agrandis. Ajout de `successState` pour que la silhouette colorée et les yeux restent affichés après la fin de l'animation; réinitialisation au changement de chiffre et au bouton Recommencer, conformément à la demande. Contrôle de syntaxe JavaScript après récupération du fichier et vérification des conditions de persistance effectués; contrôle navigateur visuel encore nécessaire.

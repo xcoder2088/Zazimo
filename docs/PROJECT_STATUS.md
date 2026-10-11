@@ -228,3 +228,7 @@ Commit `f2b678b` : les couleurs et combinaisons d’animations varient désormai
 
 ## Ajustement du visage — 2026-10-11
 Commit `7d3d887` : position de bouche adaptée individuellement aux chiffres. Syntaxe JavaScript vérifiée; vérification visuelle navigateur en attente.
+
+
+## Visage des chiffres — 2026-10-11
+Commit `c9ad5d6` : position de bouche définie individuellement pour chaque chiffre et convertie depuis le repère commun du tracé. Syntaxe vérifiée; validation visuelle des dix chiffres encore à faire.

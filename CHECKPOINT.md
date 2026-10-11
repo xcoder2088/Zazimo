@@ -205,3 +205,7 @@ Commit `87aeadb` : les bouches utilisent désormais des points situés sur la li
 
 ## 2026-10-11 — Repositionnement du visage
 Commit `f7ab154` : yeux repositionnés sur le haut de chaque chiffre et bouche placée immédiatement dessous, en utilisant des coordonnées propres à chaque chiffre. Syntaxe JavaScript vérifiée. Validation visuelle navigateur non effectuée.
+
+
+## 2026-10-11 — Ajustement précis de la bouche
+Commit `f484350` : coordonnées de bouche rapprochées du trait supérieur et bouche réduite pour éviter qu'elle tombe dans les espaces intérieurs. Syntaxe vérifiée; test visuel navigateur non effectué.

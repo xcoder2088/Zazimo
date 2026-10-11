@@ -148,3 +148,7 @@ Les chemins du 1 et du 3 ont été recentrés à partir des captures; le lissage
 
 ## Ajustement du chiffre 5 — en attente de validation
 Le lissage automatique a été désactivé pour le 5 et sa route a été ajustée après les captures utilisateur (commit `896518d`). Les captures indiquent encore que les routes ne sont pas suffisamment centrées sur la ligne médiane du modèle. La prochaine correction doit traiter chaque chiffre individuellement et préserver les coins comme les courbes selon le tracé manuscrit attendu. Aucun statut de validation finale n'est accordé.
+
+
+## Révision des routes de chiffres — validation en cours
+Les routes des chiffres 0, 2, 3 et 6 ont été repositionnées; la route du 1 a une fin verticale ajustée (commit `a6ad474`). Il s'agit d'une nouvelle approximation manuelle basée sur les captures. Le rendu doit être vérifié dans le navigateur après `git pull origin main` et `Ctrl+F5`. La conformité des dix routes reste non validée.

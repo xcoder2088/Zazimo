@@ -206,3 +206,7 @@
 
 ## 2026-10-11 — Bouche sur le trait
 - Ajustement des coordonnées de bouche et réduction de sa hauteur pour mieux la garder dans la silhouette des chiffres.
+
+
+## 2026-10-11 — Espacement du visage
+- Séparation verticale accrue entre les yeux et la bouche des chiffres animés.

@@ -177,3 +177,7 @@
 ## 2026-10-11 — Visage et couleurs
 - Position du visage adaptée à chaque chiffre, yeux un peu plus espacés.
 - Couleur vive aléatoire conservée par chiffre pendant la sélection.
+
+
+## 2026-10-11 — Correctif
+- Correction d'une référence de couleur non définie qui empêchait le rendu de la célébration après réussite.

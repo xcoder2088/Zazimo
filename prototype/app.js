@@ -127,52 +127,47 @@
 
   function drawDemo(progress) {
     const routes = tracePaths();
-    const routeLengths = routes.map(path => {
-      let length = 0;
-      for (let i = 1; i < path.length; i++) length += Math.hypot(path[i].x-path[i-1].x,path[i].y-path[i-1].y);
-      return length;
+    const lengths = routes.map(path => {
+      let total = 0;
+      for (let i = 1; i < path.length; i++) total += Math.hypot(path[i].x-path[i-1].x,path[i].y-path[i-1].y);
+      return total;
     });
-    const totalLength = routeLengths.reduce((sum,length)=>sum+length,0);
-    let remaining = totalLength * Math.max(0,Math.min(1,progress));
-    let dot = routes[0][0];
+    let remaining = lengths.reduce((sum,n)=>sum+n,0) * Math.max(0,Math.min(1,progress));
     const drawnRoutes = [];
-    for(let r=0;r<routes.length;r++){
+    let dot = routes[0][0];
+    for (let r=0; r<routes.length; r++) {
       const path=routes[r], drawn=[path[0]];
-      for(let i=1;i<path.length;i++){
-        const from=path[i-1],to=path[i];
+      let routeRemaining = Math.min(remaining, lengths[r]);
+      for (let i=1; i<path.length; i++) {
+        const from=path[i-1], to=path[i];
         const length=Math.hypot(to.x-from.x,to.y-from.y);
-        if(remaining>=length){drawn.push(to);remaining-=length;dot=to;}
-        else{
-          const t=length===0?0:remaining/length;
+        if (routeRemaining >= length) {
+          drawn.push(to); routeRemaining-=length; dot=to;
+        } else {
+          const t=length===0?0:routeRemaining/length;
           dot={x:from.x+(to.x-from.x)*t,y:from.y+(to.y-from.y)*t};
-          drawn.push(dot);
-          remaining=0;
-          drawnRoutes.push(drawn);
-          for(let j=r+1;j<routes.length;j++) drawnRoutes.push([]);
-          r=routes.length;
-          break;
+          drawn.push(dot); routeRemaining=0; break;
         }
       }
-      if(drawnRoutes.length===0) drawnRoutes.push(drawn);
-      if(remaining<=0 && progress<1) break;
-      dot=path[path.length-1];
+      drawnRoutes.push(drawn);
+      remaining=Math.max(0,remaining-lengths[r]);
+      if (remaining<=0 && progress<1) break;
     }
     ctx.save();
-    ctx.lineCap="round";
-    ctx.lineJoin="round";
+    ctx.lineCap="round"; ctx.lineJoin="round";
     ctx.strokeStyle=document.body.classList.contains("calm")?"#6d9d87":"#f16c91";
     ctx.lineWidth=Math.max(7,Math.min(12,canvas.clientWidth*0.018));
     ctx.globalAlpha=0.8;
     for(const path of drawnRoutes){
       if(path.length<2) continue;
-      ctx.beginPath();ctx.moveTo(path[0].x,path[0].y);
+      ctx.beginPath(); ctx.moveTo(path[0].x,path[0].y);
       for(let i=1;i<path.length;i++)ctx.lineTo(path[i].x,path[i].y);
       ctx.stroke();
     }
     ctx.globalAlpha=1;
-    ctx.fillStyle="#ffffff";ctx.beginPath();ctx.arc(dot.x,dot.y,9,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle="#ffffff"; ctx.beginPath(); ctx.arc(dot.x,dot.y,9,0,Math.PI*2); ctx.fill();
     ctx.fillStyle=document.body.classList.contains("calm")?"#4e866d":"#ec5f8c";
-    ctx.beginPath();ctx.arc(dot.x,dot.y,6,0,Math.PI*2);ctx.fill();
+    ctx.beginPath(); ctx.arc(dot.x,dot.y,6,0,Math.PI*2); ctx.fill();
     ctx.restore();
   }
 

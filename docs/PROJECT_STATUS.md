@@ -204,3 +204,7 @@ Commit `f8e7c3c` : silhouettes épaissies, yeux/pupilles agrandis, et état colo
 
 ## Personnages après réussite — mise à jour
 Commit `ce249a6` : yeux/pupilles agrandis et positionnés depuis le point supérieur du chiffre; bouche aléatoire sourire/langue tirée; démonstration ralentie à 3,2 secondes. Contrôle syntaxique effectué, rendu visuel à confirmer dans le navigateur.
+
+
+## Ajustement du visage — appliqué
+Commit `3ebea8c` : yeux écartés, traits du visage regroupés autour d'un ancrage commun, bouche animée et clignements/mouvement discrets maintenus tant que le chiffre est en état de réussite. Contrôle de syntaxe effectué; validation visuelle réelle encore requise.

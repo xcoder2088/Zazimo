@@ -216,3 +216,7 @@ Commit `b80d3f5` : expressions de bouche redessinées en formes cartoon plus lis
 
 ## Placement facial et couleurs — mise à jour
 Commit `6cda271` : points d'ancrage dédiés aux chiffres 0–9, yeux légèrement plus écartés et couleur aléatoire mémorisée pour chaque chiffre. Contrôle syntaxique effectué; vérification visuelle réelle encore requise.
+
+
+## Correctif de rendu — 2026-10-11
+Commit `5b3c1c0` : correction de la variable de couleur non définie dans le rendu de la célébration. Vérification syntaxique effectuée; validation visuelle navigateur encore à effectuer.

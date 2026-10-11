@@ -105,3 +105,8 @@
 - Séparation du chiffre 1 en un trait diagonal puis un trait vertical.
 - Guide pointillé, modèle et démonstration utilisent les deux traits indépendants dans l'ordre.
 - Validation dans le navigateur encore requise.
+
+
+## 2026-10-11 — Correctif d'urgence : prototype non interactif
+- Suppression d'une déclaration `const smooth` en double qui bloquait l'exécution de `app.js`.
+- Vérification des interactions dans le navigateur encore requise après mise à jour locale.

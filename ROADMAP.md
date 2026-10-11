@@ -235,3 +235,9 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Garder la ligne médiane pointillée visible au-dessus du dessin décoratif.
 - [ ] Contrôler le rendu des dix chiffres dans le navigateur; ajuster les yeux pour qu'ils ne gênent ni la lisibilité ni le tracé.
 - [ ] Confirmer que l'animation et la validation du tracé restent fonctionnelles après le changement de rendu.
+
+
+## Correctif après retour visuel — chiffres colorés
+- [x] Retirer les silhouettes remplies indépendantes qui déformaient notamment les chiffres 1 et 2.
+- [x] Appliquer couleur et contour directement sur les routes centrales existantes pour que la forme illustrée corresponde au tracé pédagogique.
+- [ ] Vérifier les dix chiffres et l'animation dans le navigateur; confirmer que les yeux restent décoratifs et ne masquent pas le départ.

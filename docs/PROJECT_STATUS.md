@@ -136,3 +136,7 @@ Un premier sélecteur Garçon, Fille et Mixte a été ajouté au prototype. Le t
 - Le changement de chiffre actualise le titre et le glyphe de guide, efface l'ancien tracé et relance la démonstration.
 - **Statut : implémentation commitée, validation en attente.** Les routes doivent être vérifiées visuellement contre les chiffres affichés. La validation demeure heuristique et ne doit pas être considérée comme un outil pédagogique fiable avant amélioration et tests.
 - À vérifier : ordinateur et téléphone, sélection de tous les chiffres, changement pendant/après un tracé, bouton de remise à zéro, thèmes, mode Sérénité, démonstration et son facultatif.
+
+
+## Correctif visuel des chiffres — à vérifier
+Les routes de démonstration sont maintenant interpolées pour réduire l'aspect polygonal, et le chiffre-guide est plus visible. Ces changements sont commités sur `main`. **Statut : correction implémentée, pas encore validée visuellement.** Tester en particulier 0, 2, 3, 6, 8 et 9, ainsi que les extrémités des tracés et les courbes après actualisation forcée.

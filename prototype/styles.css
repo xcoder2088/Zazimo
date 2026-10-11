@@ -34,6 +34,9 @@ h1 { margin: 0; font-size: clamp(2rem, 7vw, 3.3rem); line-height: 1.05; letter-s
 .guide { pointer-events: none; position: absolute; z-index: 1; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: .22; }
 .guide-number { font-size: clamp(10rem, 45vw, 17rem); font-weight: 950; line-height: .8; color: #8da4c5; }
 .canvas-hint { pointer-events: none; position: absolute; bottom: 10px; left: 0; right: 0; text-align: center; color: #8a94a7; font-size: .82rem; margin: 0; }
+.demo-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; }
+.demo-label { color: #a14c68; font-size: .9rem; font-weight: 850; }
+.demo-button { min-height: 42px; padding: 9px 13px; font-size: .85rem; }
 .feedback { min-height: 1.5em; margin: 16px 2px 12px; font-weight: 750; color: #56647b; text-align: center; }
 .actions { display: grid; grid-template-columns: 1fr 1.4fr; gap: 10px; }
 .primary-button, .secondary-button { min-height: 52px; border-radius: 16px; padding: 12px 16px; font-weight: 850; border: 0; }
@@ -59,6 +62,8 @@ body.calm .reward-star { background: #e9f1e7; color: #789b7a; }
   .secondary-button { padding: 10px 12px; }
   .activity-heading { align-items: flex-start; }
   .step-pill { font-size: .68rem; padding: 8px 9px; }
+  .demo-row { align-items: stretch; flex-direction: column; }
+  .demo-button { width: 100%; }
   .actions { grid-template-columns: 1fr; }
   .primary-button { order: -1; }
   .reward-card { padding: 15px; }

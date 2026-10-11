@@ -232,3 +232,7 @@ Commit `7d3d887` : position de bouche adaptée individuellement aux chiffres. Sy
 
 ## Visage des chiffres — 2026-10-11
 Commit `c9ad5d6` : position de bouche définie individuellement pour chaque chiffre et convertie depuis le repère commun du tracé. Syntaxe vérifiée; validation visuelle des dix chiffres encore à faire.
+
+
+## Correctif du visage — 2026-10-11
+Commit `87aeadb` : positions de bouche alignées sur les coordonnées du tracé de chaque chiffre, dans le même repère 450×250. Syntaxe vérifiée; revue visuelle navigateur restant à effectuer.

@@ -197,3 +197,7 @@ Commit `7d3d887` : la bouche utilise maintenant des décalages spécifiques selo
 
 ## 2026-10-11 — Bouche ancrée par chiffre
 Commit `c9ad5d6` : les coordonnées de bouche sont maintenant définies individuellement pour les chiffres 0 à 9 et transformées depuis le repère commun 450×250, plutôt que calculées uniquement sous les yeux. Syntaxe vérifiée; contrôle visuel des dix chiffres toujours requis.
+
+
+## 2026-10-11 — Correction de position des bouches
+Commit `87aeadb` : les bouches utilisent désormais des points situés sur la ligne centrale de chaque chiffre (repère 450×250 partagé avec le tracé), au lieu de positions approximatives sous les yeux. Taille de bouche réduite. Syntaxe JavaScript vérifiée; aucune validation visuelle navigateur n'est revendiquée.

@@ -14,6 +14,14 @@
   const guideGlyph = document.querySelector(".guide-glyph");
   let selectedDigit = 1;
   let successState = false;
+  const characterColors = new Map();
+  function characterColorFor(value) {
+    if (!characterColors.has(value)) {
+      const colors = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83","#19b7b0","#5b8def"];
+      characterColors.set(value, colors[Math.floor(Math.random() * colors.length)]);
+    }
+    return characterColors.get(value);
+  }
   // Playful color is applied directly to the validated centerline routes.
   // This prevents decorative silhouettes from drifting away from the tracing path.
   const numeralPalette = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83"];
@@ -39,7 +47,7 @@
       ctx.stroke();
     }
     if (celebrating) {
-      ctx.strokeStyle = palette[selectedDigit];
+      ctx.strokeStyle = characterColor;
       ctx.lineWidth = width;
       for (const path of routes) {
         if (path.length < 2) continue;
@@ -47,14 +55,27 @@
         for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
         ctx.stroke();
       }
-      // Face features share one anchor and stay grouped on the numeral.
-      const faceAnchor = routes.flat().reduce((top, point) => !top || point.y < top.y ? point : top, null);
+      // Put the face on the character's upper end, oriented toward the inside of its silhouette.
+      const faceAnchors = {
+        0:{x:225,y:39,dx:0,dy:1}, 1:{x:229,y:48,dx:-7,dy:0},
+        2:{x:227,y:42,dx:0,dy:1}, 3:{x:224,y:42,dx:0,dy:1},
+        4:{x:239,y:43,dx:1,dy:0}, 5:{x:267,y:47,dx:0,dy:1},
+        6:{x:250,y:49,dx:0,dy:1}, 7:{x:177,y:48,dx:0,dy:1},
+        8:{x:225,y:42,dx:0,dy:1}, 9:{x:228,y:44,dx:0,dy:1}
+      };
+      const anchor = faceAnchors[selectedDigit] || {x:225,y:42,dx:0,dy:1};
+      const transformPoint = point => {
+        const rect = canvas.getBoundingClientRect();
+        const scale = Math.min(rect.width / 450, rect.height / 250);
+        return {x:(rect.width-450*scale)/2+point.x*scale,y:(rect.height-250*scale)/2+point.y*scale};
+      };
+      const faceAnchor = transformPoint(anchor);
       if (faceAnchor) {
-        const ex = faceAnchor.x;
-        const ey = Math.max(22, faceAnchor.y + 2);
+        const ex = faceAnchor.x + anchor.dx * width * 0.1;
+        const ey = faceAnchor.y + anchor.dy * width * 0.14;
         const blink = celebrationElapsed % 2400 > 2200;
         const wink = celebrationMode === "wink" && celebrationElapsed % 3200 > 2850;
-        const eyeGap = Math.max(20, width * 0.48);
+        const eyeGap = Math.max(25, width * 0.62);
         const bob = celebrationMode === "jump" ? Math.sin(celebrationElapsed / 230) * 2 : Math.sin(celebrationElapsed / 500) * 1.2;
         const eyeY = ey + bob;
         for (const [index,x,y] of [[0,ex-eyeGap/2,eyeY],[1,ex+eyeGap/2,eyeY]]) {
@@ -70,7 +91,7 @@
           }
         }
         // A readable cartoon mouth: a filled smile or open grin, with a distinct tongue.
-        const mouthY = eyeY + 25;
+        const mouthY = eyeY + 23;
         const mouthOpen = (Math.sin(celebrationElapsed / 260) + 1) / 2;
         const mouthW = 13;
         ctx.lineWidth = 2.2;

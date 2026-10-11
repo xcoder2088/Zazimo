@@ -368,3 +368,5 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Définir des ancres manuelles propres à chaque chiffre pour les yeux et la bouche.
 - [x] Vérifier la syntaxe JavaScript après migration.
 - [ ] Valider visuellement chaque chiffre dans un navigateur et ajuster les ancres.
+
+- [x] Corriger le SVG décoratif qui recouvrait le Canvas et masquait le chemin pointillé; le guide de tracé est maintenant rendu par le Canvas.

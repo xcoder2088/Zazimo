@@ -249,3 +249,6 @@ Correctif `2e1fdcc` : bouche descendue et élargie pour ne plus toucher les yeux
 
 
 Dernier correctif `6d45527` : ancres des yeux et de la bouche calibrées manuellement pour chaque chiffre, sans placement aléatoire. Syntaxe vérifiée; validation visuelle réelle des dix chiffres non encore effectuée.
+
+
+Dernier changement `55b6244` : couche SVG séparée pour les visages; le Canvas conserve le tracé et la validation. Ancres des yeux et bouches individualisées pour les chiffres 0 à 9. Syntaxe vérifiée; contrôle visuel navigateur encore nécessaire.

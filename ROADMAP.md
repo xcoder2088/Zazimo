@@ -228,3 +228,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Réduire l'épaisseur du modèle translucide pour éviter l'aspect trop lourd.
 - [ ] Vérifier le rendu réel des six chiffres sur navigateur et comparer à la référence visuelle Zazimo.
 - [ ] Ne pas modifier les chiffres angulaires déjà approuvés sans besoin explicite.
+
+
+## Direction artistique des chiffres — première expérimentation
+- [x] Introduire des chiffres colorés avec contour sombre et petits yeux expressifs, inspirés du style fourni par l'utilisateur sans reprendre exactement les personnages de référence.
+- [x] Garder la ligne médiane pointillée visible au-dessus du dessin décoratif.
+- [ ] Contrôler le rendu des dix chiffres dans le navigateur; ajuster les yeux pour qu'ils ne gênent ni la lisibilité ni le tracé.
+- [ ] Confirmer que l'animation et la validation du tracé restent fonctionnelles après le changement de rendu.

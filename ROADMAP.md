@@ -143,3 +143,13 @@ Les fichiers existent dans `prototype/`, mais l'étape n'est pas terminée tant 
 - [ ] Tester l'affichage et la lisibilité de chaque thème sur téléphone, tablette et ordinateur.
 
 Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun contenu éducatif ou capacité n'est associé à un genre.
+
+
+## Étape suivante — sélecteur de thèmes visuels
+- [x] Ajouter un sélecteur Garçon, Fille et Mixte dans le prototype.
+- [x] Ajouter une première palette visuelle par thème et des repères décoratifs temporaires.
+- [x] Garder les mêmes exercices et règles pédagogiques quel que soit le thème.
+- [ ] Vérifier la mise en page du sélecteur sur téléphone, tablette et ordinateur.
+- [ ] Remplacer progressivement les emojis temporaires par des illustrations originales.
+- [ ] Tester le changement de thème avec le mode Sérénité et pendant/après un tracé.
+- [ ] Mettre à jour l'état après validation visuelle.

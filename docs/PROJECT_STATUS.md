@@ -77,3 +77,12 @@ Ne pas figer cette architecture avant d'avoir vérifié compatibilité, capacit�
 - Le connecteur GitHub a confirmé la lecture du dépôt, mais les premières opérations d'écriture ont renvoyé une erreur 403.
 - Ce document est proposé comme première écriture utile; confirmer le commit en relisant le fichier après l'appel.
 - Aucun prototype applicatif n'est encore déclaré développé ou testé.
+
+
+## Prototype initial — créé, validation en attente
+
+- `prototype/index.html` : écran d'exercice tactile pour le chiffre 1.
+- `prototype/styles.css` : interface responsive et préréglage Sérénité.
+- `prototype/app.js` : événements tactiles/pointeur, tracé, remise à zéro, feedback et son de réussite facultatif.
+- **État :** les fichiers sont commités et relus depuis GitHub. Le prototype n'a pas encore été exécuté et testé dans un navigateur réel; la logique de validation est une heuristique expérimentale, pas un moteur pédagogique final.
+- **Limites connues à traiter avant de déclarer la maquette validée :** tester sur téléphone et tablette; vérifier redimensionnement, accessibilité et audio; renforcer la validation du tracé; ajouter un vrai mode d'aide; vérifier l'expérience hors ligne.

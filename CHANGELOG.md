@@ -202,3 +202,7 @@
 
 ## 2026-10-11 — Visage aligné sur le haut du chiffre
 - Repositionnement des yeux et des bouches pour former un visage cohérent sur le trait supérieur des chiffres 0 à 9.
+
+
+## 2026-10-11 — Bouche sur le trait
+- Ajustement des coordonnées de bouche et réduction de sa hauteur pour mieux la garder dans la silhouette des chiffres.

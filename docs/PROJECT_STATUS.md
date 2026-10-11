@@ -86,3 +86,11 @@ Ne pas figer cette architecture avant d'avoir vérifié compatibilité, capacit�
 - `prototype/app.js` : événements tactiles/pointeur, tracé, remise à zéro, feedback et son de réussite facultatif.
 - **État :** les fichiers sont commités et relus depuis GitHub. Le prototype n'a pas encore été exécuté et testé dans un navigateur réel; la logique de validation est une heuristique expérimentale, pas un moteur pédagogique final.
 - **Limites connues à traiter avant de déclarer la maquette validée :** tester sur téléphone et tablette; vérifier redimensionnement, accessibilité et audio; renforcer la validation du tracé; ajouter un vrai mode d'aide; vérifier l'expérience hors ligne.
+
+
+## Ajustement du guide de tracé
+
+- Le guide pointillé du chiffre 1 suit maintenant le trajet attendu : diagonale vers le sommet, puis descente verticale.
+- La branche pointillée à droite et la petite flèche indépendante ont été retirées pour éviter une consigne visuelle ambiguë.
+- Fichiers modifiés : `prototype/app.js`, `prototype/index.html` et `prototype/styles.css`.
+- À valider visuellement dans le navigateur après actualisation; les autres tests du prototype restent en attente.

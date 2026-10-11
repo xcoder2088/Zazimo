@@ -58,9 +58,21 @@
         <span class="step-pill">Défi découverte</span>
       </div>
 
+      <nav class="digit-picker" aria-label="Choisir un chiffre" role="group">
+        <button type="button" class="digit-option" data-digit="0" aria-pressed="false">0</button>
+        <button type="button" class="digit-option" data-digit="1" aria-pressed="true">1</button>
+        <button type="button" class="digit-option" data-digit="2" aria-pressed="false">2</button>
+        <button type="button" class="digit-option" data-digit="3" aria-pressed="false">3</button>
+        <button type="button" class="digit-option" data-digit="4" aria-pressed="false">4</button>
+        <button type="button" class="digit-option" data-digit="5" aria-pressed="false">5</button>
+        <button type="button" class="digit-option" data-digit="6" aria-pressed="false">6</button>
+        <button type="button" class="digit-option" data-digit="7" aria-pressed="false">7</button>
+        <button type="button" class="digit-option" data-digit="8" aria-pressed="false">8</button>
+        <button type="button" class="digit-option" data-digit="9" aria-pressed="false">9</button>
+      </nav>
       <div class="drawing-wrap">
         <svg class="guide" viewBox="0 0 450 250" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-          <path class="guide-glyph" d="M225 32 L244 32 L244 218 L214 218 L214 77 C200 86 188 92 176 97 L165 69 C188 60 207 47 225 32 Z"/>
+          <text class="guide-glyph" x="225" y="202" text-anchor="middle">1</text>
         </svg>
         <canvas id="trace-canvas" aria-label="Zone pour tracer le chiffre 1" role="img"></canvas>
         <p class="canvas-hint">Suis le chemin pointillé</p>

@@ -38,3 +38,9 @@
 ## 2026-10-11 — Nouvelle correction du guide du chiffre 1
 - Repositionnement du départ et de la descente du chemin pointillé à partir de la capture utilisateur.
 - Validation visuelle en attente; la correction précédente avait été rejetée.
+
+
+## 2026-10-11 — Guide géométrique partagé
+- Remplacement du chiffre 1 en police par une silhouette SVG explicite.
+- Le guide pointillé et la démonstration partagent le même repère géométrique.
+- Validation visuelle à effectuer avant extension aux autres caractères.

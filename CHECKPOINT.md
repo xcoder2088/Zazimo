@@ -141,3 +141,7 @@ Après le rétablissement de l'interactivité, la capture confirme que le tracé
 
 ## 2026-10-11 — Première expérimentation de chiffres ludiques
 À la demande de l'utilisateur, ajout d'une direction artistique inspirée de chiffres colorés et expressifs : formes remplies, contour foncé et petits yeux, en utilisant des tracés vectoriels internes originaux. La ligne médiane pointillée reste dessinée par-dessus et les routes pédagogiques existantes sont conservées. Commits `ae4e58a` et `f7852d1`. Cette version est expérimentale : le rendu visuel et les interactions doivent être vérifiés dans le navigateur après `git pull origin main` et `Ctrl+F5`.
+
+
+## 2026-10-11 — Correction des silhouettes décoratives déformées
+Le retour visuel a révélé que les formes remplies séparées des routes de traçage déformaient les chiffres 1 et 2. Commit `98046fc` : suppression de ces silhouettes indépendantes; le contour sombre et la couleur sont désormais appliqués directement sur les routes centrales existantes, puis le pointillé est rendu par-dessus. La validation visuelle dans le navigateur reste requise.

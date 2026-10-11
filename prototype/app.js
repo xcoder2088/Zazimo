@@ -49,7 +49,28 @@
     const offsetX = (rect.width - viewWidth * scale) / 2;
     const offsetY = (rect.height - viewHeight * scale) / 2;
     const svgPoints = digitRoutes[selectedDigit];
-    return svgPoints.map(point => ({
+    const smooth = [];
+    if (svgPoints.length < 3) {
+      for (const point of svgPoints) smooth.push(point);
+    } else {
+      // Catmull-Rom interpolation rounds curves without changing the route's endpoints.
+      for (let i = 0; i < svgPoints.length - 1; i++) {
+        const p0 = svgPoints[Math.max(0, i - 1)];
+        const p1 = svgPoints[i];
+        const p2 = svgPoints[i + 1];
+        const p3 = svgPoints[Math.min(svgPoints.length - 1, i + 2)];
+        const steps = 8;
+        for (let step = 0; step < steps; step++) {
+          const t = step / steps, t2 = t * t, t3 = t2 * t;
+          smooth.push({
+            x: 0.5 * ((2*p1.x) + (-p0.x+p2.x)*t + (2*p0.x-5*p1.x+4*p2.x-p3.x)*t2 + (-p0.x+3*p1.x-3*p2.x+p3.x)*t3),
+            y: 0.5 * ((2*p1.y) + (-p0.y+p2.y)*t + (2*p0.y-5*p1.y+4*p2.y-p3.y)*t2 + (-p0.y+3*p1.y-3*p2.y+p3.y)*t3)
+          });
+        }
+      }
+      smooth.push(svgPoints[svgPoints.length - 1]);
+    }
+    return smooth.map(point => ({
       x: offsetX + point.x * scale,
       y: offsetY + point.y * scale
     }));

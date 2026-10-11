@@ -82,3 +82,16 @@ Les coordonnées approximatives indépendantes ont été abandonnées. Le chiffr
 
 ## Nouvelle idée intégrée — thèmes visuels
 Le cahier des charges prévoit désormais trois thèmes sélectionnables par l'éducateur : garçon, fille et mixte. Ils doivent différer par l'ambiance, la palette et les illustrations originales, sans modifier les exercices, la difficulté ou les récompenses. Les choix doivent éviter les stéréotypes et rester modifiables à tout moment. La conception et l'implémentation sont encore à faire.
+
+
+## Étape suivante — premier sélecteur de thèmes
+Le prototype inclut maintenant trois boutons de thème : Garçon, Fille et Mixte. Le thème Mixte est sélectionné par défaut. Le choix modifie uniquement la palette visuelle; les exercices ne changent pas. Les emojis sont des repères temporaires, pas les illustrations originales finales.
+
+**À faire avant de déclarer l'étape validée :**
+1. Mettre à jour le clone local avec `git pull origin main`.
+2. Actualiser le prototype dans le navigateur avec `Ctrl+F5`.
+3. Vérifier l'affichage des trois boutons sur ordinateur, téléphone et tablette.
+4. Cliquer sur chaque thème et confirmer que la sélection visuelle suit le choix.
+5. Vérifier que le mode Sérénité, la démonstration et le tracé fonctionnent encore.
+
+Aucun test navigateur/appareil n'est déclaré réussi à ce stade.

@@ -137,3 +137,7 @@ L'application était devenue non interactive parce que `prototype/app.js` conten
 
 ## 2026-10-11 — Deuxième passe esthétique des chiffres arrondis
 Après le rétablissement de l'interactivité, la capture confirme que le tracé fonctionne, mais les formes arrondies restent trop basiques. Commit `b3d3455` : nouvelles proportions des routes 0, 2, 3, 6, 8 et 9, et épaisseur du modèle réduite à 22–28 px selon la largeur du canevas. Les chiffres angulaires ne sont pas modifiés. Validation visuelle dans le navigateur encore nécessaire; cette passe n'est pas déclarée finale.
+
+
+## 2026-10-11 — Première expérimentation de chiffres ludiques
+À la demande de l'utilisateur, ajout d'une direction artistique inspirée de chiffres colorés et expressifs : formes remplies, contour foncé et petits yeux, en utilisant des tracés vectoriels internes originaux. La ligne médiane pointillée reste dessinée par-dessus et les routes pédagogiques existantes sont conservées. Commits `ae4e58a` et `f7852d1`. Cette version est expérimentale : le rendu visuel et les interactions doivent être vérifiés dans le navigateur après `git pull origin main` et `Ctrl+F5`.

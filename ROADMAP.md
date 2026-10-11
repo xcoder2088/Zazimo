@@ -153,3 +153,14 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [ ] Remplacer progressivement les emojis temporaires par des illustrations originales.
 - [ ] Tester le changement de thème avec le mode Sérénité et pendant/après un tracé.
 - [ ] Mettre à jour l'état après validation visuelle.
+
+
+## Étape — sélection des chiffres 0 à 9 (implémentation initiale)
+- [x] Ajouter un sélecteur pour les chiffres 0 à 9.
+- [x] Adapter le titre, le chiffre affiché et le chemin de démonstration selon le chiffre choisi.
+- [x] Effacer le tracé précédent au changement de chiffre.
+- [x] Ajouter une première route dédiée à chaque chiffre.
+- [ ] Vérifier visuellement les dix chiffres dans un navigateur réel.
+- [ ] Corriger les routes qui ne suivent pas précisément le glyphe affiché.
+- [ ] Tester la démonstration, le dessin, la remise à zéro, le son, les thèmes et le mode Sérénité.
+- [ ] Améliorer et tester la validation du tracé; la heuristique actuelle n'est pas encore une validation pédagogique fiable.

@@ -257,3 +257,11 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Conserver le bouton de vérification comme solution de secours.
 - [ ] Tester dans le navigateur les cas de réussite, de tentative incorrecte, de plusieurs traits et de changement de chiffre.
 - [ ] Reconcevoir les silhouettes pour correspondre visuellement au modèle de référence Zazimo Épais; les routes actuelles ne sont pas encore une police finale.
+
+
+## Fiabilité — restauration prioritaire
+- [x] Corriger la syntaxe JavaScript qui bloquait l'initialisation de l'application.
+- [x] Restaurer les clics de sélection des chiffres et conserver les validations automatique et manuelle.
+- [x] Vérifier la syntaxe JavaScript du fichier récupéré depuis GitHub.
+- [ ] Confirmer dans le navigateur que le guide s'affiche au chargement et que les boutons répondent.
+- [ ] Reprendre séparément la refonte visuelle des chiffres selon la référence officielle, sans régression fonctionnelle.

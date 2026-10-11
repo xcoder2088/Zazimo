@@ -153,3 +153,8 @@
 - Réparation de la structure JavaScript qui empêchait le démarrage correct des interactions.
 - Rétablissement des clics de sélection des chiffres et des deux voies de validation.
 - Vérification de syntaxe JavaScript réussie après récupération du fichier depuis GitHub.
+
+
+## 2026-10-11 — Silhouettes plus épaisses et état final persistant
+- Augmentation de l'épaisseur du chiffre neutre et agrandissement des yeux/pupilles après réussite.
+- L'état de réussite reste visible jusqu'au changement de chiffre ou à Recommencer.

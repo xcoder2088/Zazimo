@@ -314,6 +314,7 @@
     activeStroke = [];
     if (event && canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
     drawStrokes();
+    if (points.length >= 8) validateTrace();
   }
   canvas.addEventListener("pointerup", finishStroke);
   canvas.addEventListener("pointercancel", finishStroke);
@@ -354,9 +355,7 @@
     startDemo();
   }
 
-  digitButtons.forEach(button => button.addEventListener("click", () => selectDigit(button.dataset.digit)));
-
-  checkButton.addEventListener("click", () => {
+  digitButtons.forEach(button => button.addEventListener("click",  function validateTrace() {
     const rect = canvas.getBoundingClientRect();
     if (points.length < 8) {
       feedback.textContent = "Trace un peu plus longtemps le long du chiffre.";
@@ -378,6 +377,10 @@
       return sum + closest;
     }, 0) / points.length;
     if (yRange > rect.height * 0.22 && meanDistance < Math.min(rect.width, rect.height) * 0.2) {
+      // Successful tracing clears the temporary stroke before the character celebrates.
+      points = [];
+      strokes = [];
+      activeStroke = [];
       celebrationActive = true;
       celebrationMode = ["blink", "wink", "jump"][Math.floor(Math.random() * 3)];
       celebrationStartedAt = performance.now();
@@ -415,6 +418,10 @@
       feedback.textContent = "Bien essayé ! Regarde le chemin pointillé et tente encore.";
       rewardTitle.textContent = "On apprend en pratiquant";
       rewardText.textContent = "Tu peux effacer le tracé ou demander de l'aide à ton éducateur.";
+    }
+  }
+
+  checkButton.addEventListener("click", validateTrace);nder de l'aide à ton éducateur.";
     }
   });
 

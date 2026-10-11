@@ -92,14 +92,16 @@
         }
         // Keep the mouth attached to each numeral's face area, not merely under the eyes.
         // Per-digit offsets account for the different head shapes of 3, 5, 6, 7, 8 and 9.
-        const mouthOffsets = {
-          0:{x:0,y:21}, 1:{x:1,y:20}, 2:{x:0,y:22}, 3:{x:-1,y:21},
-          4:{x:1,y:21}, 5:{x:-1,y:19}, 6:{x:0,y:20}, 7:{x:1,y:20},
-          8:{x:0,y:21}, 9:{x:0,y:20}
+        // Mouth positions are calibrated independently in the same 450x250 numeral space.
+        // They sit on the colored stroke, not in the empty counters/holes of rounded digits.
+        const mouthAnchors = {
+          0:{x:225,y:62}, 1:{x:229,y:70}, 2:{x:214,y:65}, 3:{x:220,y:63},
+          4:{x:239,y:66}, 5:{x:267,y:68}, 6:{x:250,y:69}, 7:{x:177,y:69},
+          8:{x:225,y:62}, 9:{x:228,y:65}
         };
-        const mouthOffset = mouthOffsets[selectedDigit] || {x:0,y:21};
-        const mouthX = ex + mouthOffset.x;
-        const mouthY = eyeY + mouthOffset.y;
+        const mouthPoint = transformPoint(mouthAnchors[selectedDigit] || {x:225,y:64});
+        const mouthX = mouthPoint.x;
+        const mouthY = mouthPoint.y + bob;
         const mouthOpen = (Math.sin(celebrationElapsed / 260) + 1) / 2;
         const mouthW = 11.5;
         ctx.lineWidth = 2.2;

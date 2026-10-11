@@ -246,3 +246,6 @@ Correctif supplémentaire `f484350` : bouche rapprochée du trait supérieur et 
 
 
 Correctif `2e1fdcc` : bouche descendue et élargie pour ne plus toucher les yeux; syntaxe vérifiée. La validation visuelle des dix chiffres reste à effectuer.
+
+
+Dernier correctif `6d45527` : ancres des yeux et de la bouche calibrées manuellement pour chaque chiffre, sans placement aléatoire. Syntaxe vérifiée; validation visuelle réelle des dix chiffres non encore effectuée.

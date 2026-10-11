@@ -88,3 +88,8 @@
 ## 2026-10-11 — Révision des routes 0, 1, 2, 3 et 6
 - Ajustement des lignes médianes et des points de départ/fin pour mieux suivre les modèles.
 - Aucun test navigateur réel n'est déclaré réussi; validation visuelle utilisateur requise.
+
+
+## 2026-10-11 — Modèle et pointillé unifiés
+- Le modèle translucide et le guide pointillé sont désormais rendus à partir du même chemin, éliminant le décalage entre la police et les routes manuelles.
+- Contrôle de forme, d'épaisseur et de lisibilité des dix chiffres encore requis.

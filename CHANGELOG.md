@@ -128,3 +128,10 @@
 - Suppression des silhouettes décoratives indépendantes qui ne correspondaient pas au chemin de traçage.
 - Couleur et contour appliqués aux routes centrales afin de préserver leur alignement.
 - Test visuel navigateur encore requis.
+
+
+## 2026-10-11 — Chiffres épais et célébration après réussite
+- Modèle neutre épaissi avant réussite, sans yeux ni couleur vive.
+- Après validation réussie, le chiffre prend sa couleur et les yeux apparaissent avec une animation aléatoire (clignement, clin d'œil ou petit saut).
+- La célébration s'arrête au changement de chiffre ou au début d'un nouvel essai.
+- Vérification visuelle dans le navigateur requise.

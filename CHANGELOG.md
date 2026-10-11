@@ -190,3 +190,7 @@
 
 ## 2026-10-11 — Visage des chiffres
 - Ajustement de la position et de la largeur de la bouche selon la forme du chiffre.
+
+
+## 2026-10-11 — Alignement des bouches
+- Coordonnées de bouche personnalisées pour chaque chiffre afin de mieux suivre la forme du tracé.

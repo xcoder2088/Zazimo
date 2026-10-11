@@ -18,42 +18,50 @@
   const numeralPalette = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83"];
   function drawFriendlyNumeral() {
     const routes = tracePaths();
+    const now = performance.now();
+    const celebrationElapsed = now - celebrationStartedAt;
+    const celebrating = celebrationActive && celebrationElapsed < 1800;
+    const palette = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83"];
+    const width = Math.max(30, Math.min(38, canvas.clientWidth * 0.065));
+    const bounce = celebrating && celebrationMode === "jump" ? Math.sin(celebrationElapsed / 85) * 5 : 0;
     ctx.save();
+    ctx.translate(0, -bounce);
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
-    const width = Math.max(22, Math.min(29, canvas.clientWidth * 0.05));
     ctx.setLineDash([]);
-    // Dark outline, then bright fill: both follow the exact same centerline as the guide.
-    ctx.strokeStyle = "#243344";
-    ctx.lineWidth = width + 5;
+    ctx.strokeStyle = celebrating ? "#243344" : "#c4cfdf";
+    ctx.lineWidth = celebrating ? width + 5 : width;
     for (const path of routes) {
       if (path.length < 2) continue;
-      ctx.beginPath();
-      ctx.moveTo(path[0].x, path[0].y);
+      ctx.beginPath(); ctx.moveTo(path[0].x, path[0].y);
       for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
       ctx.stroke();
     }
-    ctx.strokeStyle = numeralPalette[selectedDigit];
-    ctx.lineWidth = width;
-    for (const path of routes) {
-      if (path.length < 2) continue;
-      ctx.beginPath();
-      ctx.moveTo(path[0].x, path[0].y);
-      for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
-      ctx.stroke();
-    }
-    // Eyes are separate decorative elements, never part of the trace route.
-    const first = routes[0]?.[0];
-    if (first) {
-      const ex = first.x + (selectedDigit === 1 ? 25 : 0);
-      const ey = Math.max(18, first.y - width * 0.7);
-      for (const [x,y] of [[ex-7,ey],[ex+9,ey-1]]) {
-        ctx.fillStyle = "#fff";
-        ctx.strokeStyle = "#243344";
-        ctx.lineWidth = 1.8;
-        ctx.beginPath(); ctx.ellipse(x,y,7,9,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
-        ctx.fillStyle = "#243344";
-        ctx.beginPath(); ctx.ellipse(x+1,y+1,2.5,4,0,0,Math.PI*2); ctx.fill();
+    if (celebrating) {
+      ctx.strokeStyle = palette[selectedDigit];
+      ctx.lineWidth = width;
+      for (const path of routes) {
+        if (path.length < 2) continue;
+        ctx.beginPath(); ctx.moveTo(path[0].x, path[0].y);
+        for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
+        ctx.stroke();
+      }
+      const first = routes[0]?.[0];
+      if (first) {
+        const ex = first.x + (selectedDigit === 1 ? 25 : 0);
+        const ey = Math.max(16, first.y - width * 0.75);
+        const blink = celebrationMode === "blink" && celebrationElapsed % 600 > 490;
+        const wink = celebrationMode === "wink" && celebrationElapsed % 900 > 700;
+        for (const [index,x,y] of [[0,ex-7,ey],[1,ex+9,ey-1]]) {
+          ctx.strokeStyle = "#243344"; ctx.fillStyle = "#fff"; ctx.lineWidth = 2;
+          ctx.beginPath();
+          if ((blink || (wink && index === 1))) {
+            ctx.moveTo(x-6,y); ctx.lineTo(x+6,y); ctx.stroke();
+          } else {
+            ctx.ellipse(x,y,7,9,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
+            ctx.fillStyle = "#243344"; ctx.beginPath(); ctx.ellipse(x+1,y+1,2.5,4,0,0,Math.PI*2); ctx.fill();
+          }
+        }
       }
     }
     ctx.restore();
@@ -81,6 +89,9 @@
   let strokes = [];
   let activeStroke = [];
   let demoActive = false;
+  let celebrationActive = false;
+  let celebrationMode = "blink";
+  let celebrationStartedAt = 0;
   let demoStart = 0;
   let demoFrame = 0;
   const demoDuration = reducedMotion.matches ? 0 : 1800;
@@ -312,6 +323,7 @@
   });
 
   clearButton.addEventListener("click", () => {
+    celebrationActive = false;
     points = [];
     strokes = [];
     activeStroke = [];
@@ -332,6 +344,8 @@
     points = [];
     strokes = [];
     activeStroke = [];
+    celebrationActive = false;
+    celebrationStartedAt = 0;
     feedback.textContent = "Observe le chiffre " + selectedDigit + ", puis suis le chemin pointillé.";
     rewardStar.textContent = "★";
     rewardTitle.textContent = "Chaque essai compte !";
@@ -363,7 +377,18 @@
       return sum + closest;
     }, 0) / points.length;
     if (yRange > rect.height * 0.22 && meanDistance < Math.min(rect.width, rect.height) * 0.2) {
-      feedback.textContent = "Bravo ! Tu as essayé le chiffre " + selectedDigit + " !";
+      celebrationActive = true;
+      celebrationMode = ["blink", "wink", "jump"][Math.floor(Math.random() * 3)];
+      celebrationStartedAt = performance.now();
+      feedback.textContent = "Bravo ! Tu as réussi le chiffre " + selectedDigit + " !";
+      drawStrokes();
+      const celebrationLoop = () => {
+        if (!celebrationActive) return;
+        drawStrokes();
+        if (performance.now() - celebrationStartedAt < 1800) requestAnimationFrame(celebrationLoop);
+        else { celebrationActive = false; drawStrokes(); }
+      };
+      requestAnimationFrame(celebrationLoop);
       rewardStar.textContent = "★";
       rewardTitle.textContent = "Super effort !";
       rewardText.textContent = "Tu as terminé cet essai. Tu peux recommencer pour t'entraîner encore.";

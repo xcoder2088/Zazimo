@@ -133,3 +133,7 @@ Les chiffres angulaires ayant été jugés satisfaisants, le travail porte maint
 
 ## 2026-10-11 — Régression JavaScript corrigée
 L'application était devenue non interactive parce que `prototype/app.js` contenait deux déclarations `const smooth = [];` consécutives dans `tracePaths()`, causant une erreur de syntaxe au chargement du script. Correction poussée dans le commit `6a8c1ba`. Le défaut explique l'écran statique et l'inactivité des boutons. Les interactions doivent être revérifiées dans le navigateur après `git pull origin main` et `Ctrl+F5`; aucune validation navigateur n'a été effectuée ici. Ajouter une vérification de syntaxe avant les prochains changements.
+
+
+## 2026-10-11 — Deuxième passe esthétique des chiffres arrondis
+Après le rétablissement de l'interactivité, la capture confirme que le tracé fonctionne, mais les formes arrondies restent trop basiques. Commit `b3d3455` : nouvelles proportions des routes 0, 2, 3, 6, 8 et 9, et épaisseur du modèle réduite à 22–28 px selon la largeur du canevas. Les chiffres angulaires ne sont pas modifiés. Validation visuelle dans le navigateur encore nécessaire; cette passe n'est pas déclarée finale.

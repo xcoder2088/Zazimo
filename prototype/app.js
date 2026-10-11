@@ -148,18 +148,8 @@
     ctx.save();
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
-    const modelWidth = Math.max(24, Math.min(32, canvas.clientWidth * 0.06));
-    ctx.strokeStyle = document.body.classList.contains("calm") ? "#d7e7de" : "#c8d3e3";
-    ctx.lineWidth = modelWidth;
-    ctx.setLineDash([]);
-    for (const path of routes) {
-      if (!path.length) continue;
-      ctx.beginPath();
-      ctx.moveTo(path[0].x, path[0].y);
-      for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
-      ctx.stroke();
-    }
-    ctx.strokeStyle = document.body.classList.contains("calm") ? "#8eae9d" : "#9fb4d0";
+    // Keep the colorful numeral visible; only the precise dotted centerline overlays it.
+    ctx.strokeStyle = document.body.classList.contains("calm") ? "#6e9d87" : "#6686ad";
     ctx.lineWidth = 3;
     ctx.setLineDash([5, 8]);
     for (const path of routes) {

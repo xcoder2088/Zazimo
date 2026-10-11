@@ -209,3 +209,7 @@ Commit `f7ab154` : yeux repositionnés sur le haut de chaque chiffre et bouche p
 
 ## 2026-10-11 — Ajustement précis de la bouche
 Commit `f484350` : coordonnées de bouche rapprochées du trait supérieur et bouche réduite pour éviter qu'elle tombe dans les espaces intérieurs. Syntaxe vérifiée; test visuel navigateur non effectué.
+
+
+## 2026-10-11 — Espacement du visage
+Commit `2e1fdcc` : bouche déplacée plus bas et légèrement élargie pour éviter le chevauchement avec les yeux. Coordonnées individualisées par chiffre. Syntaxe vérifiée; contrôle visuel navigateur non effectué.

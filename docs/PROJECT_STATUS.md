@@ -152,3 +152,7 @@ Le lissage automatique a été désactivé pour le 5 et sa route a été ajusté
 
 ## Révision des routes de chiffres — validation en cours
 Les routes des chiffres 0, 2, 3 et 6 ont été repositionnées; la route du 1 a une fin verticale ajustée (commit `a6ad474`). Il s'agit d'une nouvelle approximation manuelle basée sur les captures. Le rendu doit être vérifié dans le navigateur après `git pull origin main` et `Ctrl+F5`. La conformité des dix routes reste non validée.
+
+
+## Nouvelle méthode de traçage — validation visuelle requise
+Le modèle visible n'utilise plus un glyphe de police séparé : il est dessiné par un trait large translucide à partir du même chemin que le pointillé. Cela garantit leur alignement géométrique. Commits `93f8868` et `3850645`. **Pas encore validé visuellement** : confirmer que les chiffres ressemblent à des modèles d'écriture adaptés aux enfants, puis raffiner les routes qui en ont besoin.

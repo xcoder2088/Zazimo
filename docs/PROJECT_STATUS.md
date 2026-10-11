@@ -118,3 +118,10 @@ Ne pas figer cette architecture avant d'avoir vérifié compatibilité, capacit�
 - Nouveau placement estimé d'après la capture : départ dans la diagonale visible, arrivée au raccord supérieur, petit déplacement vers l'axe de la hampe, puis descente jusqu'au bas du chiffre.
 - L'animation réutilise le même chemin que le guide.
 - État : commit effectué; vérification visuelle indispensable avant de considérer ce point comme terminé.
+
+
+## Changement de méthode : géométrie explicite du chiffre 1
+- Les corrections précédentes par pourcentages arbitraires ont échoué et ne sont pas considérées comme validées.
+- Le chiffre pâle est maintenant une silhouette SVG explicite, et le guide pointillé ainsi que l'animation utilisent des coordonnées dans le même repère SVG (viewBox 450 × 250).
+- Cela élimine la désynchronisation entre un chiffre rendu par police et un chemin codé indépendamment.
+- État : correctif poussé; vérification visuelle après actualisation toujours requise. Le modèle SVG est une première géométrie dessinée à la main, à contrôler avant extension aux autres caractères.

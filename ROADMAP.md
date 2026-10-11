@@ -347,3 +347,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Réduire la hauteur de la bouche afin qu'elle reste dans l'épaisseur du chiffre.
 - [x] Vérifier la syntaxe JavaScript.
 - [ ] Confirmer visuellement les dix chiffres dans le navigateur.
+
+
+## Séparation yeux-bouche — 2026-10-11
+- [x] Descendre la bouche pour créer un espace visible sous les yeux.
+- [x] Augmenter légèrement la largeur de la bouche.
+- [x] Conserver des coordonnées par chiffre et vérifier la syntaxe JavaScript.
+- [ ] Validation visuelle des chiffres 0 à 9 dans le navigateur.

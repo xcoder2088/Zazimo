@@ -133,3 +133,13 @@ Les fichiers existent dans `prototype/`, mais l'étape n'est pas terminée tant 
 - [ ] Vérifier visuellement le centrage sur la capture locale avant de poursuivre.
 - [ ] Tester la zone tactile et le redimensionnement.
 - [ ] Concevoir ensuite des tracés spécifiques par caractère; ne pas extrapoler une seule forme aux lettres et chiffres.
+
+
+## Nouvelle exigence — choix du thème visuel
+- [x] Ajouter au cahier des charges les quatre choix proposés : garçon, fille, mixte et neutre.
+- [ ] Concevoir les quatre ambiances visuelles avec des illustrations originales et une interface inclusive.
+- [ ] Ajouter le choix de thème dans les paramètres de l'éducateur.
+- [ ] Vérifier que le changement de thème ne modifie ni les exercices, ni la difficulté, ni les récompenses et qu'il peut être effectué à tout moment.
+- [ ] Tester l'affichage et la lisibilité de chaque thème sur téléphone, tablette et ordinateur.
+
+Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun contenu éducatif ou capacité n'est associé à un genre.

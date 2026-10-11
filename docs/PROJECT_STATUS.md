@@ -208,3 +208,7 @@ Commit `ce249a6` : yeux/pupilles agrandis et positionnés depuis le point supér
 
 ## Ajustement du visage — appliqué
 Commit `3ebea8c` : yeux écartés, traits du visage regroupés autour d'un ancrage commun, bouche animée et clignements/mouvement discrets maintenus tant que le chiffre est en état de réussite. Contrôle de syntaxe effectué; validation visuelle réelle encore requise.
+
+
+## Bouche du personnage — mise à jour
+Commit `b80d3f5` : expressions de bouche redessinées en formes cartoon plus lisibles, sourire avec dents et langue tirée animée. Contrôle de syntaxe effectué; rendu visuel à confirmer dans le navigateur.

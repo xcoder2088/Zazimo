@@ -57,12 +57,14 @@
       }
       // Put the face on the character's upper end, oriented toward the inside of its silhouette.
       // Face coordinates are attached to the upper stroke of each numeral.
+      // Manually calibrated eye centers: they sit on the upper outside contour.
+      // Coordinates are specific to each digit; do not derive these from random offsets.
       const faceAnchors = {
-        0:{x:225,y:39,dx:0,dy:1}, 1:{x:229,y:48,dx:0,dy:0},
-        2:{x:227,y:42,dx:0,dy:0}, 3:{x:224,y:42,dx:0,dy:0},
-        4:{x:239,y:43,dx:0,dy:0}, 5:{x:267,y:47,dx:0,dy:0},
-        6:{x:250,y:49,dx:0,dy:0}, 7:{x:177,y:48,dx:0,dy:0},
-        8:{x:225,y:42,dx:0,dy:0}, 9:{x:228,y:44,dx:0,dy:0}
+        0:{x:225,y:17,dx:0,dy:0}, 1:{x:229,y:27,dx:0,dy:0},
+        2:{x:224,y:19,dx:0,dy:0}, 3:{x:224,y:19,dx:0,dy:0},
+        4:{x:239,y:20,dx:0,dy:0}, 5:{x:260,y:23,dx:0,dy:0},
+        6:{x:231,y:19,dx:0,dy:0}, 7:{x:193,y:23,dx:0,dy:0},
+        8:{x:225,y:18,dx:0,dy:0}, 9:{x:226,y:20,dx:0,dy:0}
       };
       const anchor = faceAnchors[selectedDigit] || {x:225,y:42,dx:0,dy:1};
       const transformPoint = point => {
@@ -101,10 +103,12 @@
         // Keep every mouth centered on the thick upper stroke; never place it in an open counter.
         // Mouth is deliberately lower than the eyes, fully separated from them,
         // and kept inside the thick upper stroke of each numeral.
+        // Each mouth is manually placed on the colored body below the eyes.
+        // These positions are tuned per numeral to avoid holes and the outer contour.
         const mouthAnchors = {
-          0:{x:225,y:62}, 1:{x:229,y:70}, 2:{x:227,y:65}, 3:{x:224,y:64},
-          4:{x:239,y:66}, 5:{x:260,y:68}, 6:{x:247,y:68}, 7:{x:190,y:67},
-          8:{x:225,y:64}, 9:{x:226,y:65}
+          0:{x:225,y:49}, 1:{x:229,y:57}, 2:{x:222,y:49}, 3:{x:224,y:49},
+          4:{x:239,y:49}, 5:{x:257,y:51}, 6:{x:233,y:51}, 7:{x:191,y:49},
+          8:{x:225,y:49}, 9:{x:226,y:49}
         };
         const mouthPoint = transformPoint(mouthAnchors[selectedDigit] || {x:225,y:64});
         const mouthX = mouthPoint.x;

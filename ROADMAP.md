@@ -125,3 +125,11 @@ Les fichiers existent dans `prototype/`, mais l'étape n'est pas terminée tant 
 - [x] Revoir le départ de la diagonale et rapprocher la descente de l'axe de la hampe.
 - [ ] Contrôler le guide pointillé sur une nouvelle capture avant toute autre modification.
 - [ ] Ajuster une dernière fois les coordonnées si nécessaire et tester sur plusieurs tailles d'écran.
+
+
+## Guide du chiffre 1 — nouvelle approche géométrique
+- [x] Remplacer le chiffre rendu par une police par une silhouette SVG explicite.
+- [x] Faire calculer le guide pointillé et l'animation dans le même repère géométrique que la silhouette.
+- [ ] Vérifier visuellement le centrage sur la capture locale avant de poursuivre.
+- [ ] Tester la zone tactile et le redimensionnement.
+- [ ] Concevoir ensuite des tracés spécifiques par caractère; ne pas extrapoler une seule forme aux lettres et chiffres.

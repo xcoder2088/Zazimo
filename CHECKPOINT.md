@@ -149,3 +149,7 @@ Le retour visuel a révélé que les formes remplies séparées des routes de tr
 
 ## 2026-10-11 — Chiffres épais neutres et récompense aléatoire
 Choix utilisateur : chiffres de style épais, sans yeux ni couleur vive avant réussite; après réussite, couleur et animation choisie aléatoirement (clignement, clin d'œil ou petit saut). Commit `e3655cf` ajoute cet état de rendu et l'animation; commit `e6b9621` arrête la célébration au début d'un nouvel essai. Les routes centrales existantes et la validation n'ont pas été volontairement remplacées. Contrôles statiques : pas de déclaration `smooth` en double, accolades équilibrées, gestionnaires pointer et click présents. **Pas de test navigateur ni de vérification réelle de syntaxe par moteur JS effectués ici**; valider après `git pull origin main` et `Ctrl+F5`.
+
+
+## 2026-10-11 — Validation automatique et effacement du tracé réussi
+Commit `d8d4f3f` : extraction de la validation dans `validateTrace()`, déclenchée automatiquement à la fin d'un geste lorsque suffisamment de points ont été tracés. En cas de réussite, les points et traits temporaires sont effacés avant l'animation du chiffre; le bouton de vérification reste disponible en secours. Contrôles statiques : fonction de validation présente, liaison automatique présente, bouton de secours présent, accolades équilibrées, aucune déclaration `smooth` en double. Test navigateur non effectué. Les silhouettes ne correspondent toujours pas exactement à la référence visuelle et restent à concevoir proprement.

@@ -84,3 +84,14 @@
 - Définir les critères d'acceptation avant le développement.
 - Tester les fonctionnalités existantes après chaque changement.
 - Mettre à jour cette feuille de route après chaque étape acceptée.
+
+
+## État de l'étape 1 — Maquette tactile
+- [x] Créer les premiers fichiers HTML, CSS et JavaScript du prototype.
+- [ ] Exécuter le prototype dans un navigateur et vérifier l'absence d'erreurs.
+- [ ] Tester sur une taille de téléphone et une taille de tablette.
+- [ ] Vérifier les interactions tactiles, souris et stylet.
+- [ ] Améliorer la validation du tracé à partir des tests.
+- [ ] Valider le mode hors ligne.
+
+Les fichiers existent dans `prototype/`, mais l'étape n'est pas terminée tant que les tests d'exécution et d'appareils n'ont pas réussi.

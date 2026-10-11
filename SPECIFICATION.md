@@ -72,9 +72,8 @@ Dans les paramètres de l'éducateur, ajouter un choix d'univers visuel :
 - Garçon.
 - Fille.
 - Mixte.
-- Neutre.
 
-Ces choix servent uniquement de points de départ visuels (palette, ambiance, illustrations et personnages originaux). Aucun exercice, capacité, récompense ou niveau ne doit être réservé à un genre. L'éducateur ou l'enfant peut changer de thème à tout moment; les quatre options doivent rester accueillantes et accessibles, sans imposer de stéréotypes de couleurs, d'intérêts ou de capacités. Prévoir une option de personnalisation plus poussée ultérieurement.
+Ces choix servent uniquement de points de départ visuels (palette, ambiance, illustrations et personnages originaux). Aucun exercice, capacité, récompense ou niveau ne doit être réservé à un genre. L'éducateur ou l'enfant peut changer de thème à tout moment; les trois options doivent rester accueillantes et accessibles, sans imposer de stéréotypes de couleurs, d'intérêts ou de capacités. Prévoir une option de personnalisation plus poussée ultérieurement.
 
 ## 7. Espace éducateur
 
@@ -85,7 +84,7 @@ L'espace éducateur doit être protégé contre les ouvertures et modifications 
 - Niveau de guidage.
 - Nombre de réussites pour les défis.
 - Récompenses et paramètres sensoriels.
-- Thème visuel : garçon, fille, mixte ou neutre.
+- Thème visuel : garçon, fille ou mixte.
 - Profils locaux et suivi facultatif des séances.
 
 Les résultats servent au suivi des activités et ne doivent pas être présentés comme un diagnostic.

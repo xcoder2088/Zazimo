@@ -181,3 +181,7 @@ Commit `b80d3f5` : la bouche est maintenant plus large et construite comme une v
 
 ## 2026-10-11 — Ancrage facial par chiffre et couleurs aléatoires
 Commit `6cda271` : le visage utilise maintenant des ancrages spécifiques pour chaque chiffre de 0 à 9, pour éviter les bouches qui semblent flotter ou tomber hors de la forme. Les yeux sont un peu plus écartés. Chaque chiffre reçoit une couleur vive aléatoire, conservée tant qu'il reste sélectionné. Syntaxe JavaScript vérifiée; validation visuelle navigateur encore nécessaire.
+
+
+## 2026-10-11 — Correctif urgent de célébration
+Commit `5b3c1c0` : la célébration utilisait une variable `characterColor` non définie. Cela déclenchait une erreur au moment de dessiner le chiffre coloré et son visage. La ligne utilise maintenant `characterColorFor(selectedDigit)`. Syntaxe JavaScript vérifiée; contrôle visuel navigateur encore nécessaire.

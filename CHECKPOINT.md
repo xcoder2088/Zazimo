@@ -145,3 +145,7 @@ Après le rétablissement de l'interactivité, la capture confirme que le tracé
 
 ## 2026-10-11 — Correction des silhouettes décoratives déformées
 Le retour visuel a révélé que les formes remplies séparées des routes de traçage déformaient les chiffres 1 et 2. Commit `98046fc` : suppression de ces silhouettes indépendantes; le contour sombre et la couleur sont désormais appliqués directement sur les routes centrales existantes, puis le pointillé est rendu par-dessus. La validation visuelle dans le navigateur reste requise.
+
+
+## 2026-10-11 — Chiffres épais neutres et récompense aléatoire
+Choix utilisateur : chiffres de style épais, sans yeux ni couleur vive avant réussite; après réussite, couleur et animation choisie aléatoirement (clignement, clin d'œil ou petit saut). Commit `e3655cf` ajoute cet état de rendu et l'animation; commit `e6b9621` arrête la célébration au début d'un nouvel essai. Les routes centrales existantes et la validation n'ont pas été volontairement remplacées. Contrôles statiques : pas de déclaration `smooth` en double, accolades équilibrées, gestionnaires pointer et click présents. **Pas de test navigateur ni de vérification réelle de syntaxe par moteur JS effectués ici**; valider après `git pull origin main` et `Ctrl+F5`.

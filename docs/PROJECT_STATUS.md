@@ -176,3 +176,7 @@ Les routes 0, 2, 3, 6, 8 et 9 ont été redessinées pour améliorer leur équil
 
 ## Chiffres colorés et expressifs — expérimentation à valider
 Les chiffres ont maintenant des silhouettes vectorielles colorées, un contour sombre et de petits yeux, inspirés de la référence fournie mais dessinés avec des formes internes. Le chemin pointillé reste séparé et visible au-dessus. Commits `ae4e58a` et `f7852d1`. La qualité des formes et les interactions ne sont pas encore validées dans le navigateur.
+
+
+## Correctif style des chiffres — à valider
+Les silhouettes remplies indépendantes étaient incorrectes et ont été retirées. Le rendu ludique utilise maintenant directement les routes pédagogiques pour le contour et la couleur (commit `98046fc`), ce qui évite la divergence entre silhouette et pointillé. Confirmer le résultat visuel et les interactions dans le navigateur avant validation finale.

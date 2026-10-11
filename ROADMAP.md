@@ -265,3 +265,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Vérifier la syntaxe JavaScript du fichier récupéré depuis GitHub.
 - [ ] Confirmer dans le navigateur que le guide s'affiche au chargement et que les boutons répondent.
 - [ ] Reprendre séparément la refonte visuelle des chiffres selon la référence officielle, sans régression fonctionnelle.
+
+
+## Fidélité au modèle actif — chiffres et réussite persistante
+- [x] Épaissir les silhouettes neutres avant réussite.
+- [x] Agrandir les yeux de la célébration.
+- [x] Conserver l'état coloré et les yeux après la fin de l'animation; le réinitialiser seulement lors du changement de chiffre ou du bouton Recommencer.
+- [ ] Comparer les dix chiffres dans le navigateur et ajuster les proportions si nécessaire.

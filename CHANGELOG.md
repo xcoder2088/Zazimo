@@ -33,3 +33,8 @@
 ## 2026-10-11 — Ajustement du guide du chiffre 1
 - Repositionnement des coordonnées du guide pointillé et de son animation pour mieux suivre le centre du glyphe.
 - Validation visuelle encore requise dans le navigateur.
+
+
+## 2026-10-11 — Nouvelle correction du guide du chiffre 1
+- Repositionnement du départ et de la descente du chemin pointillé à partir de la capture utilisateur.
+- Validation visuelle en attente; la correction précédente avait été rejetée.

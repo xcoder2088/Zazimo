@@ -178,3 +178,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Désactiver le lissage automatique pour les chiffres 1, 4 et 7 afin de préserver leurs segments angulaires.
 - [ ] Vérifier les routes sur capture et ajuster encore les points de départ, de jonction et d'arrivée.
 - [ ] Étendre la vérification de centrage aux autres chiffres et à plusieurs polices/tailles d'écran.
+
+
+## Retour de validation visuelle — chiffre 5 et centrage
+- [x] Désactiver le lissage automatique du 5 afin de conserver sa barre supérieure et ses changements de direction.
+- [x] Ajuster légèrement la route du 5 pour mieux suivre la structure du glyphe.
+- [ ] Revoir la géométrie de toutes les routes à partir de la ligne médiane réelle de chaque glyphe, et non d'une approximation générique.
+- [ ] Tester chaque chiffre séparément; certains combinent des segments droits et des courbes et ne doivent pas être classés entièrement anguleux ou entièrement arrondis.

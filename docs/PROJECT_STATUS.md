@@ -180,3 +180,7 @@ Les chiffres ont maintenant des silhouettes vectorielles colorées, un contour s
 
 ## Correctif style des chiffres — à valider
 Les silhouettes remplies indépendantes étaient incorrectes et ont été retirées. Le rendu ludique utilise maintenant directement les routes pédagogiques pour le contour et la couleur (commit `98046fc`), ce qui évite la divergence entre silhouette et pointillé. Confirmer le résultat visuel et les interactions dans le navigateur avant validation finale.
+
+
+## Chiffres épais et animation de réussite — à valider
+Le rendu initial est désormais neutre et épais, sans yeux ni couleur vive. Après la réussite de la validation existante, le chiffre se colore et reçoit une animation aléatoire parmi clignement, clin d'œil et petit saut. Commits `e3655cf` et `e6b9621`. Les routes pédagogiques n'ont pas été redessinées dans cette passe. Le contrôle statique a confirmé l'absence de déclaration `smooth` en double et des accolades équilibrées; les tests navigateur et moteur JavaScript restent à faire.

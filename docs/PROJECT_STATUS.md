@@ -200,3 +200,7 @@ Le bloc de validation avait été accidentellement placé dans le gestionnaire d
 
 ## Modèle Zazimo Épais — ajustement appliqué
 Commit `f8e7c3c` : silhouettes épaissies, yeux/pupilles agrandis, et état coloré de réussite persistant jusqu'au changement de chiffre ou à Recommencer. Contrôle syntaxique JavaScript et vérification statique des états effectués; validation visuelle dans le navigateur à faire.
+
+
+## Personnages après réussite — mise à jour
+Commit `ce249a6` : yeux/pupilles agrandis et positionnés depuis le point supérieur du chiffre; bouche aléatoire sourire/langue tirée; démonstration ralentie à 3,2 secondes. Contrôle syntaxique effectué, rendu visuel à confirmer dans le navigateur.

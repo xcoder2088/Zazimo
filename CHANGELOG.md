@@ -135,3 +135,10 @@
 - Après validation réussie, le chiffre prend sa couleur et les yeux apparaissent avec une animation aléatoire (clignement, clin d'œil ou petit saut).
 - La célébration s'arrête au changement de chiffre ou au début d'un nouvel essai.
 - Vérification visuelle dans le navigateur requise.
+
+
+## 2026-10-11 — Validation automatique du tracé
+- La validation se déclenche automatiquement à la fin du geste de traçage.
+- Le tracé temporaire est effacé après réussite avant la célébration.
+- Le bouton de vérification reste disponible comme secours.
+- La forme finale des chiffres reste à harmoniser avec la référence Zazimo Épais.

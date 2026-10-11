@@ -105,3 +105,9 @@ Ne pas figer cette architecture avant d'avoir vérifié compatibilité, capacit�
 - Le réglage système de réduction des animations est respecté en désactivant l'animation longue.
 - Fichiers modifiés : `prototype/index.html`, `prototype/styles.css`, `prototype/app.js`.
 - État : commits enregistrés et fichiers à relire. Le rendu doit encore être vérifié dans le navigateur sur écran large et tactile; la validation pédagogique du tracé reste expérimentale.
+
+
+## Ajustement géométrique du guide du chiffre 1 — à tester
+- Les coordonnées du chemin pointillé ont été déplacées pour suivre la ligne médiane visible du glyphe : départ bas-gauche, montée diagonale jusqu'au sommet, puis descente verticale centrée.
+- Les proportions sont normalisées par rapport à la zone de dessin afin de conserver le positionnement sur différentes tailles d'écran.
+- Le rendu doit être recontrôlé après mise à jour du clone local et actualisation forcée du navigateur.

@@ -50,3 +50,11 @@
 - Ajout des choix garçon, fille, mixte et neutre dans les paramètres prévus de l'éducateur.
 - Précision : le thème ne change pas le contenu pédagogique et ne doit pas imposer de stéréotypes.
 - Fonctionnalité documentée, mais pas encore implémentée.
+
+
+## 2026-10-11 — Premier sélecteur de thèmes
+- Ajout des choix Garçon, Fille et Mixte au prototype.
+- Ajout d'une palette de couleurs propre à chaque choix.
+- Le thème Mixte est sélectionné par défaut.
+- Les symboles décoratifs sont temporaires; les illustrations originales restent à créer.
+- Tests visuels et fonctionnels encore requis.

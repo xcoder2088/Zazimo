@@ -224,3 +224,7 @@ Commit `5b3c1c0` : correction de la variable de couleur non définie dans le ren
 
 ## Couleurs et animations — 2026-10-11
 Commit `f2b678b` : les couleurs et combinaisons d’animations varient désormais à chaque réussite. Syntaxe JavaScript vérifiée; contrôle visuel dans le navigateur encore requis.
+
+
+## Ajustement du visage — 2026-10-11
+Commit `7d3d887` : position de bouche adaptée individuellement aux chiffres. Syntaxe JavaScript vérifiée; vérification visuelle navigateur en attente.

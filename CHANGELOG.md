@@ -172,3 +172,8 @@
 
 ## 2026-10-11 — Amélioration des expressions
 - Bouche cartoon plus lisible, sourire avec dents et variante langue tirée animée.
+
+
+## 2026-10-11 — Visage et couleurs
+- Position du visage adaptée à chaque chiffre, yeux un peu plus espacés.
+- Couleur vive aléatoire conservée par chiffre pendant la sélection.

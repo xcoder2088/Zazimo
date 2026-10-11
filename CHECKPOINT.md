@@ -117,3 +117,7 @@ Les dernières captures confirment que le problème est plus profond que le simp
 
 ## 2026-10-11 — Nouvelle révision des lignes médianes
 Après les captures des chiffres 6, 3, 2 et 1, les routes des chiffres 0, 2, 3 et 6 ont été redessinées avec des points de départ et des courbes plus proches du centre des traits; la verticale du 1 a été raccourcie pour mieux correspondre au modèle. Commit `a6ad474` sur `main`. Les coordonnées sont toujours manuelles et nécessitent une nouvelle vérification dans le navigateur. Ne pas déclarer le traçage validé avant comparaison visuelle des dix chiffres.
+
+
+## 2026-10-11 — Changement de méthode pour corriger le décalage
+Les captures montraient que le glyphe plein provenait d'une police tandis que le pointillé suivait une route manuelle différente. Au lieu de continuer à ajuster deux géométries séparées, le modèle visible est maintenant dessiné comme un trait large translucide et le guide pointillé est superposé exactement sur le même chemin. Modifications `prototype/app.js` et `prototype/styles.css`, commits `93f8868` et `3850645`. Cette méthode garantit l'alignement modèle/pointillé, mais la forme pédagogique de chaque route et son apparence doivent encore être validées dans le navigateur. Faire `git pull origin main`, puis `Ctrl+F5`.

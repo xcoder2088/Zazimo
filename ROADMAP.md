@@ -95,3 +95,11 @@
 - [ ] Valider le mode hors ligne.
 
 Les fichiers existent dans `prototype/`, mais l'étape n'est pas terminée tant que les tests d'exécution et d'appareils n'ont pas réussi.
+
+
+## Ajustement du guide — en attente de validation visuelle
+- [x] Retirer la branche pointillée qui formait une flèche au sommet du chiffre 1.
+- [x] Faire suivre le pointillé de la diagonale au segment vertical du chiffre 1.
+- [x] Supprimer la petite flèche indépendante sous le chiffre.
+- [ ] Actualiser le prototype local et confirmer que le trajet est clair.
+- [ ] Vérifier que le tracé et la remise à zéro fonctionnent toujours.

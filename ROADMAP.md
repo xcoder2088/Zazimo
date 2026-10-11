@@ -249,3 +249,11 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Arrêter l'animation lorsqu'un nouvel essai commence ou que l'enfant change de chiffre.
 - [ ] Vérifier dans le navigateur les dix chiffres, la visibilité du pointillé, la validation, la démonstration et les trois animations.
 - [ ] Revoir l'esthétique de chaque forme seulement après confirmation que le guide reste lisible.
+
+
+## Validation automatique et fin de tracé
+- [x] Déclencher la validation à la fin d'un geste quand une tentative a été dessinée.
+- [x] Effacer le trait temporaire après une réussite avant la célébration du chiffre.
+- [x] Conserver le bouton de vérification comme solution de secours.
+- [ ] Tester dans le navigateur les cas de réussite, de tentative incorrecte, de plusieurs traits et de changement de chiffre.
+- [ ] Reconcevoir les silhouettes pour correspondre visuellement au modèle de référence Zazimo Épais; les routes actuelles ne sont pas encore une police finale.

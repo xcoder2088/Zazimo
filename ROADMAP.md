@@ -354,3 +354,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Augmenter légèrement la largeur de la bouche.
 - [x] Conserver des coordonnées par chiffre et vérifier la syntaxe JavaScript.
 - [ ] Validation visuelle des chiffres 0 à 9 dans le navigateur.
+
+
+## Visage des chiffres — recalibrage manuel (2026-10-11)
+- [x] Définir des coordonnées d’yeux propres à chaque chiffre, au niveau du contour supérieur.
+- [x] Définir des coordonnées de bouche propres à chaque chiffre, dans la surface colorée sous les yeux.
+- [x] Vérifier la syntaxe JavaScript.
+- [ ] Vérifier visuellement les chiffres 0 à 9 dans le navigateur; ajuster si nécessaire.

@@ -22,17 +22,24 @@
   let demoFrame = 0;
   const demoDuration = reducedMotion.matches ? 0 : 1800;
 
-  // Centerline of the numeral: diagonal to the top, then straight down.
+  // The guide silhouette and this centerline share one SVG viewBox.
+  // This keeps the dotted route geometrically tied to the visible numeral.
   function tracePath() {
     const rect = canvas.getBoundingClientRect();
-    return [
-      // Start inside the diagonal stroke, reach the top junction, then
-      // move onto the center of the vertical stroke and trace downward.
-      { x: rect.width * 0.50, y: rect.height * 0.39 },
-      { x: rect.width * 0.70, y: rect.height * 0.25 },
-      { x: rect.width * 0.66, y: rect.height * 0.25 },
-      { x: rect.width * 0.66, y: rect.height * 0.78 }
+    const viewWidth = 450;
+    const viewHeight = 250;
+    const scale = Math.min(rect.width / viewWidth, rect.height / viewHeight);
+    const offsetX = (rect.width - viewWidth * scale) / 2;
+    const offsetY = (rect.height - viewHeight * scale) / 2;
+    const svgPoints = [
+      { x: 176, y: 78 },
+      { x: 229, y: 40 },
+      { x: 229, y: 218 }
     ];
+    return svgPoints.map(point => ({
+      x: offsetX + point.x * scale,
+      y: offsetY + point.y * scale
+    }));
   }
 
   function resizeCanvas() {

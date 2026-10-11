@@ -164,3 +164,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [ ] Corriger les routes qui ne suivent pas précisément le glyphe affiché.
 - [ ] Tester la démonstration, le dessin, la remise à zéro, le son, les thèmes et le mode Sérénité.
 - [ ] Améliorer et tester la validation du tracé; la heuristique actuelle n'est pas encore une validation pédagogique fiable.
+
+
+## Correctif visuel — courbes et contraste des chiffres
+- [x] Ajouter une interpolation lissée entre les points des routes de démonstration pour réduire l'effet saccadé des chiffres arrondis.
+- [x] Augmenter le contraste du chiffre-guide afin qu'il reste visible sous les pointillés.
+- [ ] Vérifier le rendu de 0, 2, 3, 6, 8 et 9 dans le navigateur et ajuster les routes au besoin.
+- [ ] Vérifier que le lissage n'introduit pas de dépassement gênant dans les angles ou aux extrémités.

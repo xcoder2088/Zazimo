@@ -299,3 +299,9 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Espacer un peu plus les yeux.
 - [x] Choisir une couleur vive aléatoire par chiffre et la conserver pendant la sélection courante.
 - [ ] Vérifier visuellement le placement du visage et les couleurs dans le navigateur; adapter ensuite la même approche aux lettres.
+
+
+## Correctif rendu de la célébration — 2026-10-11
+- [x] Corriger la référence de couleur non définie qui interrompait le dessin après réussite.
+- [x] Vérifier la syntaxe JavaScript après correction.
+- [ ] Vérifier dans le navigateur que la réussite déclenche bien couleur, yeux et bouche animés.

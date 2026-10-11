@@ -220,3 +220,7 @@ Commit `6cda271` : points d'ancrage dédiés aux chiffres 0–9, yeux légèreme
 
 ## Correctif de rendu — 2026-10-11
 Commit `5b3c1c0` : correction de la variable de couleur non définie dans le rendu de la célébration. Vérification syntaxique effectuée; validation visuelle navigateur encore à effectuer.
+
+
+## Couleurs et animations — 2026-10-11
+Commit `f2b678b` : les couleurs et combinaisons d’animations varient désormais à chaque réussite. Syntaxe JavaScript vérifiée; contrôle visuel dans le navigateur encore requis.

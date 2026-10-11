@@ -83,3 +83,8 @@
 ## 2026-10-11 — Ajustement du chiffre 5
 - Désactivation du lissage automatique pour le 5 afin de préserver ses angles et sa barre supérieure.
 - Ajustement de sa route de démonstration; contrôle visuel encore requis.
+
+
+## 2026-10-11 — Révision des routes 0, 1, 2, 3 et 6
+- Ajustement des lignes médianes et des points de départ/fin pour mieux suivre les modèles.
+- Aucun test navigateur réel n'est déclaré réussi; validation visuelle utilisateur requise.

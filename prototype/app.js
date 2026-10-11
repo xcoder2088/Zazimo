@@ -47,37 +47,45 @@
         for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
         ctx.stroke();
       }
-      // Anchor the face to the numeral's highest point, not an unrelated fixed point.
+      // Face features share one anchor and stay grouped on the numeral.
       const faceAnchor = routes.flat().reduce((top, point) => !top || point.y < top.y ? point : top, null);
       if (faceAnchor) {
         const ex = faceAnchor.x;
-        const ey = Math.max(18, faceAnchor.y - width * 0.12);
-        const blink = celebrationMode === "blink" && celebrationElapsed % 600 > 490;
-        const wink = celebrationMode === "wink" && celebrationElapsed % 900 > 700;
-        const eyeGap = Math.max(10, width * 0.25);
-        for (const [index,x,y] of [[0,ex-eyeGap/2,ey],[1,ex+eyeGap/2,ey-2]]) {
+        const ey = Math.max(22, faceAnchor.y + 2);
+        const blink = celebrationElapsed % 2400 > 2200;
+        const wink = celebrationMode === "wink" && celebrationElapsed % 3200 > 2850;
+        const eyeGap = Math.max(20, width * 0.48);
+        const bob = celebrationMode === "jump" ? Math.sin(celebrationElapsed / 230) * 2 : Math.sin(celebrationElapsed / 500) * 1.2;
+        const eyeY = ey + bob;
+        for (const [index,x,y] of [[0,ex-eyeGap/2,eyeY],[1,ex+eyeGap/2,eyeY]]) {
           ctx.strokeStyle = "#243344"; ctx.fillStyle = "#fff"; ctx.lineWidth = 2.5;
           ctx.beginPath();
           if (blink || (wink && index === 1)) {
             ctx.lineWidth = 3.5;
-            ctx.moveTo(x-8,y); ctx.quadraticCurveTo(x,y+4,x+8,y); ctx.stroke();
+            ctx.moveTo(x-8,y); ctx.quadraticCurveTo(x,y+3,x+8,y); ctx.stroke();
           } else {
             ctx.ellipse(x,y,12,15,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
             ctx.fillStyle = "#243344"; ctx.beginPath(); ctx.ellipse(x+2,y+2,4.5,7,0,0,Math.PI*2); ctx.fill();
             ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(x+3,y-1,2.2,0,Math.PI*2); ctx.fill();
           }
         }
-        const mouthY = ey + 19;
+        // Mouth is centered below the eyes and animates with the same character.
+        const mouthY = eyeY + 21;
+        const mouthOpen = (Math.sin(celebrationElapsed / 180) + 1) / 2;
         ctx.strokeStyle = "#243344"; ctx.fillStyle = "#243344"; ctx.lineWidth = 2.5;
         if (faceExpression === "tongue") {
-          ctx.beginPath(); ctx.moveTo(ex-8,mouthY); ctx.quadraticCurveTo(ex,mouthY+12,ex+8,mouthY); ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(ex-9,mouthY);
+          ctx.quadraticCurveTo(ex,mouthY+7+mouthOpen*5,ex+9,mouthY);
+          ctx.stroke();
           ctx.fillStyle = "#f04483";
-          ctx.beginPath(); ctx.ellipse(ex+3,mouthY+7,5,7,0.25,0,Math.PI*2); ctx.fill();
+          const tongueY = mouthY + 5 + mouthOpen*3;
+          ctx.beginPath(); ctx.ellipse(ex+2,mouthY+7+mouthOpen*3,5,6,Math.sin(celebrationElapsed/130)*0.15,0,Math.PI*2); ctx.fill();
           ctx.strokeStyle = "#b72c60"; ctx.stroke();
         } else {
-          ctx.beginPath(); ctx.moveTo(ex-9,mouthY); ctx.quadraticCurveTo(ex,mouthY+14,ex+9,mouthY); ctx.stroke();
-          ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.moveTo(ex-7,mouthY+2);
-          ctx.quadraticCurveTo(ex,mouthY+12,ex+7,mouthY+2); ctx.closePath(); ctx.fill();
+          ctx.beginPath(); ctx.moveTo(ex-10,mouthY);
+          ctx.quadraticCurveTo(ex,mouthY+8+mouthOpen*7,ex+10,mouthY); ctx.stroke();
+          ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.ellipse(ex,mouthY+4+mouthOpen*2,7,3+mouthOpen*3,0,0,Math.PI*2); ctx.fill();
         }
       }
     }
@@ -411,10 +419,10 @@
       feedback.textContent = "Bravo ! Tu as réussi le chiffre " + selectedDigit + " !";
       drawStrokes();
       const celebrationLoop = () => {
-        if (!celebrationActive) return;
+        if (!successState) { celebrationActive = false; return; }
         drawStrokes();
-        if (performance.now() - celebrationStartedAt < 1800) requestAnimationFrame(celebrationLoop);
-        else { celebrationActive = false; drawStrokes(); }
+        // Keep subtle blinking and mouth movement alive until the child changes digit or restarts.
+        requestAnimationFrame(celebrationLoop);
       };
       requestAnimationFrame(celebrationLoop);
       rewardStar.textContent = "★";

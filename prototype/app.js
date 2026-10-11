@@ -94,24 +94,26 @@
         // Per-digit offsets account for the different head shapes of 3, 5, 6, 7, 8 and 9.
         // Mouth positions are calibrated independently in the same 450x250 numeral space.
         // They sit on the colored stroke, not in the empty counters/holes of rounded digits.
+        // Each mouth is placed directly on the numeral's centerline near its first stroke.
+        // Coordinates use the same 450x250 viewBox as tracePaths(), not eye-relative offsets.
         const mouthAnchors = {
-          0:{x:225,y:62}, 1:{x:229,y:70}, 2:{x:214,y:65}, 3:{x:220,y:63},
-          4:{x:239,y:66}, 5:{x:267,y:68}, 6:{x:250,y:69}, 7:{x:177,y:69},
-          8:{x:225,y:62}, 9:{x:228,y:65}
+          0:{x:225,y:39}, 1:{x:229,y:48}, 2:{x:194,y:55}, 3:{x:206,y:48},
+          4:{x:239,y:43}, 5:{x:267,y:47}, 6:{x:250,y:49}, 7:{x:177,y:48},
+          8:{x:225,y:42}, 9:{x:208,y:48}
         };
-        const mouthPoint = transformPoint(mouthAnchors[selectedDigit] || {x:225,y:64});
+        const mouthPoint = transformPoint(mouthAnchors[selectedDigit] || {x:225,y:42});
         const mouthX = mouthPoint.x;
         const mouthY = mouthPoint.y + bob;
         const mouthOpen = (Math.sin(celebrationElapsed / 260) + 1) / 2;
-        const mouthW = 11.5;
+        const mouthW = 8;
         ctx.lineWidth = 2.2;
         ctx.strokeStyle = "#243344";
         ctx.fillStyle = "#243344";
         if (faceExpression === "tongue") {
           ctx.beginPath();
           ctx.moveTo(mouthX-mouthW, mouthY);
-          ctx.quadraticCurveTo(mouthX, mouthY+5+mouthOpen*4, mouthX+mouthW, mouthY);
-          ctx.quadraticCurveTo(mouthX+mouthW-1, mouthY+14+mouthOpen*3, mouthX, mouthY+14+mouthOpen*3);
+          ctx.quadraticCurveTo(mouthX, mouthY+4+mouthOpen*2, mouthX+mouthW, mouthY);
+          ctx.quadraticCurveTo(mouthX+mouthW-1, mouthY+9+mouthOpen*2, mouthX, mouthY+14+mouthOpen*3);
           ctx.quadraticCurveTo(mouthX-mouthW+1, mouthY+14+mouthOpen*3, mouthX-mouthW, mouthY);
           ctx.closePath(); ctx.fill(); ctx.stroke();
           ctx.fillStyle = "#fff";
@@ -120,14 +122,14 @@
           ctx.lineTo(mouthX+mouthW-3,mouthY+5); ctx.quadraticCurveTo(mouthX,mouthY+8,mouthX-mouthW+3,mouthY+5); ctx.closePath(); ctx.fill();
           ctx.fillStyle = "#f04483"; ctx.strokeStyle = "#b72c60";
           ctx.beginPath(); ctx.moveTo(mouthX-3,mouthY+10);
-          ctx.quadraticCurveTo(mouthX+8,mouthY+10,mouthX+5+Math.sin(celebrationElapsed/220)*2,mouthY+19+mouthOpen*2);
-          ctx.quadraticCurveTo(mouthX-1,mouthY+22+mouthOpen*2,mouthX-3,mouthY+10);
+          ctx.quadraticCurveTo(mouthX+8,mouthY+10,mouthX+5+Math.sin(celebrationElapsed/220)*2,mouthY+14+mouthOpen*2);
+          ctx.quadraticCurveTo(mouthX-1,mouthY+15+mouthOpen*2,mouthX-3,mouthY+10);
           ctx.closePath(); ctx.fill(); ctx.stroke();
         } else {
           ctx.beginPath();
           ctx.moveTo(mouthX-mouthW, mouthY);
-          ctx.quadraticCurveTo(mouthX, mouthY+9+mouthOpen*4, mouthX+mouthW, mouthY);
-          ctx.quadraticCurveTo(mouthX+mouthW-1, mouthY+10+mouthOpen*4, mouthX, mouthY+10+mouthOpen*4);
+          ctx.quadraticCurveTo(mouthX, mouthY+6+mouthOpen*2, mouthX+mouthW, mouthY);
+          ctx.quadraticCurveTo(mouthX+mouthW-1, mouthY+7+mouthOpen*2, mouthX, mouthY+10+mouthOpen*4);
           ctx.quadraticCurveTo(mouthX-mouthW+1, mouthY+10+mouthOpen*4, mouthX-mouthW, mouthY);
           ctx.closePath(); ctx.fill(); ctx.stroke();
           ctx.fillStyle = "#fff";

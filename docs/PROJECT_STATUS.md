@@ -212,3 +212,7 @@ Commit `3ebea8c` : yeux écartés, traits du visage regroupés autour d'un ancra
 
 ## Bouche du personnage — mise à jour
 Commit `b80d3f5` : expressions de bouche redessinées en formes cartoon plus lisibles, sourire avec dents et langue tirée animée. Contrôle de syntaxe effectué; rendu visuel à confirmer dans le navigateur.
+
+
+## Placement facial et couleurs — mise à jour
+Commit `6cda271` : points d'ancrage dédiés aux chiffres 0–9, yeux légèrement plus écartés et couleur aléatoire mémorisée pour chaque chiffre. Contrôle syntaxique effectué; vérification visuelle réelle encore requise.

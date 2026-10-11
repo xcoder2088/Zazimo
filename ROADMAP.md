@@ -279,3 +279,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Agrandir les yeux et les pupilles; ajouter une expression aléatoire sourire/langue tirée après réussite.
 - [x] Ralentir la démonstration du tracé à 3,2 secondes (sauf préférence système de mouvement réduit).
 - [ ] Vérifier visuellement plusieurs chiffres, notamment 1, 4, 7 et 8, dans le navigateur.
+
+
+## Visage animé — 2026-10-11
+- [x] Écarter davantage les yeux et garder les éléments du visage groupés autour du même point d'ancrage.
+- [x] Revoir la bouche pour aligner le sourire ou la langue sous les yeux.
+- [x] Animer les clignements, le léger mouvement du personnage et la bouche tant que l'état de réussite reste actif.
+- [ ] Vérifier visuellement les proportions sur les dix chiffres et les lettres lorsqu'elles seront intégrées.

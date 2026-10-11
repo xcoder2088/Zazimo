@@ -109,3 +109,7 @@ Les fichiers `prototype/index.html`, `prototype/styles.css` et `prototype/app.js
 
 ## 2026-10-11 — Ajustement du centrage et des angles
 Les captures montrent que le chemin pointillé du 3 suivait trop le contour externe, et que le 1 formait une boucle au sommet. Les routes du 1 et du 3 ont été déplacées vers la ligne médiane; le lissage automatique est maintenant désactivé pour 1, 4 et 7 afin de garder leurs segments droits et leurs angles. Commit `e163ac8` sur `main`. Le rendu doit être revérifié après `git pull origin main` et `Ctrl+F5`; aucun test navigateur n'est déclaré réussi.
+
+
+## 2026-10-11 — Retour visuel sur les chiffres 3, 1 et 5
+Les dernières captures confirment que le problème est plus profond que le simple lissage : le pointillé ne suit pas toujours la ligne médiane du modèle, et le 5 a des angles qui étaient arrondis par l'interpolation. Commit `896518d` sur `main` : lissage désactivé pour 5 et route du 5 ajustée. La route du 3 reste à valider/corriger; le recentrage du 1 n'est pas encore considéré comme confirmé. Prochaine étape : routes conçues chiffre par chiffre avec segments droits et courbes uniquement là où la forme l'exige. Aucun test navigateur réel n'est déclaré réussi.

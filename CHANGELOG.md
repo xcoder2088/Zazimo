@@ -210,3 +210,7 @@
 
 ## 2026-10-11 — Espacement du visage
 - Séparation verticale accrue entre les yeux et la bouche des chiffres animés.
+
+
+## 2026-10-11 — Visages des chiffres
+- Repositionnement manuel, chiffre par chiffre, des yeux sur le haut du contour et des bouches sur la surface colorée.

@@ -156,3 +156,7 @@ Les routes des chiffres 0, 2, 3 et 6 ont été repositionnées; la route du 1 a 
 
 ## Nouvelle méthode de traçage — validation visuelle requise
 Le modèle visible n'utilise plus un glyphe de police séparé : il est dessiné par un trait large translucide à partir du même chemin que le pointillé. Cela garantit leur alignement géométrique. Commits `93f8868` et `3850645`. **Pas encore validé visuellement** : confirmer que les chiffres ressemblent à des modèles d'écriture adaptés aux enfants, puis raffiner les routes qui en ont besoin.
+
+
+## Chiffres arrondis — révision en attente de validation
+Les chiffres arrondis 0, 2, 3, 6, 8 et 9 ont reçu des routes plus compactes; l'épaisseur du modèle a été réduite (commit `19a8e4c`). Les chiffres angulaires n'ont pas été modifiés dans cette passe. Vérifier après `git pull origin main` et `Ctrl+F5`; aucune validation finale n'est déclarée avant le retour visuel.

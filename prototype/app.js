@@ -26,9 +26,12 @@
   function tracePath() {
     const rect = canvas.getBoundingClientRect();
     return [
-      { x: rect.width * 0.33, y: rect.height * 0.33 },
-      { x: rect.width * 0.545, y: rect.height * 0.24 },
-      { x: rect.width * 0.545, y: rect.height * 0.80 }
+      // Start inside the diagonal stroke, reach the top junction, then
+      // move onto the center of the vertical stroke and trace downward.
+      { x: rect.width * 0.50, y: rect.height * 0.39 },
+      { x: rect.width * 0.70, y: rect.height * 0.25 },
+      { x: rect.width * 0.66, y: rect.height * 0.25 },
+      { x: rect.width * 0.66, y: rect.height * 0.78 }
     ];
   }
 

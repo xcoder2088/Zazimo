@@ -92,3 +92,12 @@ body.calm .reward-star { background: #e9f1e7; color: #789b7a; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+.digit-picker { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 7px; margin: 16px 0 4px; }
+.digit-option { min-width: 0; min-height: 42px; border: 2px solid #e6eaf0; border-radius: 13px; background: #fff; color: var(--ink); font-weight: 900; font-size: 1.05rem; }
+.digit-option[aria-pressed="true"] { border-color: var(--orange); background: #fff0d9; color: #814718; box-shadow: 0 3px 0 rgba(230,162,60,.2); }
+.guide-glyph { fill: #8da4c5; font-family: "Trebuchet MS", system-ui, sans-serif; font-size: 224px; font-weight: 900; opacity: .22; }
+@media (max-width: 520px) {
+  .digit-picker { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+  .digit-option { min-height: 44px; }
+}

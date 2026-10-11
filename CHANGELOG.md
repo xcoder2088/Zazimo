@@ -93,3 +93,9 @@
 ## 2026-10-11 — Modèle et pointillé unifiés
 - Le modèle translucide et le guide pointillé sont désormais rendus à partir du même chemin, éliminant le décalage entre la police et les routes manuelles.
 - Contrôle de forme, d'épaisseur et de lisibilité des dix chiffres encore requis.
+
+
+## 2026-10-11 — Raffinement des chiffres arrondis
+- Modèle de traçage légèrement aminci.
+- Routes 0, 2, 3, 6, 8 et 9 resserrées et régularisées.
+- Validation visuelle après actualisation requise.

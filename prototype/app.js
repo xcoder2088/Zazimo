@@ -355,7 +355,7 @@
     startDemo();
   }
 
-  digitButtons.forEach(button => button.addEventListener("click",  function validateTrace() {
+  function validateTrace() {
     const rect = canvas.getBoundingClientRect();
     if (points.length < 8) {
       feedback.textContent = "Trace un peu plus longtemps le long du chiffre.";
@@ -422,6 +422,10 @@
   }
 
   checkButton.addEventListener("click", validateTrace);
+
+  digitButtons.forEach(button => {
+    button.addEventListener("click", () => selectDigit(button.dataset.digit));
+  });
 
   themeButtons.forEach(button => {
     button.addEventListener("click", () => {

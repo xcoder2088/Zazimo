@@ -173,3 +173,7 @@ Commit `ce249a6` : les yeux se placent maintenant à partir du point le plus hau
 
 ## 2026-10-11 — Visage mieux aligné et animé
 Commit `3ebea8c` : yeux davantage espacés; yeux et bouche sont positionnés depuis un ancrage commun pour former un visage cohérent. Sourire et langue tirée ont maintenant une ouverture animée; clignements et léger mouvement continuent tant que la réussite est affichée. L'animation s'arrête quand l'état de réussite est réinitialisé. Syntaxe JavaScript vérifiée; rendu visuel à confirmer dans le navigateur.
+
+
+## 2026-10-11 — Bouche cartoon revue
+Commit `b80d3f5` : la bouche est maintenant plus large et construite comme une vraie forme remplie. Le sourire montre des dents; l'expression langue tirée a une cavité sombre, des dents et une langue rose animée. Syntaxe JavaScript vérifiée; validation visuelle navigateur encore nécessaire.

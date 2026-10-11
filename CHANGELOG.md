@@ -186,3 +186,7 @@
 ## 2026-10-11 — Récompenses variées
 - Couleur aléatoire à chaque réussite, avec prévention de répétition immédiate.
 - Combinaisons d’animations choisies aléatoirement.
+
+
+## 2026-10-11 — Visage des chiffres
+- Ajustement de la position et de la largeur de la bouche selon la forme du chiffre.

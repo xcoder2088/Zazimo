@@ -361,3 +361,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Définir des coordonnées de bouche propres à chaque chiffre, dans la surface colorée sous les yeux.
 - [x] Vérifier la syntaxe JavaScript.
 - [ ] Vérifier visuellement les chiffres 0 à 9 dans le navigateur; ajuster si nécessaire.
+
+
+## Visages vectoriels — 2026-10-11
+- [x] Séparer le rendu du visage du dessin Canvas avec une couche SVG dédiée.
+- [x] Définir des ancres manuelles propres à chaque chiffre pour les yeux et la bouche.
+- [x] Vérifier la syntaxe JavaScript après migration.
+- [ ] Valider visuellement chaque chiffre dans un navigateur et ajuster les ancres.

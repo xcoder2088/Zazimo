@@ -13,6 +13,7 @@
   const numberTitle = document.getElementById("number-title");
   const guideGlyph = document.querySelector(".guide-glyph");
   let selectedDigit = 1;
+  let successState = false;
   // Playful color is applied directly to the validated centerline routes.
   // This prevents decorative silhouettes from drifting away from the tracing path.
   const numeralPalette = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83"];
@@ -20,9 +21,9 @@
     const routes = tracePaths();
     const now = performance.now();
     const celebrationElapsed = now - celebrationStartedAt;
-    const celebrating = celebrationActive && celebrationElapsed < 1800;
+    const celebrating = successState || (celebrationActive && celebrationElapsed < 1800);
     const palette = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83"];
-    const width = Math.max(30, Math.min(38, canvas.clientWidth * 0.065));
+    const width = Math.max(42, Math.min(54, canvas.clientWidth * 0.09));
     const bounce = celebrating && celebrationMode === "jump" ? Math.sin(celebrationElapsed / 85) * 5 : 0;
     ctx.save();
     ctx.translate(0, -bounce);
@@ -58,8 +59,8 @@
           if ((blink || (wink && index === 1))) {
             ctx.moveTo(x-6,y); ctx.lineTo(x+6,y); ctx.stroke();
           } else {
-            ctx.ellipse(x,y,7,9,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
-            ctx.fillStyle = "#243344"; ctx.beginPath(); ctx.ellipse(x+1,y+1,2.5,4,0,0,Math.PI*2); ctx.fill();
+            ctx.ellipse(x,y,10,13,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
+            ctx.fillStyle = "#243344"; ctx.beginPath(); ctx.ellipse(x+1.5,y+1.5,4,6,0,0,Math.PI*2); ctx.fill();
           }
         }
       }
@@ -325,6 +326,7 @@
   });
 
   clearButton.addEventListener("click", () => {
+    successState = false;
     celebrationActive = false;
     points = [];
     strokes = [];
@@ -339,6 +341,7 @@
   demoButton.addEventListener("click", startDemo);
 
   function selectDigit(value) {
+    successState = false;
     selectedDigit = Number(value);
     numberTitle.textContent = "Le chiffre " + selectedDigit;
     guideGlyph.textContent = String(selectedDigit);
@@ -383,6 +386,7 @@
       points = [];
       strokes = [];
       activeStroke = [];
+      successState = true;
       celebrationActive = true;
       celebrationMode = ["blink", "wink", "jump"][Math.floor(Math.random() * 3)];
       celebrationStartedAt = performance.now();

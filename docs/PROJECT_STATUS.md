@@ -144,3 +144,7 @@ Les routes de démonstration sont maintenant interpolées pour réduire l'aspect
 
 ## Ajustement des chemins de traçage — à vérifier
 Les chemins du 1 et du 3 ont été recentrés à partir des captures; le lissage est désactivé pour les chiffres angulaires 1, 4 et 7. Commit `e163ac8` sur `main`. Le rendu doit être vérifié dans le navigateur avant de considérer ces routes comme acceptées.
+
+
+## Ajustement du chiffre 5 — en attente de validation
+Le lissage automatique a été désactivé pour le 5 et sa route a été ajustée après les captures utilisateur (commit `896518d`). Les captures indiquent encore que les routes ne sont pas suffisamment centrées sur la ligne médiane du modèle. La prochaine correction doit traiter chaque chiffre individuellement et préserver les coins comme les courbes selon le tracé manuscrit attendu. Aucun statut de validation finale n'est accordé.

@@ -168,3 +168,7 @@ Le chiffre 1 est désormais défini comme deux gestes distincts : diagonale, pui
 
 ## Régression d'interactivité — correctif poussé, vérification requise
 Une déclaration `const smooth` en double dans `tracePaths()` empêchait le chargement de `prototype/app.js`. Elle a été supprimée dans le commit `6a8c1ba`. Cela devrait rétablir l'exécution du script et les interactions, mais le navigateur doit encore être testé après `git pull origin main` et `Ctrl+F5`. Une validation syntaxique préalable aux prochains changements est désormais une action requise.
+
+
+## Chiffres arrondis — deuxième passe en attente de retour
+Les routes 0, 2, 3, 6, 8 et 9 ont été redessinées pour améliorer leur équilibre et leurs courbes, et l'épaisseur du modèle translucide a été réduite (commit `b3d3455`). Les chiffres angulaires approuvés restent inchangés. Le résultat doit être contrôlé dans le navigateur; ne pas considérer les formes arrondies comme finalisées avant comparaison à la référence Zazimo.

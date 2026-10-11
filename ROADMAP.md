@@ -206,3 +206,11 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Revoir les routes des chiffres 0, 2, 3, 6, 8 et 9 pour obtenir des boucles plus compactes et régulières.
 - [ ] Vérifier visuellement ces six chiffres après actualisation forcée et contrôler que les pointillés restent centrés.
 - [ ] Confirmer que le nouveau poids visuel reste lisible sur petit écran et en mode Sérénité.
+
+
+## Traçage pédagogique du chiffre 1 en deux traits
+- [x] Séparer le chiffre 1 en deux traits indépendants : diagonale en premier, verticale en second.
+- [x] Afficher le modèle translucide et le pointillé sur ces mêmes deux segments.
+- [x] Adapter la démonstration pour suivre les traits dans l'ordre sans relier artificiellement leurs extrémités.
+- [ ] Vérifier dans le navigateur que l'animation et le dessin manuel montrent bien les deux gestes distincts.
+- [ ] Étendre ensuite le modèle multi-traits aux chiffres qui en ont besoin, avec ordre pédagogique défini.

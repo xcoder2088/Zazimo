@@ -221,3 +221,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Conserver le modèle du chiffre 1 en deux traits distincts.
 - [ ] Après `git pull` et actualisation forcée, vérifier les clics sur les chiffres, la démonstration, recommencer, vérifier le tracé et les thèmes.
 - [ ] Ajouter une vérification syntaxique JavaScript avant chaque futur push de modification du prototype.
+
+
+## Raffinement des chiffres arrondis — deuxième passe
+- [x] Redessiner les proportions des routes 0, 2, 3, 6, 8 et 9 avec des courbes plus généreuses et des silhouettes mieux équilibrées.
+- [x] Réduire l'épaisseur du modèle translucide pour éviter l'aspect trop lourd.
+- [ ] Vérifier le rendu réel des six chiffres sur navigateur et comparer à la référence visuelle Zazimo.
+- [ ] Ne pas modifier les chiffres angulaires déjà approuvés sans besoin explicite.

@@ -74,3 +74,7 @@ Le chemin du guide et la démonstration partagent la fonction `tracePath()`. Ses
 
 ## Retour utilisateur : le guide est encore mal aligné
 Le placement précédent était clairement incorrect (départ trop à gauche, verticale trop à droite). Un nouveau chemin a été poussé dans `prototype/app.js` : départ dans la diagonale visible, montée vers le raccord supérieur, petit raccord vers le centre de la hampe, puis descente. Ne pas considérer la correction comme validée avant nouvelle capture du navigateur.
+
+
+## Correctif structurel après plusieurs échecs d'alignement
+Les coordonnées approximatives indépendantes ont été abandonnées. Le chiffre 1 est maintenant dessiné par une silhouette SVG explicite dans `prototype/index.html`; `prototype/app.js` convertit les points d'un même repère SVG (450 × 250) en coordonnées canvas pour le guide et l'animation. La méthode évite que la police et le chemin de tracé dérivent l'un par rapport à l'autre. Correctif poussé sur `main`; vérification visuelle encore nécessaire. Ne pas annoncer ce point comme validé avant retour utilisateur.

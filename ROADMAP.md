@@ -272,3 +272,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Agrandir les yeux de la célébration.
 - [x] Conserver l'état coloré et les yeux après la fin de l'animation; le réinitialiser seulement lors du changement de chiffre ou du bouton Recommencer.
 - [ ] Comparer les dix chiffres dans le navigateur et ajuster les proportions si nécessaire.
+
+
+## Personnages et démonstration — 2026-10-11
+- [x] Ancrer les yeux au point supérieur réel du chiffre pour éviter qu'ils flottent à distance.
+- [x] Agrandir les yeux et les pupilles; ajouter une expression aléatoire sourire/langue tirée après réussite.
+- [x] Ralentir la démonstration du tracé à 3,2 secondes (sauf préférence système de mouvement réduit).
+- [ ] Vérifier visuellement plusieurs chiffres, notamment 1, 4, 7 et 8, dans le navigateur.

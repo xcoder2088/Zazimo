@@ -116,3 +116,9 @@
 - Proportions retravaillées pour 0, 2, 3, 6, 8 et 9.
 - Épaisseur du modèle réduite pour un rendu moins massif.
 - Validation visuelle requise avant acceptation.
+
+
+## 2026-10-11 — Chiffres ludiques (expérimental)
+- Ajout de formes vectorielles colorées avec contour et yeux expressifs.
+- Suppression du large trait translucide qui masquait les nouvelles couleurs; le pointillé précis reste visible au-dessus.
+- Vérification visuelle et fonctionnelle encore requise.

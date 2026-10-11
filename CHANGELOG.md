@@ -198,3 +198,7 @@
 
 ## 2026-10-11 — Bouche attachée au chiffre
 - Repositionnement individuel des bouches sur la ligne centrale des chiffres 0 à 9; bouche réduite pour limiter les débordements.
+
+
+## 2026-10-11 — Visage aligné sur le haut du chiffre
+- Repositionnement des yeux et des bouches pour former un visage cohérent sur le trait supérieur des chiffres 0 à 9.

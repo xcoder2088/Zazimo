@@ -165,3 +165,7 @@ Le défaut était localisé dans `prototype/app.js` : la fonction `validateTrace
 
 ## 2026-10-11 — Ajustement visuel Zazimo Épais et réussite persistante
 Commit `f8e7c3c` : largeur du trait de silhouette augmentée, yeux et pupilles agrandis. Ajout de `successState` pour que la silhouette colorée et les yeux restent affichés après la fin de l'animation; réinitialisation au changement de chiffre et au bouton Recommencer, conformément à la demande. Contrôle de syntaxe JavaScript après récupération du fichier et vérification des conditions de persistance effectués; contrôle navigateur visuel encore nécessaire.
+
+
+## 2026-10-11 — Visage mieux ancré et démonstration ralentie
+Commit `ce249a6` : les yeux se placent maintenant à partir du point le plus haut des routes du chiffre, sont plus grands, et une bouche aléatoire (sourire ou langue tirée) apparaît après réussite. Démonstration ralentie à 3,2 secondes, en conservant le respect du réglage système de mouvement réduit. Syntaxe JavaScript vérifiée; validation visuelle navigateur encore requise.

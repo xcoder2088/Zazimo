@@ -241,3 +241,11 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Retirer les silhouettes remplies indépendantes qui déformaient notamment les chiffres 1 et 2.
 - [x] Appliquer couleur et contour directement sur les routes centrales existantes pour que la forme illustrée corresponde au tracé pédagogique.
 - [ ] Vérifier les dix chiffres et l'animation dans le navigateur; confirmer que les yeux restent décoratifs et ne masquent pas le départ.
+
+
+## Chiffres épais et récompense animée — implémentation initiale
+- [x] Chiffres neutres, épais, sans yeux ni couleur vive avant réussite.
+- [x] Après réussite de la validation existante : couleur vive, yeux et animation aléatoire parmi clignement, clin d'œil et petit saut.
+- [x] Arrêter l'animation lorsqu'un nouvel essai commence ou que l'enfant change de chiffre.
+- [ ] Vérifier dans le navigateur les dix chiffres, la visibilité du pointillé, la validation, la démonstration et les trois animations.
+- [ ] Revoir l'esthétique de chaque forme seulement après confirmation que le guide reste lisible.

@@ -44,3 +44,15 @@ Créer la première maquette tactile : écran d'accueil, choix « Chiffres », c
 - Mettre à jour ROADMAP.md, PROJECT_STATUS.md et ce checkpoint lorsque l'état change.
 - Ne pas annoncer une fonctionnalité comme terminée sans preuve de test.
 - N'ajouter aucune référence de fournisseur ou d'assistant dans le code, la documentation publique ou les messages de commit.
+
+
+## Prototype tactile — état actuel
+Fichiers présents sur la branche `main` :
+- `prototype/index.html`
+- `prototype/styles.css`
+- `prototype/app.js`
+
+Le prototype présente un exercice de tracé du chiffre 1, une interface adaptative, un basculement Énergie/Sérénité simplifié, une action de remise à zéro et un retour de réussite avec son facultatif. Les fichiers ont été créés et relus via GitHub. Ils n'ont pas encore été exécutés dans un navigateur réel. La validation actuelle est expérimentale et doit être améliorée avant toute utilisation pédagogique réelle.
+
+### Prochaine action précise
+Tester le prototype en navigateur sur téléphone et tablette, corriger les bogues observés, puis améliorer le moteur de validation et ajouter une aide accessible. Ensuite seulement, valider le parcours et avancer vers les lettres et les défis.

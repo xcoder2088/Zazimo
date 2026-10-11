@@ -333,3 +333,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Réduire la bouche pour éviter qu'elle déborde dans les espaces vides.
 - [x] Vérifier la syntaxe JavaScript après modification.
 - [ ] Contrôle visuel dans le navigateur sur les chiffres 0 à 9 encore nécessaire.
+
+
+## Visage sur le haut des chiffres — 2026-10-11
+- [x] Recentrer les yeux sur le haut du chiffre.
+- [x] Placer la bouche juste sous les yeux, sur le trait supérieur, avec des coordonnées propres à chaque chiffre.
+- [x] Vérifier la syntaxe JavaScript après modification.
+- [ ] Vérification visuelle navigateur des chiffres 0 à 9 à effectuer.

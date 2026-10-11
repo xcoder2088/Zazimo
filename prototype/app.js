@@ -41,7 +41,7 @@
     ctx.beginPath();
     ctx.moveTo(rect.width * 0.44, rect.height * 0.34);
     ctx.lineTo(rect.width * 0.53, rect.height * 0.25);
-    ctx.lineTo(rect.width * 0.62, rect.height * 0.34);
+    ctx.lineTo(rect.width * 0.53, rect.height * 0.75);
     ctx.stroke();
     ctx.restore();
   }

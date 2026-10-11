@@ -113,3 +113,9 @@ Les fichiers existent dans `prototype/`, mais l'étape n'est pas terminée tant 
 - [ ] Vérifier visuellement le centrage du pointillé sur le chiffre dans le navigateur.
 - [ ] Tester la démonstration sur téléphone/tablette et avec réduction des animations activée.
 - [ ] Confirmer que l'interaction tactile et la remise à zéro fonctionnent après la démonstration.
+
+
+## Ajustement du pointillé — en attente de confirmation visuelle
+- [x] Déplacer les coordonnées normalisées du guide pour mieux correspondre au centre du trait visible du chiffre 1.
+- [ ] Actualiser le clone local et vérifier l'alignement sur ordinateur.
+- [ ] Vérifier le même alignement sur téléphone/tablette et confirmer que la démonstration suit exactement le guide.

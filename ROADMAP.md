@@ -185,3 +185,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Ajuster légèrement la route du 5 pour mieux suivre la structure du glyphe.
 - [ ] Revoir la géométrie de toutes les routes à partir de la ligne médiane réelle de chaque glyphe, et non d'une approximation générique.
 - [ ] Tester chaque chiffre séparément; certains combinent des segments droits et des courbes et ne doivent pas être classés entièrement anguleux ou entièrement arrondis.
+
+
+## Reprise des lignes médianes — chiffres 0 à 3 et 6
+- [x] Repositionner les points de départ et les courbes des chiffres 0, 2, 3 et 6 à partir des captures de démonstration.
+- [x] Ajuster la fin de la verticale du 1 pour qu'elle se termine plus près du modèle visible.
+- [ ] Revalider chaque chemin après actualisation forcée; les coordonnées restent une première approximation.
+- [ ] Comparer les lignes pointillées aux lignes médianes du glyphe sur les captures de 0 à 9, pas uniquement sur 1 à 6.

@@ -164,3 +164,7 @@ Les chiffres arrondis 0, 2, 3, 6, 8 et 9 ont reçu des routes plus compactes; l'
 
 ## Chiffre 1 — modèle à deux traits implémenté
 Le chiffre 1 est désormais défini comme deux gestes distincts : diagonale, puis verticale. Le modèle et le pointillé partagent ces chemins, et la démonstration les anime dans l'ordre sans liaison parasite (commits `cde38eb`, `39f8a4e`). **À valider visuellement et fonctionnellement dans le navigateur** avant de déclarer la modification terminée.
+
+
+## Régression d'interactivité — correctif poussé, vérification requise
+Une déclaration `const smooth` en double dans `tracePaths()` empêchait le chargement de `prototype/app.js`. Elle a été supprimée dans le commit `6a8c1ba`. Cela devrait rétablir l'exécution du script et les interactions, mais le navigateur doit encore être testé après `git pull origin main` et `Ctrl+F5`. Une validation syntaxique préalable aux prochains changements est désormais une action requise.

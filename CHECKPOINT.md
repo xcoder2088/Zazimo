@@ -217,3 +217,7 @@ Commit `2e1fdcc` : bouche déplacée plus bas et légèrement élargie pour évi
 
 ## 2026-10-11 — Recalibrage manuel des visages
 Commit `6d45527` : les coordonnées des yeux et des bouches sont définies séparément et individuellement pour chaque chiffre; les yeux sont remontés vers le contour supérieur et les bouches sont replacées plus bas dans le corps coloré. Syntaxe vérifiée. Validation visuelle navigateur toujours requise.
+
+
+## 2026-10-11 — Visages en SVG
+Commit `55b6244` : les yeux et la bouche sont désormais dessinés dans une couche SVG indépendante du Canvas de traçage. Les positions restent manuelles par chiffre. Syntaxe JavaScript validée; test visuel navigateur non effectué.

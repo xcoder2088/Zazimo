@@ -177,3 +177,7 @@ Commit `3ebea8c` : yeux davantage espacés; yeux et bouche sont positionnés dep
 
 ## 2026-10-11 — Bouche cartoon revue
 Commit `b80d3f5` : la bouche est maintenant plus large et construite comme une vraie forme remplie. Le sourire montre des dents; l'expression langue tirée a une cavité sombre, des dents et une langue rose animée. Syntaxe JavaScript vérifiée; validation visuelle navigateur encore nécessaire.
+
+
+## 2026-10-11 — Ancrage facial par chiffre et couleurs aléatoires
+Commit `6cda271` : le visage utilise maintenant des ancrages spécifiques pour chaque chiffre de 0 à 9, pour éviter les bouches qui semblent flotter ou tomber hors de la forme. Les yeux sont un peu plus écartés. Chaque chiffre reçoit une couleur vive aléatoire, conservée tant qu'il reste sélectionné. Syntaxe JavaScript vérifiée; validation visuelle navigateur encore nécessaire.

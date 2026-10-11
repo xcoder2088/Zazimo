@@ -44,3 +44,9 @@
 - Remplacement du chiffre 1 en police par une silhouette SVG explicite.
 - Le guide pointillé et la démonstration partagent le même repère géométrique.
 - Validation visuelle à effectuer avant extension aux autres caractères.
+
+
+## 2026-10-11 — Spécification des thèmes visuels
+- Ajout des choix garçon, fille, mixte et neutre dans les paramètres prévus de l'éducateur.
+- Précision : le thème ne change pas le contenu pédagogique et ne doit pas imposer de stéréotypes.
+- Fonctionnalité documentée, mais pas encore implémentée.

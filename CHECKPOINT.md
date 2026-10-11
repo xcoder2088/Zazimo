@@ -193,3 +193,7 @@ Commit `f2b678b` : la couleur du personnage est maintenant choisie à chaque ré
 
 ## 2026-10-11 — Position de la bouche
 Commit `7d3d887` : la bouche utilise maintenant des décalages spécifiques selon le chiffre, au lieu d'une position identique pour tous. Sa largeur est légèrement réduite. Syntaxe vérifiée; validation visuelle navigateur encore nécessaire.
+
+
+## 2026-10-11 — Bouche ancrée par chiffre
+Commit `c9ad5d6` : les coordonnées de bouche sont maintenant définies individuellement pour les chiffres 0 à 9 et transformées depuis le repère commun 450×250, plutôt que calculées uniquement sous les yeux. Syntaxe vérifiée; contrôle visuel des dix chiffres toujours requis.

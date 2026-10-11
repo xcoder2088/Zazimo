@@ -72,3 +72,9 @@
 - Ajout d'une interpolation des routes pour adoucir les chiffres arrondis et la démonstration.
 - Renforcement de la visibilité du chiffre-guide.
 - Contrôle visuel après actualisation encore requis; aucun test navigateur n'est déclaré réussi.
+
+
+## 2026-10-11 — Correction du centrage des chiffres
+- Repositionnement des routes de démonstration des chiffres 1 et 3 vers le centre des traits.
+- Conservation des segments angulaires pour 1, 4 et 7 au lieu de les arrondir automatiquement.
+- Contrôle visuel après actualisation encore requis.

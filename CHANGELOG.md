@@ -66,3 +66,9 @@
 - Le tracé et le message de récompense sont réinitialisés lors d'un changement de chiffre.
 - Ajout de routes de démonstration distinctes, à contrôler et ajuster visuellement.
 - La validation du tracé reste expérimentale; aucun test en navigateur réel n'est déclaré réussi.
+
+
+## 2026-10-11 — Lissage des chiffres et amélioration du contraste
+- Ajout d'une interpolation des routes pour adoucir les chiffres arrondis et la démonstration.
+- Renforcement de la visibilité du chiffre-guide.
+- Contrôle visuel après actualisation encore requis; aucun test navigateur n'est déclaré réussi.

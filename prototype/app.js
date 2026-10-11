@@ -364,15 +364,17 @@
     const xs = points.map(p => p.x);
     const ys = points.map(p => p.y);
     const yRange = Math.max(...ys) - Math.min(...ys);
-    const route = tracePath();
+    const routes = tracePaths();
     const meanDistance = points.reduce((sum, point) => {
       let closest = Infinity;
-      for (let i = 1; i < route.length; i++) {
-        const a = route[i - 1], b = route[i];
-        const dx = b.x - a.x, dy = b.y - a.y;
-        const lengthSquared = dx * dx + dy * dy || 1;
-        const t = Math.max(0, Math.min(1, ((point.x-a.x)*dx + (point.y-a.y)*dy) / lengthSquared));
-        closest = Math.min(closest, Math.hypot(point.x - (a.x+t*dx), point.y - (a.y+t*dy)));
+      for (const route of routes) {
+        for (let i = 1; i < route.length; i++) {
+          const a = route[i - 1], b = route[i];
+          const dx = b.x - a.x, dy = b.y - a.y;
+          const lengthSquared = dx * dx + dy * dy || 1;
+          const t = Math.max(0, Math.min(1, ((point.x-a.x)*dx + (point.y-a.y)*dy) / lengthSquared));
+          closest = Math.min(closest, Math.hypot(point.x - (a.x+t*dx), point.y - (a.y+t*dy)));
+        }
       }
       return sum + closest;
     }, 0) / points.length;

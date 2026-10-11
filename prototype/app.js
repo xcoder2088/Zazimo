@@ -90,11 +90,20 @@
   function drawGuide() {
     const path = tracePath();
     ctx.save();
-    ctx.strokeStyle = document.body.classList.contains("calm") ? "#a8c5b6" : "#b7c6d9";
-    ctx.lineWidth = 3;
-    ctx.setLineDash([5, 8]);
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
+    // The visible tracing model and the dotted guide now share this exact path.
+    // This removes the mismatch caused by drawing a font glyph behind a hand-built route.
+    ctx.strokeStyle = document.body.classList.contains("calm") ? "#d7e7de" : "#c8d3e3";
+    ctx.lineWidth = Math.max(28, Math.min(40, canvas.clientWidth * 0.075));
+    ctx.setLineDash([]);
+    ctx.beginPath();
+    ctx.moveTo(path[0].x, path[0].y);
+    for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
+    ctx.stroke();
+    ctx.strokeStyle = document.body.classList.contains("calm") ? "#8eae9d" : "#9fb4d0";
+    ctx.lineWidth = 3;
+    ctx.setLineDash([5, 8]);
     ctx.beginPath();
     ctx.moveTo(path[0].x, path[0].y);
     for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);

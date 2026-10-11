@@ -20,3 +20,11 @@
 - Le chemin pointillé du chiffre 1 suit désormais la diagonale et le trait vertical.
 - Suppression de la branche visuelle en forme de flèche et de la flèche séparée sous le chiffre.
 - Vérification visuelle après actualisation encore requise.
+
+
+## 2026-10-11 — Démonstration guidée
+- Ajout d'une animation initiale montrant le trajet du chiffre 1.
+- Ajout d'un bouton pour rejouer la démonstration.
+- Recentrement du guide pointillé sur la ligne médiane du chiffre.
+- Ajout de consignes simples avant le premier essai.
+- Tests visuels et tactiles encore à réaliser.

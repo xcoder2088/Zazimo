@@ -60,3 +60,9 @@ Tester le prototype en navigateur sur téléphone et tablette, corriger les bogu
 
 ## Dernière modification — guide de traçage
 Le guide pointillé a été corrigé dans `prototype/app.js` pour suivre le chiffre 1 : diagonale vers le sommet, puis trait vertical vers le bas. La branche de droite et la petite flèche séparée ont été retirées de `prototype/index.html` et `prototype/styles.css`. Commits enregistrés sur `main`; la validation visuelle locale reste à effectuer après actualisation.
+
+
+## Dernière modification — démonstration animée
+La maquette lance désormais une démonstration du chiffre 1 à l'ouverture : un point monte en diagonale puis descend, en suivant le guide pointillé. Un bouton « Revoir la démonstration » permet de rejouer le geste. Le guide a été recentré sur la ligne médiane du chiffre. Commits sur `main` dans `prototype/index.html`, `prototype/styles.css` et `prototype/app.js`.
+
+**À vérifier ensuite :** actualiser le clone local avec `git pull origin main`, puis contrôler le centrage visuel du pointillé, la démonstration automatique, le bouton de répétition, le tracé tactile et la remise à zéro. Les tests en navigateur et sur appareils ne sont pas encore déclarés réussis.

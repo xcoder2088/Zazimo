@@ -188,3 +188,7 @@ Le rendu initial est désormais neutre et épais, sans yeux ni couleur vive. Apr
 
 ## Validation automatique — code poussé, test navigateur requis
 Le code déclenche maintenant `validateTrace()` à la fin d'un geste et efface les points/traits temporaires après réussite avant la célébration (commit `d8d4f3f`). Le bouton manuel est conservé en secours. Les contrôles statiques ont confirmé les liaisons attendues et des accolades équilibrées; aucune validation navigateur n'a été effectuée. La forme des chiffres n'est pas encore conforme à la référence finale Zazimo Épais.
+
+
+## Validation automatique — correctif de refactorisation
+Un fragment résiduel de l'ancien gestionnaire de clic a été retiré dans le commit `c701b07`. Le bloc `validateTrace()` et la fin du fichier ont été relus; la validation syntaxique avec un moteur JavaScript et les tests navigateur restent à effectuer. Ne pas considérer cette modification comme validée en production.

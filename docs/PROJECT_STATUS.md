@@ -192,3 +192,7 @@ Le code déclenche maintenant `validateTrace()` à la fin d'un geste et efface l
 
 ## Validation automatique — correctif de refactorisation
 Un fragment résiduel de l'ancien gestionnaire de clic a été retiré dans le commit `c701b07`. Le bloc `validateTrace()` et la fin du fichier ont été relus; la validation syntaxique avec un moteur JavaScript et les tests navigateur restent à effectuer. Ne pas considérer cette modification comme validée en production.
+
+
+## Réparation urgente — interactions restaurées dans le code
+Le bloc de validation avait été accidentellement placé dans le gestionnaire de clic des chiffres, provoquant une erreur de syntaxe. Les commits `7376c24` et `0d7db61` rétablissent la structure des fonctions et vérifient les distances sur toutes les routes. `new Function(appJs)` réussit sur le fichier récupéré après les commits; les handlers de sélection, validation manuelle et validation automatique sont présents. Le rendu et les interactions doivent encore être confirmés dans le navigateur réel.

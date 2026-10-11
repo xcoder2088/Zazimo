@@ -70,3 +70,7 @@ La maquette lance désormais une démonstration du chiffre 1 à l'ouverture : un
 
 ## Dernier correctif — position du guide
 Le chemin du guide et la démonstration partagent la fonction `tracePath()`. Ses coordonnées normalisées ont été ajustées pour faire partir le tracé du bas-gauche de la diagonale, monter jusqu'au sommet, puis descendre au centre de la hampe verticale. Commit sur `main` : `prototype/app.js`. Le résultat doit être vérifié après `git pull origin main` et `Ctrl+F5`.
+
+
+## Retour utilisateur : le guide est encore mal aligné
+Le placement précédent était clairement incorrect (départ trop à gauche, verticale trop à droite). Un nouveau chemin a été poussé dans `prototype/app.js` : départ dans la diagonale visible, montée vers le raccord supérieur, petit raccord vers le centre de la hampe, puis descente. Ne pas considérer la correction comme validée avant nouvelle capture du navigateur.

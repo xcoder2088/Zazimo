@@ -213,3 +213,7 @@ Commit `f484350` : coordonnées de bouche rapprochées du trait supérieur et bo
 
 ## 2026-10-11 — Espacement du visage
 Commit `2e1fdcc` : bouche déplacée plus bas et légèrement élargie pour éviter le chevauchement avec les yeux. Coordonnées individualisées par chiffre. Syntaxe vérifiée; contrôle visuel navigateur non effectué.
+
+
+## 2026-10-11 — Recalibrage manuel des visages
+Commit `6d45527` : les coordonnées des yeux et des bouches sont définies séparément et individuellement pour chaque chiffre; les yeux sont remontés vers le contour supérieur et les bouches sont replacées plus bas dans le corps coloré. Syntaxe vérifiée. Validation visuelle navigateur toujours requise.

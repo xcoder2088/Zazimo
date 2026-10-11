@@ -163,3 +163,8 @@
 ## 2026-10-11 — Expressions des chiffres et animation plus lente
 - Visage plus grand et ancré au chiffre, avec sourire ou langue tirée choisi aléatoirement après réussite.
 - Démonstration du tracé ralentie à 3,2 secondes, sauf si le système demande de réduire les animations.
+
+
+## 2026-10-11 — Visage animé
+- Espacement accru entre les yeux et alignement de la bouche sous ceux-ci.
+- Animation continue et discrète des clignements, du sourire ou de la langue tirée pendant l'état de réussite.

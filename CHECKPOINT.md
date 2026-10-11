@@ -113,3 +113,7 @@ Les captures montrent que le chemin pointillé du 3 suivait trop le contour exte
 
 ## 2026-10-11 — Retour visuel sur les chiffres 3, 1 et 5
 Les dernières captures confirment que le problème est plus profond que le simple lissage : le pointillé ne suit pas toujours la ligne médiane du modèle, et le 5 a des angles qui étaient arrondis par l'interpolation. Commit `896518d` sur `main` : lissage désactivé pour 5 et route du 5 ajustée. La route du 3 reste à valider/corriger; le recentrage du 1 n'est pas encore considéré comme confirmé. Prochaine étape : routes conçues chiffre par chiffre avec segments droits et courbes uniquement là où la forme l'exige. Aucun test navigateur réel n'est déclaré réussi.
+
+
+## 2026-10-11 — Nouvelle révision des lignes médianes
+Après les captures des chiffres 6, 3, 2 et 1, les routes des chiffres 0, 2, 3 et 6 ont été redessinées avec des points de départ et des courbes plus proches du centre des traits; la verticale du 1 a été raccourcie pour mieux correspondre au modèle. Commit `a6ad474` sur `main`. Les coordonnées sont toujours manuelles et nécessitent une nouvelle vérification dans le navigateur. Ne pas déclarer le traçage validé avant comparaison visuelle des dix chiffres.

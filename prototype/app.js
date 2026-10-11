@@ -47,21 +47,37 @@
         for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
         ctx.stroke();
       }
-      const first = routes[0]?.[0];
-      if (first) {
-        const ex = first.x + (selectedDigit === 1 ? 25 : 0);
-        const ey = Math.max(16, first.y - width * 0.75);
+      // Anchor the face to the numeral's highest point, not an unrelated fixed point.
+      const faceAnchor = routes.flat().reduce((top, point) => !top || point.y < top.y ? point : top, null);
+      if (faceAnchor) {
+        const ex = faceAnchor.x;
+        const ey = Math.max(18, faceAnchor.y - width * 0.12);
         const blink = celebrationMode === "blink" && celebrationElapsed % 600 > 490;
         const wink = celebrationMode === "wink" && celebrationElapsed % 900 > 700;
-        for (const [index,x,y] of [[0,ex-7,ey],[1,ex+9,ey-1]]) {
-          ctx.strokeStyle = "#243344"; ctx.fillStyle = "#fff"; ctx.lineWidth = 2;
+        const eyeGap = Math.max(10, width * 0.25);
+        for (const [index,x,y] of [[0,ex-eyeGap/2,ey],[1,ex+eyeGap/2,ey-2]]) {
+          ctx.strokeStyle = "#243344"; ctx.fillStyle = "#fff"; ctx.lineWidth = 2.5;
           ctx.beginPath();
-          if ((blink || (wink && index === 1))) {
-            ctx.moveTo(x-6,y); ctx.lineTo(x+6,y); ctx.stroke();
+          if (blink || (wink && index === 1)) {
+            ctx.lineWidth = 3.5;
+            ctx.moveTo(x-8,y); ctx.quadraticCurveTo(x,y+4,x+8,y); ctx.stroke();
           } else {
-            ctx.ellipse(x,y,10,13,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
-            ctx.fillStyle = "#243344"; ctx.beginPath(); ctx.ellipse(x+1.5,y+1.5,4,6,0,0,Math.PI*2); ctx.fill();
+            ctx.ellipse(x,y,12,15,0,0,Math.PI*2); ctx.fill(); ctx.stroke();
+            ctx.fillStyle = "#243344"; ctx.beginPath(); ctx.ellipse(x+2,y+2,4.5,7,0,0,Math.PI*2); ctx.fill();
+            ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(x+3,y-1,2.2,0,Math.PI*2); ctx.fill();
           }
+        }
+        const mouthY = ey + 19;
+        ctx.strokeStyle = "#243344"; ctx.fillStyle = "#243344"; ctx.lineWidth = 2.5;
+        if (faceExpression === "tongue") {
+          ctx.beginPath(); ctx.moveTo(ex-8,mouthY); ctx.quadraticCurveTo(ex,mouthY+12,ex+8,mouthY); ctx.stroke();
+          ctx.fillStyle = "#f04483";
+          ctx.beginPath(); ctx.ellipse(ex+3,mouthY+7,5,7,0.25,0,Math.PI*2); ctx.fill();
+          ctx.strokeStyle = "#b72c60"; ctx.stroke();
+        } else {
+          ctx.beginPath(); ctx.moveTo(ex-9,mouthY); ctx.quadraticCurveTo(ex,mouthY+14,ex+9,mouthY); ctx.stroke();
+          ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.moveTo(ex-7,mouthY+2);
+          ctx.quadraticCurveTo(ex,mouthY+12,ex+7,mouthY+2); ctx.closePath(); ctx.fill();
         }
       }
     }
@@ -92,10 +108,11 @@
   let demoActive = false;
   let celebrationActive = false;
   let celebrationMode = "blink";
+  let faceExpression = "smile";
   let celebrationStartedAt = 0;
   let demoStart = 0;
   let demoFrame = 0;
-  const demoDuration = reducedMotion.matches ? 0 : 1800;
+  const demoDuration = reducedMotion.matches ? 0 : 3200;
 
   // The guide silhouette and this centerline share one SVG viewBox.
   // This keeps the dotted route geometrically tied to the visible numeral.
@@ -389,6 +406,7 @@
       successState = true;
       celebrationActive = true;
       celebrationMode = ["blink", "wink", "jump"][Math.floor(Math.random() * 3)];
+      faceExpression = ["smile", "tongue"][Math.floor(Math.random() * 2)];
       celebrationStartedAt = performance.now();
       feedback.textContent = "Bravo ! Tu as réussi le chiffre " + selectedDigit + " !";
       drawStrokes();

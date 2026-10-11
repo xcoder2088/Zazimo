@@ -184,3 +184,7 @@ Les silhouettes remplies indépendantes étaient incorrectes et ont été retir�
 
 ## Chiffres épais et animation de réussite — à valider
 Le rendu initial est désormais neutre et épais, sans yeux ni couleur vive. Après la réussite de la validation existante, le chiffre se colore et reçoit une animation aléatoire parmi clignement, clin d'œil et petit saut. Commits `e3655cf` et `e6b9621`. Les routes pédagogiques n'ont pas été redessinées dans cette passe. Le contrôle statique a confirmé l'absence de déclaration `smooth` en double et des accolades équilibrées; les tests navigateur et moteur JavaScript restent à faire.
+
+
+## Validation automatique — code poussé, test navigateur requis
+Le code déclenche maintenant `validateTrace()` à la fin d'un geste et efface les points/traits temporaires après réussite avant la célébration (commit `d8d4f3f`). Le bouton manuel est conservé en secours. Les contrôles statiques ont confirmé les liaisons attendues et des accolades équilibrées; aucune validation navigateur n'a été effectuée. La forme des chiffres n'est pas encore conforme à la référence finale Zazimo Épais.

@@ -101,3 +101,7 @@ body.calm .reward-star { background: #e9f1e7; color: #789b7a; }
   .digit-picker { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
   .digit-option { min-height: 44px; }
 }
+
+
+/* The tracing route itself is the model: avoid a separate font glyph that can drift away from the guide. */
+.guide-glyph { opacity: 0 !important; }

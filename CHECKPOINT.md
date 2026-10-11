@@ -95,3 +95,9 @@ Le prototype inclut maintenant trois boutons de thème : Garçon, Fille et Mixte
 5. Vérifier que le mode Sérénité, la démonstration et le tracé fonctionnent encore.
 
 Aucun test navigateur/appareil n'est déclaré réussi à ce stade.
+
+
+## 2026-10-11 — Sélecteur des chiffres 0 à 9 ajouté
+Les fichiers `prototype/index.html`, `prototype/styles.css` et `prototype/app.js` proposent maintenant un sélecteur de 0 à 9. Le chiffre sélectionné met à jour le titre et le guide, relance la démonstration et efface le tracé précédent. Des routes initiales distinctes sont définies pour les dix chiffres. Il s'agit d'une première implémentation, pas d'une validation finale : les routes sont approximatives et doivent être comparées au glyphe dans le navigateur. La logique de vérification reste heuristique et ne doit pas être considérée comme pédagogiquement validée.
+
+**Prochaines vérifications obligatoires :** actualiser le clone avec `git pull origin main`, ouvrir le prototype et tester 0 à 9, la démonstration, le changement de chiffre pendant un tracé, la remise à zéro, les thèmes et le mode Sérénité. Vérifier au moins ordinateur et téléphone. Aucun test navigateur réel n'a été effectué dans cette modification.

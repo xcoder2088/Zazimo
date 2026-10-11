@@ -185,3 +185,7 @@ Commit `6cda271` : le visage utilise maintenant des ancrages spécifiques pour c
 
 ## 2026-10-11 — Correctif urgent de célébration
 Commit `5b3c1c0` : la célébration utilisait une variable `characterColor` non définie. Cela déclenchait une erreur au moment de dessiner le chiffre coloré et son visage. La ligne utilise maintenant `characterColorFor(selectedDigit)`. Syntaxe JavaScript vérifiée; contrôle visuel navigateur encore nécessaire.
+
+
+## 2026-10-11 — Couleurs et animations aléatoires
+Commit `f2b678b` : la couleur du personnage est maintenant choisie à chaque réussite et ne répète pas immédiatement la précédente. Les animations tirent au hasard un clignement, un clin d’œil, un saut ou une combinaison; le choix de bouche souriante/langue reste aléatoire. Syntaxe JavaScript vérifiée; validation visuelle navigateur en attente.

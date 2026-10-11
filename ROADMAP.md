@@ -136,8 +136,8 @@ Les fichiers existent dans `prototype/`, mais l'étape n'est pas terminée tant 
 
 
 ## Nouvelle exigence — choix du thème visuel
-- [x] Ajouter au cahier des charges les quatre choix proposés : garçon, fille, mixte et neutre.
-- [ ] Concevoir les quatre ambiances visuelles avec des illustrations originales et une interface inclusive.
+- [x] Ajouter au cahier des charges les trois choix retenus : garçon, fille et mixte.
+- [ ] Concevoir les trois ambiances visuelles avec des illustrations originales et une interface inclusive.
 - [ ] Ajouter le choix de thème dans les paramètres de l'éducateur.
 - [ ] Vérifier que le changement de thème ne modifie ni les exercices, ni la difficulté, ni les récompenses et qu'il peut être effectué à tout moment.
 - [ ] Tester l'affichage et la lisibilité de chaque thème sur téléphone, tablette et ordinateur.

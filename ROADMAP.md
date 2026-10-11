@@ -199,3 +199,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Afficher le modèle pédagogique comme un trait large translucide et le pointillé exactement sur la même géométrie.
 - [ ] Vérifier visuellement les formes et l'épaisseur des dix chiffres dans le navigateur.
 - [ ] Affiner les routes elles-mêmes uniquement après cette vérification, chiffre par chiffre.
+
+
+## Raffinement visuel des chiffres arrondis
+- [x] Resserrer l'épaisseur du modèle translucide pour éviter l'aspect trop massif.
+- [x] Revoir les routes des chiffres 0, 2, 3, 6, 8 et 9 pour obtenir des boucles plus compactes et régulières.
+- [ ] Vérifier visuellement ces six chiffres après actualisation forcée et contrôler que les pointillés restent centrés.
+- [ ] Confirmer que le nouveau poids visuel reste lisible sur petit écran et en mode Sérénité.

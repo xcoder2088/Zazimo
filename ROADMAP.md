@@ -305,3 +305,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Corriger la référence de couleur non définie qui interrompait le dessin après réussite.
 - [x] Vérifier la syntaxe JavaScript après correction.
 - [ ] Vérifier dans le navigateur que la réussite déclenche bien couleur, yeux et bouche animés.
+
+
+## Variété des récompenses — 2026-10-11
+- [x] Choisir une couleur vive aléatoire à chaque réussite, en évitant de répéter immédiatement la couleur précédente.
+- [x] Varier aléatoirement les animations : clignement, clin d’œil, saut et combinaisons.
+- [x] Vérifier la syntaxe JavaScript.
+- [ ] Confirmer le comportement visuel dans le navigateur.

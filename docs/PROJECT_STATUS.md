@@ -236,3 +236,7 @@ Commit `c9ad5d6` : position de bouche définie individuellement pour chaque chif
 
 ## Correctif du visage — 2026-10-11
 Commit `87aeadb` : positions de bouche alignées sur les coordonnées du tracé de chaque chiffre, dans le même repère 450×250. Syntaxe vérifiée; revue visuelle navigateur restant à effectuer.
+
+
+## Visage — correctif du 2026-10-11
+Commit `f7ab154` : yeux sur la partie supérieure du chiffre, bouche immédiatement dessous et ancrée au trait. Syntaxe vérifiée; contrôle visuel navigateur toujours requis.

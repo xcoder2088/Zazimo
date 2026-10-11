@@ -99,16 +99,18 @@
         // Coordinates use the same 450x250 viewBox as tracePaths(), not eye-relative offsets.
         // Mouth sits immediately below the eyes, on the same upper stroke.
         // Keep every mouth centered on the thick upper stroke; never place it in an open counter.
+        // Mouth is deliberately lower than the eyes, fully separated from them,
+        // and kept inside the thick upper stroke of each numeral.
         const mouthAnchors = {
-          0:{x:225,y:43}, 1:{x:226,y:51}, 2:{x:227,y:46}, 3:{x:224,y:47},
-          4:{x:239,y:48}, 5:{x:260,y:49}, 6:{x:247,y:52}, 7:{x:188,y:50},
-          8:{x:225,y:46}, 9:{x:226,y:48}
+          0:{x:225,y:62}, 1:{x:229,y:70}, 2:{x:227,y:65}, 3:{x:224,y:64},
+          4:{x:239,y:66}, 5:{x:260,y:68}, 6:{x:247,y:68}, 7:{x:190,y:67},
+          8:{x:225,y:64}, 9:{x:226,y:65}
         };
-        const mouthPoint = transformPoint(mouthAnchors[selectedDigit] || {x:225,y:46});
+        const mouthPoint = transformPoint(mouthAnchors[selectedDigit] || {x:225,y:64});
         const mouthX = mouthPoint.x;
         const mouthY = mouthPoint.y + bob;
         const mouthOpen = (Math.sin(celebrationElapsed / 260) + 1) / 2;
-        const mouthW = 6.5;
+        const mouthW = 8;
         ctx.lineWidth = 2.2;
         ctx.strokeStyle = "#243344";
         ctx.fillStyle = "#243344";

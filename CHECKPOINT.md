@@ -201,3 +201,7 @@ Commit `c9ad5d6` : les coordonnées de bouche sont maintenant définies individu
 
 ## 2026-10-11 — Correction de position des bouches
 Commit `87aeadb` : les bouches utilisent désormais des points situés sur la ligne centrale de chaque chiffre (repère 450×250 partagé avec le tracé), au lieu de positions approximatives sous les yeux. Taille de bouche réduite. Syntaxe JavaScript vérifiée; aucune validation visuelle navigateur n'est revendiquée.
+
+
+## 2026-10-11 — Repositionnement du visage
+Commit `f7ab154` : yeux repositionnés sur le haut de chaque chiffre et bouche placée immédiatement dessous, en utilisant des coordonnées propres à chaque chiffre. Syntaxe JavaScript vérifiée. Validation visuelle navigateur non effectuée.

@@ -312,3 +312,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Varier aléatoirement les animations : clignement, clin d’œil, saut et combinaisons.
 - [x] Vérifier la syntaxe JavaScript.
 - [ ] Confirmer le comportement visuel dans le navigateur.
+
+
+## Ajustement du visage des chiffres — 2026-10-11
+- [x] Repositionner la bouche avec des décalages propres à chaque chiffre pour mieux l'intégrer à la forme.
+- [x] Réduire légèrement sa largeur pour éviter qu'elle déborde visuellement.
+- [x] Vérifier la syntaxe JavaScript.
+- [ ] Confirmer le rendu visuel dans le navigateur.

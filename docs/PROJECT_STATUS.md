@@ -196,3 +196,7 @@ Un fragment résiduel de l'ancien gestionnaire de clic a été retiré dans le c
 
 ## Réparation urgente — interactions restaurées dans le code
 Le bloc de validation avait été accidentellement placé dans le gestionnaire de clic des chiffres, provoquant une erreur de syntaxe. Les commits `7376c24` et `0d7db61` rétablissent la structure des fonctions et vérifient les distances sur toutes les routes. `new Function(appJs)` réussit sur le fichier récupéré après les commits; les handlers de sélection, validation manuelle et validation automatique sont présents. Le rendu et les interactions doivent encore être confirmés dans le navigateur réel.
+
+
+## Modèle Zazimo Épais — ajustement appliqué
+Commit `f8e7c3c` : silhouettes épaissies, yeux/pupilles agrandis, et état coloré de réussite persistant jusqu'au changement de chiffre ou à Recommencer. Contrôle syntaxique JavaScript et vérification statique des états effectués; validation visuelle dans le navigateur à faire.

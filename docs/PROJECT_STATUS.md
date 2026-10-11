@@ -94,3 +94,14 @@ Ne pas figer cette architecture avant d'avoir vérifié compatibilité, capacit�
 - La branche pointillée à droite et la petite flèche indépendante ont été retirées pour éviter une consigne visuelle ambiguë.
 - Fichiers modifiés : `prototype/app.js`, `prototype/index.html` et `prototype/styles.css`.
 - À valider visuellement dans le navigateur après actualisation; les autres tests du prototype restent en attente.
+
+
+## Démonstration guidée et recentrage du tracé — à tester
+
+- Le guide pointillé est défini comme une ligne centrale du chiffre 1 : diagonale vers le sommet, puis descente verticale. Le centre du trait vertical a été rapproché du centre visuel du chiffre.
+- Une démonstration animée se lance à l'ouverture : un point suit le chemin et une ligne colorée montre le mouvement.
+- Le message explique le geste (« monte en diagonale, puis descend tout droit »), puis invite l'enfant à essayer.
+- Un bouton permet de revoir la démonstration.
+- Le réglage système de réduction des animations est respecté en désactivant l'animation longue.
+- Fichiers modifiés : `prototype/index.html`, `prototype/styles.css`, `prototype/app.js`.
+- État : commits enregistrés et fichiers à relire. Le rendu doit encore être vérifié dans le navigateur sur écran large et tactile; la validation pédagogique du tracé reste expérimentale.

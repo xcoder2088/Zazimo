@@ -192,3 +192,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Ajuster la fin de la verticale du 1 pour qu'elle se termine plus près du modèle visible.
 - [ ] Revalider chaque chemin après actualisation forcée; les coordonnées restent une première approximation.
 - [ ] Comparer les lignes pointillées aux lignes médianes du glyphe sur les captures de 0 à 9, pas uniquement sur 1 à 6.
+
+
+## Changement de méthode — modèle et guide sur un même chemin
+- [x] Supprimer la dépendance visuelle entre un glyphe de police distinct et une route dessinée à la main.
+- [x] Afficher le modèle pédagogique comme un trait large translucide et le pointillé exactement sur la même géométrie.
+- [ ] Vérifier visuellement les formes et l'épaisseur des dix chiffres dans le navigateur.
+- [ ] Affiner les routes elles-mêmes uniquement après cette vérification, chiffre par chiffre.

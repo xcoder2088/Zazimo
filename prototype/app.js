@@ -47,7 +47,7 @@
       ctx.stroke();
     }
     if (celebrating) {
-      ctx.strokeStyle = characterColor;
+      ctx.strokeStyle = characterColorFor(selectedDigit);
       ctx.lineWidth = width;
       for (const path of routes) {
         if (path.length < 2) continue;

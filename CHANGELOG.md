@@ -142,3 +142,8 @@
 - Le tracé temporaire est effacé après réussite avant la célébration.
 - Le bouton de vérification reste disponible comme secours.
 - La forme finale des chiffres reste à harmoniser avec la référence Zazimo Épais.
+
+
+## Correctif — gestionnaire de validation
+- Suppression d'un fragment résiduel de l'ancien gestionnaire après extraction de `validateTrace()` (commit `c701b07`).
+- Test moteur JavaScript et test navigateur encore requis.

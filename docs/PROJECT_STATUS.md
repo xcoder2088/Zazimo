@@ -111,3 +111,10 @@ Ne pas figer cette architecture avant d'avoir vérifié compatibilité, capacit�
 - Les coordonnées du chemin pointillé ont été déplacées pour suivre la ligne médiane visible du glyphe : départ bas-gauche, montée diagonale jusqu'au sommet, puis descente verticale centrée.
 - Les proportions sont normalisées par rapport à la zone de dessin afin de conserver le positionnement sur différentes tailles d'écran.
 - Le rendu doit être recontrôlé après mise à jour du clone local et actualisation forcée du navigateur.
+
+
+## Correctif après retour visuel — guide du chiffre 1
+- Le précédent ajustement était incorrect : le départ était trop à gauche et la descente trop à droite. Le correctif précédent ne doit pas être considéré comme validé.
+- Nouveau placement estimé d'après la capture : départ dans la diagonale visible, arrivée au raccord supérieur, petit déplacement vers l'axe de la hampe, puis descente jusqu'au bas du chiffre.
+- L'animation réutilise le même chemin que le guide.
+- État : commit effectué; vérification visuelle indispensable avant de considérer ce point comme terminé.

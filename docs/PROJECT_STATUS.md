@@ -172,3 +172,7 @@ Une déclaration `const smooth` en double dans `tracePaths()` empêchait le char
 
 ## Chiffres arrondis — deuxième passe en attente de retour
 Les routes 0, 2, 3, 6, 8 et 9 ont été redessinées pour améliorer leur équilibre et leurs courbes, et l'épaisseur du modèle translucide a été réduite (commit `b3d3455`). Les chiffres angulaires approuvés restent inchangés. Le résultat doit être contrôlé dans le navigateur; ne pas considérer les formes arrondies comme finalisées avant comparaison à la référence Zazimo.
+
+
+## Chiffres colorés et expressifs — expérimentation à valider
+Les chiffres ont maintenant des silhouettes vectorielles colorées, un contour sombre et de petits yeux, inspirés de la référence fournie mais dessinés avec des formes internes. Le chemin pointillé reste séparé et visible au-dessus. Commits `ae4e58a` et `f7852d1`. La qualité des formes et les interactions ne sont pas encore validées dans le navigateur.

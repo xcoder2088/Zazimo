@@ -243,3 +243,6 @@ Commit `f7ab154` : yeux sur la partie supérieure du chiffre, bouche immédiatem
 
 
 Correctif supplémentaire `f484350` : bouche rapprochée du trait supérieur et réduite. Syntaxe JavaScript vérifiée, mais confirmation visuelle navigateur encore nécessaire.
+
+
+Correctif `2e1fdcc` : bouche descendue et élargie pour ne plus toucher les yeux; syntaxe vérifiée. La validation visuelle des dix chiffres reste à effectuer.

@@ -189,3 +189,7 @@ Commit `5b3c1c0` : la célébration utilisait une variable `characterColor` non 
 
 ## 2026-10-11 — Couleurs et animations aléatoires
 Commit `f2b678b` : la couleur du personnage est maintenant choisie à chaque réussite et ne répète pas immédiatement la précédente. Les animations tirent au hasard un clignement, un clin d’œil, un saut ou une combinaison; le choix de bouche souriante/langue reste aléatoire. Syntaxe JavaScript vérifiée; validation visuelle navigateur en attente.
+
+
+## 2026-10-11 — Position de la bouche
+Commit `7d3d887` : la bouche utilise maintenant des décalages spécifiques selon le chiffre, au lieu d'une position identique pour tous. Sa largeur est légèrement réduite. Syntaxe vérifiée; validation visuelle navigateur encore nécessaire.

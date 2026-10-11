@@ -119,3 +119,9 @@ Les fichiers existent dans `prototype/`, mais l'étape n'est pas terminée tant 
 - [x] Déplacer les coordonnées normalisées du guide pour mieux correspondre au centre du trait visible du chiffre 1.
 - [ ] Actualiser le clone local et vérifier l'alignement sur ordinateur.
 - [ ] Vérifier le même alignement sur téléphone/tablette et confirmer que la démonstration suit exactement le guide.
+
+
+## Correction du guide du chiffre 1 — validation en attente
+- [x] Revoir le départ de la diagonale et rapprocher la descente de l'axe de la hampe.
+- [ ] Contrôler le guide pointillé sur une nouvelle capture avant toute autre modification.
+- [ ] Ajuster une dernière fois les coordonnées si nécessaire et tester sur plusieurs tailles d'écran.

@@ -181,3 +181,8 @@
 
 ## 2026-10-11 — Correctif
 - Correction d'une référence de couleur non définie qui empêchait le rendu de la célébration après réussite.
+
+
+## 2026-10-11 — Récompenses variées
+- Couleur aléatoire à chaque réussite, avec prévention de répétition immédiate.
+- Combinaisons d’animations choisies aléatoirement.

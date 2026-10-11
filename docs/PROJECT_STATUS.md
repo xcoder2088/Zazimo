@@ -252,3 +252,6 @@ Dernier correctif `6d45527` : ancres des yeux et de la bouche calibrées manuell
 
 
 Dernier changement `55b6244` : couche SVG séparée pour les visages; le Canvas conserve le tracé et la validation. Ancres des yeux et bouches individualisées pour les chiffres 0 à 9. Syntaxe vérifiée; contrôle visuel navigateur encore nécessaire.
+
+
+Correctif récent `e46d203` : masquage du SVG décoratif qui recouvrait le Canvas et masquait le chemin de guidage. La syntaxe JavaScript passe; validation visuelle dans le navigateur encore requise.

@@ -66,3 +66,7 @@ Le guide pointillé a été corrigé dans `prototype/app.js` pour suivre le chif
 La maquette lance désormais une démonstration du chiffre 1 à l'ouverture : un point monte en diagonale puis descend, en suivant le guide pointillé. Un bouton « Revoir la démonstration » permet de rejouer le geste. Le guide a été recentré sur la ligne médiane du chiffre. Commits sur `main` dans `prototype/index.html`, `prototype/styles.css` et `prototype/app.js`.
 
 **À vérifier ensuite :** actualiser le clone local avec `git pull origin main`, puis contrôler le centrage visuel du pointillé, la démonstration automatique, le bouton de répétition, le tracé tactile et la remise à zéro. Les tests en navigateur et sur appareils ne sont pas encore déclarés réussis.
+
+
+## Dernier correctif — position du guide
+Le chemin du guide et la démonstration partagent la fonction `tracePath()`. Ses coordonnées normalisées ont été ajustées pour faire partir le tracé du bas-gauche de la diagonale, monter jusqu'au sommet, puis descendre au centre de la hampe verticale. Commit sur `main` : `prototype/app.js`. Le résultat doit être vérifié après `git pull origin main` et `Ctrl+F5`.

@@ -103,3 +103,13 @@ Les fichiers existent dans `prototype/`, mais l'étape n'est pas terminée tant 
 - [x] Supprimer la petite flèche indépendante sous le chiffre.
 - [ ] Actualiser le prototype local et confirmer que le trajet est clair.
 - [ ] Vérifier que le tracé et la remise à zéro fonctionnent toujours.
+
+
+## Mise à jour — démonstration du tracé
+- [x] Ajouter une démonstration animée au chargement de l'exercice.
+- [x] Ajouter un bouton pour rejouer la démonstration.
+- [x] Centrer le guide pointillé sur la ligne médiane du chiffre 1.
+- [x] Expliquer le mouvement en mots simples avant de laisser l'enfant essayer.
+- [ ] Vérifier visuellement le centrage du pointillé sur le chiffre dans le navigateur.
+- [ ] Tester la démonstration sur téléphone/tablette et avec réduction des animations activée.
+- [ ] Confirmer que l'interaction tactile et la remise à zéro fonctionnent après la démonstration.

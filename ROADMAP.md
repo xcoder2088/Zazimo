@@ -214,3 +214,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Adapter la démonstration pour suivre les traits dans l'ordre sans relier artificiellement leurs extrémités.
 - [ ] Vérifier dans le navigateur que l'animation et le dessin manuel montrent bien les deux gestes distincts.
 - [ ] Étendre ensuite le modèle multi-traits aux chiffres qui en ont besoin, avec ordre pédagogique défini.
+
+
+## Incident de régression — script bloqué
+- [x] Supprimer la déclaration `const smooth` en double dans `tracePaths()` qui empêchait le chargement du JavaScript.
+- [x] Conserver le modèle du chiffre 1 en deux traits distincts.
+- [ ] Après `git pull` et actualisation forcée, vérifier les clics sur les chiffres, la démonstration, recommencer, vérifier le tracé et les thèmes.
+- [ ] Ajouter une vérification syntaxique JavaScript avant chaque futur push de modification du prototype.

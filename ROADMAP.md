@@ -286,3 +286,9 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Revoir la bouche pour aligner le sourire ou la langue sous les yeux.
 - [x] Animer les clignements, le léger mouvement du personnage et la bouche tant que l'état de réussite reste actif.
 - [ ] Vérifier visuellement les proportions sur les dix chiffres et les lettres lorsqu'elles seront intégrées.
+
+
+## Expressions du personnage — bouche affinée (2026-10-11)
+- [x] Remplacer la bouche trop discrète par une expression cartoon lisible : sourire rempli, dents visibles et langue distincte.
+- [x] Garder une animation subtile d'ouverture/fermeture et une langue animée.
+- [ ] Confirmer les proportions visuellement sur plusieurs chiffres après actualisation du navigateur.

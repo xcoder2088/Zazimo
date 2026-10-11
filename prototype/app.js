@@ -288,6 +288,7 @@
 
   canvas.addEventListener("pointerdown", event => {
     if (demoActive) return;
+    celebrationActive = false;
     event.preventDefault();
     drawing = true;
     activeStroke = [position(event)];

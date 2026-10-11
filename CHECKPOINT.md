@@ -81,4 +81,4 @@ Les coordonnées approximatives indépendantes ont été abandonnées. Le chiffr
 
 
 ## Nouvelle idée intégrée — thèmes visuels
-Le cahier des charges prévoit désormais quatre thèmes sélectionnables par l'éducateur : garçon, fille, mixte et neutre. Ils doivent différer par l'ambiance, la palette et les illustrations originales, sans modifier les exercices, la difficulté ou les récompenses. Les choix doivent éviter les stéréotypes et rester modifiables à tout moment. La conception et l'implémentation sont encore à faire.
+Le cahier des charges prévoit désormais trois thèmes sélectionnables par l'éducateur : garçon, fille et mixte. Ils doivent différer par l'ambiance, la palette et les illustrations originales, sans modifier les exercices, la difficulté ou les récompenses. Les choix doivent éviter les stéréotypes et rester modifiables à tout moment. La conception et l'implémentation sont encore à faire.

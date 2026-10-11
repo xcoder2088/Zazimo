@@ -98,24 +98,25 @@
         // Each mouth is placed directly on the numeral's centerline near its first stroke.
         // Coordinates use the same 450x250 viewBox as tracePaths(), not eye-relative offsets.
         // Mouth sits immediately below the eyes, on the same upper stroke.
+        // Keep every mouth centered on the thick upper stroke; never place it in an open counter.
         const mouthAnchors = {
-          0:{x:225,y:57}, 1:{x:229,y:64}, 2:{x:227,y:57}, 3:{x:224,y:57},
-          4:{x:239,y:58}, 5:{x:267,y:61}, 6:{x:250,y:63}, 7:{x:177,y:62},
-          8:{x:225,y:57}, 9:{x:228,y:59}
+          0:{x:225,y:43}, 1:{x:226,y:51}, 2:{x:227,y:46}, 3:{x:224,y:47},
+          4:{x:239,y:48}, 5:{x:260,y:49}, 6:{x:247,y:52}, 7:{x:188,y:50},
+          8:{x:225,y:46}, 9:{x:226,y:48}
         };
-        const mouthPoint = transformPoint(mouthAnchors[selectedDigit] || {x:225,y:57});
+        const mouthPoint = transformPoint(mouthAnchors[selectedDigit] || {x:225,y:46});
         const mouthX = mouthPoint.x;
         const mouthY = mouthPoint.y + bob;
         const mouthOpen = (Math.sin(celebrationElapsed / 260) + 1) / 2;
-        const mouthW = 8;
+        const mouthW = 6.5;
         ctx.lineWidth = 2.2;
         ctx.strokeStyle = "#243344";
         ctx.fillStyle = "#243344";
         if (faceExpression === "tongue") {
           ctx.beginPath();
           ctx.moveTo(mouthX-mouthW, mouthY);
-          ctx.quadraticCurveTo(mouthX, mouthY+4+mouthOpen*2, mouthX+mouthW, mouthY);
-          ctx.quadraticCurveTo(mouthX+mouthW-1, mouthY+9+mouthOpen*2, mouthX, mouthY+14+mouthOpen*3);
+          ctx.quadraticCurveTo(mouthX, mouthY+3+mouthOpen*1.5, mouthX+mouthW, mouthY);
+          ctx.quadraticCurveTo(mouthX+mouthW-1, mouthY+7+mouthOpen*1.5, mouthX, mouthY+10+mouthOpen*2);
           ctx.quadraticCurveTo(mouthX-mouthW+1, mouthY+14+mouthOpen*3, mouthX-mouthW, mouthY);
           ctx.closePath(); ctx.fill(); ctx.stroke();
           ctx.fillStyle = "#fff";
@@ -125,7 +126,7 @@
           ctx.fillStyle = "#f04483"; ctx.strokeStyle = "#b72c60";
           ctx.beginPath(); ctx.moveTo(mouthX-3,mouthY+10);
           ctx.quadraticCurveTo(mouthX+8,mouthY+10,mouthX+5+Math.sin(celebrationElapsed/220)*2,mouthY+14+mouthOpen*2);
-          ctx.quadraticCurveTo(mouthX-1,mouthY+15+mouthOpen*2,mouthX-3,mouthY+10);
+          ctx.quadraticCurveTo(mouthX-1,mouthY+11+mouthOpen*2,mouthX-3,mouthY+10);
           ctx.closePath(); ctx.fill(); ctx.stroke();
         } else {
           ctx.beginPath();

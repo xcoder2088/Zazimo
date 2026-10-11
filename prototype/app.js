@@ -14,13 +14,13 @@
   const guideGlyph = document.querySelector(".guide-glyph");
   let selectedDigit = 1;
   let successState = false;
-  const characterColors = new Map();
-  function characterColorFor(value) {
-    if (!characterColors.has(value)) {
-      const colors = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83","#19b7b0","#5b8def"];
-      characterColors.set(value, colors[Math.floor(Math.random() * colors.length)]);
-    }
-    return characterColors.get(value);
+  const celebrationPalette = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83","#19b7b0","#5b8def"];
+  let activeCharacterColor = celebrationPalette[0];
+  let previousCharacterColor = "";
+  function chooseCelebrationColor() {
+    const choices = celebrationPalette.filter(color => color !== previousCharacterColor);
+    activeCharacterColor = choices[Math.floor(Math.random() * choices.length)];
+    previousCharacterColor = activeCharacterColor;
   }
   // Playful color is applied directly to the validated centerline routes.
   // This prevents decorative silhouettes from drifting away from the tracing path.
@@ -32,7 +32,7 @@
     const celebrating = successState || (celebrationActive && celebrationElapsed < 1800);
     const palette = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83"];
     const width = Math.max(42, Math.min(54, canvas.clientWidth * 0.09));
-    const bounce = celebrating && celebrationMode === "jump" ? Math.sin(celebrationElapsed / 85) * 5 : 0;
+    const bounce = celebrating && celebrationMode.includes("jump") ? Math.sin(celebrationElapsed / 85) * 5 : 0;
     ctx.save();
     ctx.translate(0, -bounce);
     ctx.lineCap = "round";
@@ -47,7 +47,7 @@
       ctx.stroke();
     }
     if (celebrating) {
-      ctx.strokeStyle = characterColorFor(selectedDigit);
+      ctx.strokeStyle = activeCharacterColor;
       ctx.lineWidth = width;
       for (const path of routes) {
         if (path.length < 2) continue;
@@ -74,9 +74,9 @@
         const ex = faceAnchor.x + anchor.dx * width * 0.1;
         const ey = faceAnchor.y + anchor.dy * width * 0.14;
         const blink = celebrationElapsed % 2400 > 2200;
-        const wink = celebrationMode === "wink" && celebrationElapsed % 3200 > 2850;
+        const wink = celebrationMode.includes("wink") && celebrationElapsed % 3200 > 2850;
         const eyeGap = Math.max(25, width * 0.62);
-        const bob = celebrationMode === "jump" ? Math.sin(celebrationElapsed / 230) * 2 : Math.sin(celebrationElapsed / 500) * 1.2;
+        const bob = celebrationMode.includes("jump") ? Math.sin(celebrationElapsed / 230) * 2 : Math.sin(celebrationElapsed / 500) * 1.2;
         const eyeY = ey + bob;
         for (const [index,x,y] of [[0,ex-eyeGap/2,eyeY],[1,ex+eyeGap/2,eyeY]]) {
           ctx.strokeStyle = "#243344"; ctx.fillStyle = "#fff"; ctx.lineWidth = 2.5;
@@ -454,7 +454,8 @@
       activeStroke = [];
       successState = true;
       celebrationActive = true;
-      celebrationMode = ["blink", "wink", "jump"][Math.floor(Math.random() * 3)];
+      chooseCelebrationColor();
+      celebrationMode = ["blink", "wink", "jump", "wink-jump", "blink-jump"][Math.floor(Math.random() * 5)];
       faceExpression = ["smile", "tongue"][Math.floor(Math.random() * 2)];
       celebrationStartedAt = performance.now();
       feedback.textContent = "Bravo ! Tu as réussi le chiffre " + selectedDigit + " !";

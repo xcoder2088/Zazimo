@@ -53,7 +53,6 @@
       : [digitRoutes[selectedDigit]];
     return rawRoutes.map(svgPoints => {
     const smooth = [];
-    const smooth = [];
     if (svgPoints.length < 3) {
       for (const point of svgPoints) smooth.push(point);
     } else if ([1, 4, 5, 7].includes(selectedDigit)) {

@@ -169,3 +169,7 @@ Commit `f8e7c3c` : largeur du trait de silhouette augmentée, yeux et pupilles a
 
 ## 2026-10-11 — Visage mieux ancré et démonstration ralentie
 Commit `ce249a6` : les yeux se placent maintenant à partir du point le plus haut des routes du chiffre, sont plus grands, et une bouche aléatoire (sourire ou langue tirée) apparaît après réussite. Démonstration ralentie à 3,2 secondes, en conservant le respect du réglage système de mouvement réduit. Syntaxe JavaScript vérifiée; validation visuelle navigateur encore requise.
+
+
+## 2026-10-11 — Visage mieux aligné et animé
+Commit `3ebea8c` : yeux davantage espacés; yeux et bouche sont positionnés depuis un ancrage commun pour former un visage cohérent. Sourire et langue tirée ont maintenant une ouverture animée; clignements et léger mouvement continuent tant que la réussite est affichée. L'animation s'arrête quand l'état de réussite est réinitialisé. Syntaxe JavaScript vérifiée; rendu visuel à confirmer dans le navigateur.

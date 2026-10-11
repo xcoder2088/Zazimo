@@ -157,3 +157,7 @@ Commit `d8d4f3f` : extraction de la validation dans `validateTrace()`, déclench
 
 ## Correctif de suivi — nettoyage du gestionnaire de validation
 Après refactorisation pour la validation automatique, un fragment de l'ancien gestionnaire est resté par erreur dans le fichier. Il a été supprimé dans le commit `c701b07`. Le fichier a été relu autour de `validateTrace()` et à sa fin; un contrôle syntaxique par moteur JavaScript et un test navigateur restent nécessaires.
+
+
+## 2026-10-11 — Restauration des commandes après écran vide
+Le défaut était localisé dans `prototype/app.js` : la fonction `validateTrace()` avait été accidentellement imbriquée dans le gestionnaire de clic des chiffres, ce qui cassait la syntaxe du fichier. Commit `7376c24` : fonctions de validation et de sélection des chiffres séparées, gestionnaire de clic rétabli. Commit `0d7db61` : validation de proximité étendue à toutes les routes actives. Contrôle effectué après récupération depuis GitHub avec `new Function(appJs)` : **syntaxe JavaScript valide**; gestionnaire de sélection, validation manuelle et validation automatique présents; accolades équilibrées. Le test visuel dans le navigateur de l'utilisateur reste à faire.

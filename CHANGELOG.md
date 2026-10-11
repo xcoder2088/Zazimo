@@ -214,3 +214,7 @@
 
 ## 2026-10-11 — Visages des chiffres
 - Repositionnement manuel, chiffre par chiffre, des yeux sur le haut du contour et des bouches sur la surface colorée.
+
+
+## 2026-10-11 — Visages vectoriels
+- Déplacement du rendu des visages dans une couche SVG séparée afin de faciliter le positionnement indépendant des yeux et de la bouche.

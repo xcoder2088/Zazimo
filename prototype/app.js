@@ -56,12 +56,13 @@
         ctx.stroke();
       }
       // Put the face on the character's upper end, oriented toward the inside of its silhouette.
+      // Face coordinates are attached to the upper stroke of each numeral.
       const faceAnchors = {
-        0:{x:225,y:39,dx:0,dy:1}, 1:{x:229,y:48,dx:-7,dy:0},
-        2:{x:227,y:42,dx:0,dy:1}, 3:{x:224,y:42,dx:0,dy:1},
-        4:{x:239,y:43,dx:1,dy:0}, 5:{x:267,y:47,dx:0,dy:1},
-        6:{x:250,y:49,dx:0,dy:1}, 7:{x:177,y:48,dx:0,dy:1},
-        8:{x:225,y:42,dx:0,dy:1}, 9:{x:228,y:44,dx:0,dy:1}
+        0:{x:225,y:39,dx:0,dy:1}, 1:{x:229,y:48,dx:0,dy:0},
+        2:{x:227,y:42,dx:0,dy:0}, 3:{x:224,y:42,dx:0,dy:0},
+        4:{x:239,y:43,dx:0,dy:0}, 5:{x:267,y:47,dx:0,dy:0},
+        6:{x:250,y:49,dx:0,dy:0}, 7:{x:177,y:48,dx:0,dy:0},
+        8:{x:225,y:42,dx:0,dy:0}, 9:{x:228,y:44,dx:0,dy:0}
       };
       const anchor = faceAnchors[selectedDigit] || {x:225,y:42,dx:0,dy:1};
       const transformPoint = point => {
@@ -96,12 +97,13 @@
         // They sit on the colored stroke, not in the empty counters/holes of rounded digits.
         // Each mouth is placed directly on the numeral's centerline near its first stroke.
         // Coordinates use the same 450x250 viewBox as tracePaths(), not eye-relative offsets.
+        // Mouth sits immediately below the eyes, on the same upper stroke.
         const mouthAnchors = {
-          0:{x:225,y:39}, 1:{x:229,y:48}, 2:{x:194,y:55}, 3:{x:206,y:48},
-          4:{x:239,y:43}, 5:{x:267,y:47}, 6:{x:250,y:49}, 7:{x:177,y:48},
-          8:{x:225,y:42}, 9:{x:208,y:48}
+          0:{x:225,y:57}, 1:{x:229,y:64}, 2:{x:227,y:57}, 3:{x:224,y:57},
+          4:{x:239,y:58}, 5:{x:267,y:61}, 6:{x:250,y:63}, 7:{x:177,y:62},
+          8:{x:225,y:57}, 9:{x:228,y:59}
         };
-        const mouthPoint = transformPoint(mouthAnchors[selectedDigit] || {x:225,y:42});
+        const mouthPoint = transformPoint(mouthAnchors[selectedDigit] || {x:225,y:57});
         const mouthX = mouthPoint.x;
         const mouthY = mouthPoint.y + bob;
         const mouthOpen = (Math.sin(celebrationElapsed / 260) + 1) / 2;

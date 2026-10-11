@@ -129,3 +129,7 @@ Les chiffres angulaires ayant été jugés satisfaisants, le travail porte maint
 
 ## 2026-10-11 — Chiffre 1 en deux traits distincts
 À partir de la référence fournie, le chiffre 1 doit être appris en deux gestes : d'abord la diagonale, puis la verticale. `prototype/app.js` représente désormais le 1 comme deux routes distinctes; le modèle translucide et le pointillé sont dessinés séparément sur chaque route, et l'animation avance séquentiellement sans tracer de liaison entre les traits. Commits `cde38eb` et `39f8a4e`. À valider dans le navigateur après `git pull origin main` et `Ctrl+F5`; aucun test réel n'a été exécuté ici.
+
+
+## 2026-10-11 — Régression JavaScript corrigée
+L'application était devenue non interactive parce que `prototype/app.js` contenait deux déclarations `const smooth = [];` consécutives dans `tracePaths()`, causant une erreur de syntaxe au chargement du script. Correction poussée dans le commit `6a8c1ba`. Le défaut explique l'écran statique et l'inactivité des boutons. Les interactions doivent être revérifiées dans le navigateur après `git pull origin main` et `Ctrl+F5`; aucune validation navigateur n'a été effectuée ici. Ajouter une vérification de syntaxe avant les prochains changements.

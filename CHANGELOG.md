@@ -147,3 +147,9 @@
 ## Correctif — gestionnaire de validation
 - Suppression d'un fragment résiduel de l'ancien gestionnaire après extraction de `validateTrace()` (commit `c701b07`).
 - Test moteur JavaScript et test navigateur encore requis.
+
+
+## 2026-10-11 — Restauration des interactions
+- Réparation de la structure JavaScript qui empêchait le démarrage correct des interactions.
+- Rétablissement des clics de sélection des chiffres et des deux voies de validation.
+- Vérification de syntaxe JavaScript réussie après récupération du fichier depuis GitHub.

@@ -105,3 +105,7 @@ Les fichiers `prototype/index.html`, `prototype/styles.css` et `prototype/app.js
 
 ## Correctif après captures — chiffres trop anguleux et trop pâles
 À partir des captures fournies, les routes segmentées rendaient les chiffres arrondis saccadés et le glyphe pâle était trop peu visible. `prototype/app.js` interpole maintenant les points des routes avec une courbe Catmull–Rom échantillonnée, utilisée par le guide et la démonstration. `prototype/styles.css` augmente le contraste du guide et du glyphe. Commits sur `main`; la vérification dans le navigateur reste obligatoire. Les formes et le contraste doivent être confirmés sur plusieurs chiffres et tailles d'écran.
+
+
+## 2026-10-11 — Ajustement du centrage et des angles
+Les captures montrent que le chemin pointillé du 3 suivait trop le contour externe, et que le 1 formait une boucle au sommet. Les routes du 1 et du 3 ont été déplacées vers la ligne médiane; le lissage automatique est maintenant désactivé pour 1, 4 et 7 afin de garder leurs segments droits et leurs angles. Commit `e163ac8` sur `main`. Le rendu doit être revérifié après `git pull origin main` et `Ctrl+F5`; aucun test navigateur n'est déclaré réussi.

@@ -292,3 +292,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Remplacer la bouche trop discrète par une expression cartoon lisible : sourire rempli, dents visibles et langue distincte.
 - [x] Garder une animation subtile d'ouverture/fermeture et une langue animée.
 - [ ] Confirmer les proportions visuellement sur plusieurs chiffres après actualisation du navigateur.
+
+
+## Visage par chiffre et couleurs variables — 2026-10-11
+- [x] Définir un point d'ancrage du visage adapté à chaque chiffre (0–9), au lieu d'utiliser systématiquement le point le plus haut.
+- [x] Espacer un peu plus les yeux.
+- [x] Choisir une couleur vive aléatoire par chiffre et la conserver pendant la sélection courante.
+- [ ] Vérifier visuellement le placement du visage et les couleurs dans le navigateur; adapter ensuite la même approche aux lettres.

@@ -8,6 +8,7 @@
   const checkButton = document.getElementById("check-button");
   const demoButton = document.getElementById("demo-button");
   const calmToggle = document.getElementById("calm-toggle");
+  const themeButtons = Array.from(document.querySelectorAll("[data-theme]"));
   const rewardStar = document.getElementById("reward-star");
   const rewardTitle = document.getElementById("reward-title");
   const rewardText = document.getElementById("reward-text");
@@ -274,6 +275,17 @@
       rewardText.textContent = "Tu peux effacer le tracé ou demander de l'aide à ton éducateur.";
     }
   });
+
+  themeButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const selectedTheme = button.dataset.theme;
+      document.body.classList.remove("theme-boy", "theme-girl", "theme-mix");
+      document.body.classList.add("theme-" + selectedTheme);
+      themeButtons.forEach(option => option.setAttribute("aria-pressed", String(option === button)));
+    });
+  });
+
+  document.body.classList.add("theme-mix");
 
   calmToggle.addEventListener("click", () => {
     const calm = document.body.classList.toggle("calm");

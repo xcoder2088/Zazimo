@@ -140,3 +140,7 @@ Un premier sélecteur Garçon, Fille et Mixte a été ajouté au prototype. Le t
 
 ## Correctif visuel des chiffres — à vérifier
 Les routes de démonstration sont maintenant interpolées pour réduire l'aspect polygonal, et le chiffre-guide est plus visible. Ces changements sont commités sur `main`. **Statut : correction implémentée, pas encore validée visuellement.** Tester en particulier 0, 2, 3, 6, 8 et 9, ainsi que les extrémités des tracés et les courbes après actualisation forcée.
+
+
+## Ajustement des chemins de traçage — à vérifier
+Les chemins du 1 et du 3 ont été recentrés à partir des captures; le lissage est désactivé pour les chiffres angulaires 1, 4 et 7. Commit `e163ac8` sur `main`. Le rendu doit être vérifié dans le navigateur avant de considérer ces routes comme acceptées.

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff6e8">
+  <meta name="description" content="Prototype tactile éducatif Zazimo pour découvrir les chiffres.">
+  <title>Zazimo — Découverte des chiffres</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Accueil Zazimo">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>Zazimo</span>
+      </a>
+      <button id="calm-toggle" class="secondary-button" type="button" aria-pressed="false">Mode Sérénité</button>
+    </header>
+
+    <section class="welcome" aria-labelledby="page-title">
+      <p class="eyebrow">ON APPREND EN JOUANT</p>
+      <h1 id="page-title">À toi de tracer !</h1>
+      <p class="intro">Suis le chemin du chiffre avec ton doigt, un stylet ou la souris.</p>
+    </section>
+
+    <section class="activity-card" aria-labelledby="number-title">
+      <div class="activity-heading">
+        <div>
+          <p class="eyebrow">LES CHIFFRES</p>
+          <h2 id="number-title">Le chiffre 1</h2>
+        </div>
+        <span class="step-pill">Défi découverte</span>
+      </div>
+
+      <div class="drawing-wrap">
+        <div class="guide" aria-hidden="true">
+          <span class="guide-number">1</span>
+          <span class="guide-arrow">↓</span>
+        </div>
+        <canvas id="trace-canvas" aria-label="Zone pour tracer le chiffre 1" role="img"></canvas>
+        <p class="canvas-hint">Trace le long du chiffre</p>
+      </div>
+
+      <p id="feedback" class="feedback" role="status" aria-live="polite">Prêt ? Trace le chiffre dans la grande zone.</p>
+
+      <div class="actions">
+        <button id="clear-button" class="secondary-button" type="button">Recommencer</button>
+        <button id="check-button" class="primary-button" type="button">Vérifier mon tracé</button>
+      </div>
+      <p class="prototype-note">Maquette initiale : la validation du tracé est expérimentale.</p>
+    </section>
+
+    <section class="reward-card" aria-label="Récompense">
+      <span id="reward-star" class="reward-star" aria-hidden="true">★</span>
+      <div>
+        <h2 id="reward-title">Chaque essai compte !</h2>
+        <p id="reward-text">Prends ton temps. Tu peux recommencer autant que tu veux.</p>
+      </div>
+    </section>
+
+    <footer>Un petit geste à la fois. 🌈</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

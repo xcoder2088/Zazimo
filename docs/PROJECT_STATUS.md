@@ -292,3 +292,7 @@ L'épaisseur du contour et du remplissage est désormais proportionnelle à l'é
 
 ## Ajustement du visage des lettres
 Les positions des yeux et de la bouche sont désormais définies explicitement pour chaque lettre A–Z dans `prototype/app.js`. Cette correction n'est pas encore confirmée par un essai visuel navigateur; les lettres doivent être vérifiées individuellement avant validation.
+
+
+## Correction du guide pointillé des lettres
+Le rendu du guide prend maintenant en compte tous les traits définis pour chaque lettre. Le défaut visible sur A et B provenait du découpage du guide, qui n'affichait qu'un trait. Le contrôle visuel complet des 26 lettres reste à effectuer dans le navigateur.

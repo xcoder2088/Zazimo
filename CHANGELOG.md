@@ -290,3 +290,5 @@
 - Réduction des déformations des lettres : les traits droits ne sont plus lissés systématiquement. Ajustement des yeux et de la bouche sur A–F pour mieux respecter le contour supérieur et le remplissage.
 
 - Désactivation du lissage spline pour B et D afin de préserver leurs formes plus géométriques.
+
+- Ajustement des guides de lettres : courbes lissées pour les lettres à contours arrondis, traits droits préservés pour les lettres géométriques.

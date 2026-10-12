@@ -521,12 +521,14 @@
   }
 
   checkButton.addEventListener("click", validateTrace);
-  customNumberButton.addEventListener("click", () => {
-    const value = (customNumberInput.value || "").trim();
-    if (!/^[0-9]{1,4}$/.test(value)) { feedback.textContent = "Entre un nombre de 1 à 4 chiffres, sans espace."; customNumberInput.focus(); return; }
-    selectDigit(value);
-  });
-  customNumberInput.addEventListener("keydown", event => { if (event.key === "Enter") customNumberButton.click(); });
+  if (customNumberButton && customNumberInput) {
+    customNumberButton.addEventListener("click", () => {
+      const value = (customNumberInput.value || "").trim();
+      if (!/^[0-9]{1,4}$/.test(value)) { feedback.textContent = "Entre un nombre de 1 à 4 chiffres, sans espace."; customNumberInput.focus(); return; }
+      selectDigit(value);
+    });
+    customNumberInput.addEventListener("keydown", event => { if (event.key === "Enter") customNumberButton.click(); });
+  }
 
   digitButtons.forEach(button => {
     button.addEventListener("click", () => selectDigit(button.dataset.digit));

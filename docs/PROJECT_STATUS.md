@@ -300,3 +300,6 @@ Le rendu du guide prend maintenant en compte tous les traits définis pour chaqu
 
 ## Ajustement de la forme des lettres
 Le moteur conserve désormais les segments géométriques des lettres au lieu d'appliquer un lissage uniforme, source de barres courbées et de formes déformées. Le visage de A–F est repositionné avec les yeux sur le haut et la bouche dans la zone colorée. Une inspection navigateur des 26 lettres reste nécessaire.
+
+
+Correction ciblée : B et D ne passent plus par le lissage spline qui déformait leur géométrie. La vérification visuelle complète de A–Z reste à faire.

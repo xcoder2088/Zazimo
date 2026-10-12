@@ -436,3 +436,8 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - La route du chiffre 5 a été enrichie en points de contrôle pour une courbe plus régulière.
 - [x] Syntaxe JavaScript vérifiée avant push.
 - [ ] Tester dans le navigateur : défilement 1–10 vers 2–11, sélection, saisie de 1250 et apparence du 5.
+
+## Correction des proportions des chiffres composés
+- [x] Le contour et le remplissage du chiffre sont maintenant réduits selon la même échelle que sa géométrie dans les nombres de 2 à 4 chiffres, afin que le 5 conserve des proportions cohérentes.
+- [x] Syntaxe JavaScript vérifiée après modification.
+- [ ] Contrôle visuel dans le navigateur local requis.

@@ -269,3 +269,6 @@ Commit `9f35fe7` : cause identifiée dans la capture/vidéo : les routes du chif
 ## 2026-10-12 — proportion des chiffres composés
 Le contour et le remplissage des chiffres sont maintenant mis à l'échelle avec leur géométrie, plutôt que de garder une épaisseur presque identique quand les chiffres sont réduits. Cela cible le 5 dans les nombres à trois chiffres. Syntaxe vérifiée; contrôle visuel dans le navigateur encore requis.
 \n\n## Point de reprise — premières lettres majuscules\nAjout d’un mode Lettres séparé avec 26 choix A–Z et routes dédiées, en réutilisant le moteur de tracé existant. Tests visuels des lettres et régression des chiffres requis dans le navigateur local.\n
+
+## Correction — ancres de visage des lettres
+Ajout de coordonnées explicites par lettre dans `prototype/app.js` pour éviter la position générique appliquée à toutes les lettres. Cette modification est commitée sur `main`, mais le placement doit encore être vérifié dans le navigateur sur A–Z; ne pas déclarer le rendu visuellement validé avant ce contrôle.

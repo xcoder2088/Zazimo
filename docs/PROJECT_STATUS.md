@@ -268,3 +268,7 @@ Correctif `9f35fe7` : la cause du visage qui flottait en haut à gauche a été 
 
 ## Extension des nombres — implémentée, validation en attente
 Le prototype inclut maintenant un champ pour saisir un nombre de 1 à 4 chiffres et compose ses routes dans le canevas. Le chiffre 5 reçoit un échantillonnage d'interpolation plus dense. Commits `8f3dab8`, `911c36c`, `735cd50`. Les tests réels de démonstration, validation, placement du visage et rendu multi-chiffres doivent encore être exécutés; cette fonctionnalité n'est pas déclarée validée.
+
+
+## Mise à jour — sélecteur et nombres composés
+Le prototype propose maintenant les nombres de 0 à 100 dans le sélecteur. Le champ personnalisé reste disponible jusqu’à quatre chiffres. Après réussite, les chiffres d’un nombre composé sont colorés et animés individuellement, avec des couleurs et mouvements choisis aléatoirement par chiffre. Tests visuels réels encore requis avant de déclarer cette évolution validée.

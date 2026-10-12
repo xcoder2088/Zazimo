@@ -21,6 +21,7 @@
   const celebrationPalette = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83","#19b7b0","#5b8def"];
   let activeCharacterColor = celebrationPalette[0];
   let celebrationColors = [];
+  let celebrationModes = [];
   let previousCharacterColor = "";
   function chooseCelebrationColor() {
     const choices = celebrationPalette.filter(color => color !== previousCharacterColor);
@@ -43,11 +44,7 @@
     const offsetY = (rect.height - viewHeight * scale) / 2;
     const chars = selectedValue.split("");
     const digitScale = chars.length === 1 ? 1 : chars.length === 2 ? 0.82 : chars.length === 3 ? 0.64 : 0.5;
-    const phase = elapsed / 230;
-    const wave = reducedMotion.matches ? 0 : Math.sin(phase);
-    const bounce = celebrationMode === "bounce" ? Math.max(0, wave) * 12 : 0;
-    const wiggle = celebrationMode === "wiggle" ? wave * 0.055 : 0;
-    const pulse = celebrationMode === "pulse" ? 1 + wave * 0.045 : 1;
+
     const anchors = {
       0:{eyes:{x:225,y:26},mouth:{x:225,y:53}},
       1:{eyes:{x:229,y:39},mouth:{x:229,y:64}},
@@ -67,15 +64,24 @@
       return {x:offsetX + localX * scale, y:offsetY + localY * scale};
     };
     ctx.save();
-    ctx.translate(rect.width / 2, rect.height / 2);
-    ctx.rotate(wiggle);
-    ctx.scale(pulse, pulse);
-    ctx.translate(-rect.width / 2, -rect.height / 2 - bounce);
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
     ctx.setLineDash([]);
     let routeIndex = 0;
     chars.forEach((char, index) => {
+      const mode = celebrationModes[index] || celebrationMode;
+      const phase = (elapsed + index * 310) / 230;
+      const wave = reducedMotion.matches ? 0 : Math.sin(phase);
+      const bounce = mode === "bounce" ? Math.max(0, wave) * 12 * scale : 0;
+      const wiggle = mode === "wiggle" ? wave * 0.055 : 0;
+      const pulse = mode === "pulse" ? 1 + wave * 0.045 : 1;
+      const centerX = offsetX + (225 + (index - (chars.length - 1) / 2) * 108) * scale;
+      const centerY = offsetY + 125 * scale;
+      ctx.save();
+      ctx.translate(centerX, centerY);
+      ctx.rotate(wiggle);
+      ctx.scale(pulse, pulse);
+      ctx.translate(-centerX, -centerY - bounce);
       const pathCount = char === "1" ? 2 : 1;
       const ownRoutes = routes.slice(routeIndex, routeIndex + pathCount);
       routeIndex += pathCount;
@@ -145,6 +151,7 @@
         ctx.quadraticCurveTo(mouth.x - faceScale, mouth.y + 14 * faceScale, mouth.x - 2 * faceScale, mouth.y + 7 * faceScale);
         ctx.fillStyle = "#f02670"; ctx.fill();
       }
+      ctx.restore();
       ctx.restore();
     });
     ctx.restore();
@@ -484,6 +491,7 @@
       chooseCelebrationColor();
       celebrationColors = selectedValue.split("").map(() => celebrationPalette[Math.floor(Math.random() * celebrationPalette.length)]);
       celebrationMode = ["bounce", "wiggle", "pulse"][Math.floor(Math.random() * 3)];
+      celebrationModes = selectedValue.split("").map(() => ["bounce", "wiggle", "pulse"][Math.floor(Math.random() * 3)]);
       faceExpression = ["smile", "tongue"][Math.floor(Math.random() * 2)];
       celebrationStartedAt = performance.now();
       feedback.textContent = "Bravo ! Tu as réussi " + (selectedValue.length === 1 ? "le chiffre " : "le nombre ") + selectedValue + " !";

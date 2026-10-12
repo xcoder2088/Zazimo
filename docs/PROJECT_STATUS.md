@@ -296,3 +296,7 @@ Les positions des yeux et de la bouche sont désormais définies explicitement p
 
 ## Correction du guide pointillé des lettres
 Le rendu du guide prend maintenant en compte tous les traits définis pour chaque lettre. Le défaut visible sur A et B provenait du découpage du guide, qui n'affichait qu'un trait. Le contrôle visuel complet des 26 lettres reste à effectuer dans le navigateur.
+
+
+## Ajustement de la forme des lettres
+Le moteur conserve désormais les segments géométriques des lettres au lieu d'appliquer un lissage uniforme, source de barres courbées et de formes déformées. Le visage de A–F est repositionné avec les yeux sur le haut et la bouche dans la zone colorée. Une inspection navigateur des 26 lettres reste nécessaire.

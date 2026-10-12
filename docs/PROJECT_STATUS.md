@@ -264,3 +264,7 @@ Correctif le plus récent — commit `0f71423` : les yeux et la bouche sont main
 
 
 Correctif `9f35fe7` : la cause du visage qui flottait en haut à gauche a été identifiée : les ancres du visage utilisaient des coordonnées fixes alors que le chiffre était mis à l’échelle selon la taille du canevas. Les ancres sont maintenant transformées dans le même repère responsive, et le centre des animations suit les dimensions réelles. Syntaxe JavaScript vérifiée. Le placement visuel doit encore être confirmé dans le navigateur sur les chiffres 0 à 9; aucune validation visuelle n’est revendiquée.
+
+
+## Extension des nombres — implémentée, validation en attente
+Le prototype inclut maintenant un champ pour saisir un nombre de 1 à 4 chiffres et compose ses routes dans le canevas. Le chiffre 5 reçoit un échantillonnage d'interpolation plus dense. Commits `8f3dab8`, `911c36c`, `735cd50`. Les tests réels de démonstration, validation, placement du visage et rendu multi-chiffres doivent encore être exécutés; cette fonctionnalité n'est pas déclarée validée.

@@ -420,3 +420,11 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - Les yeux et la bouche restent cachés avant la réussite.
 - [ ] Étape suivante obligatoire : validation, couleur et animation indépendantes pour chaque chiffre d'un nombre composé; ne pas considérer ce point comme terminé.
 - [ ] Vérifier la syntaxe et le comportement dans un navigateur réel.
+
+## Validation indépendante des chiffres composés — implémentée, tests navigateur à faire
+- Chaque chiffre possède désormais son propre état de réussite; seul le chiffre dont le tracé est suffisamment proche et couvre une partie suffisante de son chemin passe en couleur et s'anime.
+- Le guide pointillé du chiffre réussi disparaît sans masquer les chiffres qui restent à tracer.
+- Le champ de nombre personnalisé met à jour l'aperçu pendant la saisie.
+- Le lissage des routes est maintenant choisi chiffre par chiffre, y compris dans un nombre composé comme 130; le chiffre 3 profite donc du lissage au lieu d'hériter du style du premier chiffre.
+- [x] Vérification de syntaxe JavaScript avec analyseur avant le push.
+- [ ] Vérification interactive réelle dans le navigateur : 25, 130, saisie caractère par caractère et reset.

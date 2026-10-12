@@ -13,7 +13,9 @@
   const digitButtons = Array.from(document.querySelectorAll("[data-digit]"));
   const previousNumberButton = document.getElementById("previous-number");
   const nextNumberButton = document.getElementById("next-number");
-  const selectedNumberOutput = document.getElementById("selected-number");
+  const numberWindow = document.getElementById("number-window");
+  const numberWindowHint = document.getElementById("number-window-hint");
+  let numberWindowStart = 1;
   const numberTitle = document.getElementById("number-title");
   const guideGlyph = document.querySelector(".guide-glyph");
   let selectedDigit = 1;
@@ -47,7 +49,7 @@
     const offsetX = (rect.width - viewWidth * scale) / 2;
     const offsetY = (rect.height - viewHeight * scale) / 2;
     const chars = selectedValue.split("");
-    const digitScale = chars.length === 1 ? 1 : chars.length === 2 ? 0.82 : chars.length === 3 ? 0.64 : 0.5;
+    const digitScale = chars.length === 1 ? 1 : chars.length === 2 ? 0.82 : chars.length === 3 ? 0.64 : 0.56;
 
     const anchors = {
       0:{eyes:{x:225,y:26},mouth:{x:225,y:53}},
@@ -92,7 +94,7 @@
       routeIndex += pathCount;
       const color = isCompleted ? (celebrationColors[index] || "#c4cfdf") : "#c4cfdf";
       ctx.strokeStyle = "#243344";
-      ctx.lineWidth = Math.max(42, Math.min(54, canvas.clientWidth * 0.09)) + 5;
+      ctx.lineWidth = Math.max(30, Math.min(54, canvas.clientWidth * (chars.length >= 4 ? 0.055 : chars.length === 3 ? 0.07 : 0.09))) + 5;
       ownRoutes.forEach(path => {
         if (path.length < 2) return;
         ctx.beginPath(); ctx.moveTo(path[0].x, path[0].y);
@@ -100,7 +102,7 @@
         ctx.stroke();
       });
       ctx.strokeStyle = color;
-      ctx.lineWidth = Math.max(42, Math.min(54, canvas.clientWidth * 0.09));
+      ctx.lineWidth = Math.max(30, Math.min(54, canvas.clientWidth * (chars.length >= 4 ? 0.055 : chars.length === 3 ? 0.07 : 0.09)));
       ownRoutes.forEach(path => {
         if (path.length < 2) return;
         ctx.beginPath(); ctx.moveTo(path[0].x, path[0].y);
@@ -170,7 +172,7 @@
     2:[{x:187,y:72},{x:194,y:55},{x:208,y:45},{x:227,y:42},{x:245,y:47},{x:259,y:59},{x:265,y:75},{x:263,y:91},{x:254,y:108},{x:239,y:126},{x:221,y:145},{x:204,y:162},{x:190,y:177},{x:188,y:188},{x:270,y:188}],
     3:[{x:194,y:61},{x:206,y:48},{x:224,y:42},{x:243,y:45},{x:257,y:57},{x:262,y:72},{x:257,y:86},{x:245,y:98},{x:229,y:108},{x:244,y:116},{x:257,y:130},{x:263,y:147},{x:260,y:164},{x:250,y:180},{x:234,y:192},{x:215,y:197},{x:196,y:193}],
     4:[{x:239,y:214},{x:239,y:43},{x:177,y:145},{x:278,y:145}],
-    5:[{x:267,y:47},{x:187,y:47},{x:183,y:102},{x:211,y:98},{x:237,y:101},{x:257,y:116},{x:265,y:139},{x:262,y:163},{x:248,y:184},{x:226,y:195},{x:202,y:193},{x:183,y:186}],
+    5:[{x:267,y:47},{x:246,y:47},{x:226,y:47},{x:206,y:47},{x:187,y:47},{x:185,y:63},{x:183,y:82},{x:183,y:102},{x:197,y:99},{x:211,y:98},{x:226,y:100},{x:240,y:105},{x:252,y:114},{x:260,y:126},{x:265,y:139},{x:265,y:151},{x:262,y:163},{x:255,y:175},{x:248,y:184},{x:237,y:191},{x:226,y:195},{x:213,y:196},{x:202,y:193},{x:192,y:190},{x:183,y:186}],
     6:[{x:250,y:49},{x:232,y:43},{x:214,y:45},{x:198,y:57},{x:186,y:77},{x:178,y:104},{x:175,y:134},{x:179,y:160},{x:190,y:181},{x:207,y:195},{x:227,y:200},{x:246,y:194},{x:260,y:181},{x:268,y:164},{x:269,y:147},{x:263,y:132},{x:251,y:121},{x:235,y:116},{x:218,y:118},{x:203,y:126},{x:192,y:140}],
     7:[{x:177,y:48},{x:273,y:48},{x:210,y:214}],
     8:[{x:225,y:121},{x:205,y:111},{x:191,y:96},{x:185,y:78},{x:190,y:60},{x:204,y:47},{x:225,y:42},{x:246,y:47},{x:260,y:60},{x:265,y:78},{x:259,y:96},{x:245,y:111},{x:225,y:121},{x:205,y:132},{x:190,y:148},{x:184,y:166},{x:189,y:184},{x:204,y:198},{x:225,y:204},{x:246,y:198},{x:261,y:184},{x:266,y:166},{x:260,y:148},{x:245,y:132},{x:225,y:121}],
@@ -467,7 +469,7 @@
     numberTitle.textContent = selectedValue.length === 1 ? "Le chiffre " + selectedValue : "Le nombre " + selectedValue;
     guideGlyph.textContent = selectedValue;
     digitButtons.forEach(button => button.setAttribute("aria-pressed", String(selectedValue === button.dataset.digit)));
-    if (selectedNumberOutput) selectedNumberOutput.textContent = selectedValue;
+    renderNumberWindow();
     if (previousNumberButton) previousNumberButton.disabled = Number(selectedValue) <= 0;
     if (nextNumberButton) nextNumberButton.disabled = Number(selectedValue) >= 100;
     if (customNumberInput && !options.preserveInput) customNumberInput.value = selectedValue;
@@ -603,8 +605,31 @@
     button.addEventListener("click", () => selectDigit(button.dataset.digit));
   });
 
-  if (previousNumberButton) previousNumberButton.addEventListener("click", () => { const current = Number(selectedValue); if (current > 0) selectDigit(current - 1); });
-  if (nextNumberButton) nextNumberButton.addEventListener("click", () => { const current = Number(selectedValue); if (current < 100) selectDigit(current + 1); });
+  function renderNumberWindow() {
+    if (!numberWindow) return;
+    const windowEnd = Math.min(100, numberWindowStart + 9);
+    numberWindow.innerHTML = "";
+    for (let value = numberWindowStart; value <= windowEnd; value++) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "number-choice";
+      button.textContent = String(value);
+      button.setAttribute("aria-pressed", String(selectedValue === String(value)));
+      button.setAttribute("aria-label", "Tracer le nombre " + value);
+      button.addEventListener("click", () => selectDigit(value));
+      numberWindow.appendChild(button);
+    }
+    if (numberWindowHint) numberWindowHint.textContent = numberWindowStart + " à " + windowEnd + " · sélectionne un nombre";
+    if (previousNumberButton) previousNumberButton.disabled = numberWindowStart <= 1;
+    if (nextNumberButton) nextNumberButton.disabled = numberWindowStart >= 91;
+  }
+
+  if (previousNumberButton) previousNumberButton.addEventListener("click", () => {
+    if (numberWindowStart > 1) { numberWindowStart--; renderNumberWindow(); }
+  });
+  if (nextNumberButton) nextNumberButton.addEventListener("click", () => {
+    if (numberWindowStart < 91) { numberWindowStart++; renderNumberWindow(); }
+  });
 
   themeButtons.forEach(button => {
     button.addEventListener("click", () => {
@@ -626,5 +651,6 @@
 
   window.addEventListener("resize", resizeCanvas);
   resizeCanvas();
+  renderNumberWindow();
   startDemo();
 })();

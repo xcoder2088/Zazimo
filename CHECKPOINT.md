@@ -276,3 +276,7 @@ Ajout de coordonnées explicites par lettre dans `prototype/app.js` pour éviter
 
 ## Correction du guide de traçage des lettres
 Le guide pointillé utilisait à tort un nombre de traits propre aux chiffres (deux pour « 1 », un pour les autres). Il utilise maintenant le nombre réel de traits de chaque lettre. Cela corrige notamment le A (diagonales et barre) et le B (tige et deux boucles). Commit sur `main`; inspection visuelle complète A–Z encore requise.
+
+
+## Géométrie des lettres et visage
+Le lissage spline est maintenant réservé aux lettres à contours courbes; les lettres géométriques conservent leurs segments droits afin d'éviter les déformations de barres et d'angles. Les ancres de visage de A à F ont aussi été rapprochées du contour supérieur, avec la bouche plus basse dans la zone colorée. Le rendu complet A–Z doit encore être contrôlé dans le navigateur.

@@ -41,10 +41,14 @@
     const wiggle = celebrationMode === "wiggle" ? wave * 0.055 : 0;
     const pulse = celebrationMode === "pulse" ? 1 + wave * 0.045 : 1;
     ctx.save();
-    ctx.translate(225, 125);
+    // Les transformations utilisent le centre réel de la zone d'affichage,
+    // et non les coordonnées fixes du viewBox 450x250.
+    const canvasCenterX = canvas.clientWidth / 2;
+    const canvasCenterY = canvas.clientHeight / 2;
+    ctx.translate(canvasCenterX, canvasCenterY);
     ctx.rotate(wiggle);
     ctx.scale(pulse, pulse);
-    ctx.translate(-225, -125);
+    ctx.translate(-canvasCenterX, -canvasCenterY);
     ctx.translate(0, -bounce);
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
@@ -78,10 +82,24 @@
         4:{x:239,y:56}, 5:{x:257,y:58}, 6:{x:233,y:57}, 7:{x:191,y:57},
         8:{x:225,y:55}, 9:{x:226,y:56}
       };
+      // Les ancres du visage sont définies manuellement dans le viewBox 450x250.
+      // Convertir ces coordonnées dans le même repère responsive que les routes
+      // évite que les yeux et la bouche restent en haut à gauche sur les grands écrans.
+      const faceRect = canvas.getBoundingClientRect();
+      const viewScale = Math.min(faceRect.width / 450, faceRect.height / 250);
+      const viewOffsetX = (faceRect.width - 450 * viewScale) / 2;
+      const viewOffsetY = (faceRect.height - 250 * viewScale) / 2;
+      const toCanvasPoint = point => ({
+        x: viewOffsetX + point.x * viewScale,
+        y: viewOffsetY + point.y * viewScale
+      });
       const eyes = eyeAnchors[selectedDigit];
       const mouth = mouthAnchors[selectedDigit];
+      const faceScale = viewScale;
       const blink = celebrationElapsed % 2400 > 2200;
       ctx.save();
+      ctx.translate(viewOffsetX, viewOffsetY);
+      ctx.scale(faceScale, faceScale);
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
       if (blink) {

@@ -288,3 +288,4 @@ Le sélecteur présente maintenant dix nombres sélectionnables et se décale d'
 
 ## Proportions des chiffres composés
 L'épaisseur du contour et du remplissage est désormais proportionnelle à l'échelle géométrique du chiffre dans un nombre composé, afin que le chiffre 5 conserve une silhouette cohérente avec son affichage seul. Syntaxe vérifiée; essai visuel réel encore nécessaire.
+\n\n## Lettres majuscules — première intégration\nLe mode Lettres permet de choisir A à Z et réutilise le moteur de dessin, la démonstration et la validation. Les tracés constituent une première base technique et doivent être contrôlés visuellement et pédagogiquement dans le navigateur avant d’être considérés comme validés.\n

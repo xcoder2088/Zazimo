@@ -272,3 +272,7 @@ Le contour et le remplissage des chiffres sont maintenant mis à l'échelle avec
 
 ## Correction — ancres de visage des lettres
 Ajout de coordonnées explicites par lettre dans `prototype/app.js` pour éviter la position générique appliquée à toutes les lettres. Cette modification est commitée sur `main`, mais le placement doit encore être vérifié dans le navigateur sur A–Z; ne pas déclarer le rendu visuellement validé avant ce contrôle.
+
+
+## Correction du guide de traçage des lettres
+Le guide pointillé utilisait à tort un nombre de traits propre aux chiffres (deux pour « 1 », un pour les autres). Il utilise maintenant le nombre réel de traits de chaque lettre. Cela corrige notamment le A (diagonales et barre) et le B (tige et deux boucles). Commit sur `main`; inspection visuelle complète A–Z encore requise.

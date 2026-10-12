@@ -10,7 +10,7 @@
   const demoButton = document.getElementById("demo-button");
   const calmToggle = document.getElementById("calm-toggle");
   const themeButtons = Array.from(document.querySelectorAll("[data-theme]"));
-  const digitButtons = Array.from(document.querySelectorAll("[data-digit]"));
+  const digitButtons = Array.from(document.querySelectorAll("[data-digit]"));\n  const modeButtons = Array.from(document.querySelectorAll("[data-mode]"));\n  const numberControls = document.getElementById("number-controls");\n  const letterPicker = document.getElementById("letter-picker");\n  const letterGrid = document.getElementById("letter-grid");\n  let selectedType = "digits";
   const previousNumberButton = document.getElementById("previous-number");
   const nextNumberButton = document.getElementById("next-number");
   const numberWindow = document.getElementById("number-window");
@@ -89,7 +89,7 @@
       ctx.rotate(wiggle);
       ctx.scale(pulse, pulse);
       ctx.translate(-centerX, -centerY - bounce);
-      const pathCount = char === "1" ? 2 : 1;
+      const pathCount = routesForCharacter(char).length;
       const ownRoutes = routes.slice(routeIndex, routeIndex + pathCount);
       routeIndex += pathCount;
       const color = isCompleted ? (celebrationColors[index] || "#c4cfdf") : "#c4cfdf";
@@ -114,7 +114,7 @@
       // Keep the face hidden until the trace has been validated.
       if (!isCompleted) { ctx.restore(); return; }
       // Chaque visage est ancré sur son propre chiffre et partage sa transformation.
-      const anchor = anchors[char] || anchors[0];
+      const anchor = anchors[char] || (selectedType === "letters" ? {eyes:{x:225,y:36},mouth:{x:225,y:62}} : anchors[0]);
       const eyes = transformPoint(anchor.eyes, index);
       const mouth = transformPoint(anchor.mouth, index);
       const faceScale = scale * digitScale;
@@ -179,6 +179,12 @@
     8:[{x:225,y:121},{x:205,y:111},{x:191,y:96},{x:185,y:78},{x:190,y:60},{x:204,y:47},{x:225,y:42},{x:246,y:47},{x:260,y:60},{x:265,y:78},{x:259,y:96},{x:245,y:111},{x:225,y:121},{x:205,y:132},{x:190,y:148},{x:184,y:166},{x:189,y:184},{x:204,y:198},{x:225,y:204},{x:246,y:198},{x:261,y:184},{x:266,y:166},{x:260,y:148},{x:245,y:132},{x:225,y:121}],
     9:[{x:245,y:121},{x:230,y:132},{x:212,y:134},{x:196,y:127},{x:184,y:113},{x:179,y:95},{x:182,y:76},{x:192,y:59},{x:208,y:48},{x:228,y:44},{x:247,y:49},{x:262,y:62},{x:271,y:80},{x:275,y:103},{x:273,y:129},{x:267,y:155},{x:256,y:178},{x:241,y:197},{x:225,y:210}]
   };
+  const letterRoutes = {"A":[[[155,205],[225,45],[295,205]],[[184,139],[266,139]]],"B":[[[170,205],[170,45]],[[170,48],[232,48],[265,64],[268,87],[251,105],[170,105]],[[170,105],[240,105],[270,126],[270,171],[244,201],[170,201]]],"C":[[[285,66],[264,48],[230,42],[194,52],[170,79],[160,119],[166,159],[188,188],[222,204],[258,197],[284,176]]],"D":[[[170,205],[170,45],[222,45],[259,62],[280,91],[286,125],[278,159],[256,187],[222,205],[170,205]]],"E":[[[270,48],[170,48],[170,202],[273,202]],[[171,124],[249,124]]],"F":[[[170,205],[170,48],[273,48]],[[171,124],[248,124]]],"G":[[[282,68],[260,49],[228,43],[195,54],[172,82],[162,119],[168,158],[190,188],[223,203],[258,196],[282,176],[282,133],[235,133]]],"H":[[[170,45],[170,205]],[[280,45],[280,205]],[[171,125],[279,125]]],"I":[[[190,48],[260,48]],[[225,48],[225,202]],[[190,202],[260,202]]],"J":[[[192,48],[278,48],[278,158],[266,190],[240,204],[210,200],[190,180]]],"K":[[[175,45],[175,205]],[[275,48],[178,125],[282,205]]],"L":[[[174,45],[174,202],[277,202]]],"M":[[[155,205],[170,45],[225,142],[280,45],[295,205]]],"N":[[[165,205],[165,45],[285,205],[285,45]]],"O":[[[225,42],[190,50],[168,79],[160,120],[168,161],[192,191],[225,204],[258,191],[282,161],[290,120],[282,79],[260,50],[225,42]]],"P":[[[172,205],[172,45],[235,45],[270,61],[279,86],[270,109],[239,124],[172,124]]],"Q":[[[225,42],[190,50],[168,79],[160,120],[168,161],[192,191],[225,204],[258,191],[282,161],[290,120],[282,79],[260,50],[225,42]],[[242,166],[291,211]]],"R":[[[172,205],[172,45],[235,45],[270,61],[279,86],[270,109],[239,124],[172,124]],[[225,124],[283,205]]],"S":[[[278,62],[253,47],[220,43],[188,55],[173,77],[182,99],[208,115],[244,128],[270,148],[272,173],[253,194],[220,204],[187,194],[168,178]]],"T":[[[160,48],[290,48]],[[225,48],[225,205]]],"U":[[[170,45],[170,151],[181,183],[205,201],[235,205],[261,192],[278,164],[280,45]]],"V":[[[160,45],[220,205],[290,45]]],"W":[[[150,45],[177,205],[225,128],[273,205],[300,45]]],"X":[[[170,45],[280,205]],[[280,45],[170,205]]],"Y":[[[160,45],[225,120],[290,45]],[[225,120],[225,205]]],"Z":[[[165,48],[285,48],[165,202],[285,202]]]};
+  function routesForCharacter(char) {
+    if (selectedType === "letters") return (letterRoutes[char] || letterRoutes.A).map(route => route.map(([x,y]) => ({x,y})));
+    const digit = Number(char);
+    return digit === 1 ? [[{x:190,y:76},{x:229,y:48}],[{x:229,y:48},{x:229,y:204}]] : [digitRoutes[digit]];
+  }
   const rewardStar = document.getElementById("reward-star");
   const rewardTitle = document.getElementById("reward-title");
   const rewardText = document.getElementById("reward-text");
@@ -214,7 +220,7 @@
       const digit = Number(digitChar);
       const base = digit === 1 ? [[{x:190,y:76},{x:229,y:48}], [{x:229,y:48},{x:229,y:204}]] : [digitRoutes[digit]];
       const shift = (index - (digitCount - 1) / 2) * 108;
-      base.forEach(route => { routeDigits.push(digit); rawRoutes.push(route.map(point => ({x:225 + shift + (point.x - 225) * digitScale,y:125 + (point.y - 125) * digitScale}))); });
+      base.forEach(route => { routeDigits.push(selectedType === "letters" ? digitChar : Number(digitChar)); rawRoutes.push(route.map(point => ({x:225 + shift + (point.x - 225) * digitScale,y:125 + (point.y - 125) * digitScale}))); });
     });
     return rawRoutes.map((svgPoints, routeIndex) => {
     const routeDigit = routeDigits[routeIndex];
@@ -230,7 +236,7 @@
         const p1 = svgPoints[i];
         const p2 = svgPoints[i + 1];
         const p3 = svgPoints[Math.min(svgPoints.length - 1, i + 2)];
-        const steps = selectedDigit === 5 ? 20 : 12;
+        const steps = selectedType === "letters" || routeDigit === 5 ? 20 : 12;
         for (let step = 0; step < steps; step++) {
           const t = step / steps, t2 = t * t, t3 = t2 * t;
           smooth.push({
@@ -371,7 +377,7 @@
     activeStroke = [];
     demoActive = true;
     demoStart = performance.now();
-    feedback.textContent = selectedDigit === 1 ? "Regarde le point : il monte en diagonale, puis descend tout droit." : "Regarde le point suivre le chemin du chiffre " + selectedDigit + ".";
+    feedback.textContent = selectedType === "letters" ? "Regarde le point suivre le tracé de la lettre " + selectedValue + "." : (selectedDigit === 1 ? "Regarde le point : il monte en diagonale, puis descend tout droit." : "Regarde le point suivre le chemin du chiffre " + selectedDigit + ".");
     demoButton.disabled = true;
 
     if (demoDuration === 0) {
@@ -471,7 +477,7 @@
       numberWindowStart = Math.max(1, Math.min(91, numericValue - 4));
     }
     selectedDigit = Number(selectedValue[0]);
-    numberTitle.textContent = selectedValue.length === 1 ? "Le chiffre " + selectedValue : "Le nombre " + selectedValue;
+    numberTitle.textContent = selectedType === "letters" ? "La lettre " + selectedValue : (selectedValue.length === 1 ? "Le chiffre " + selectedValue : "Le nombre " + selectedValue);
     guideGlyph.textContent = selectedValue;
     digitButtons.forEach(button => button.setAttribute("aria-pressed", String(selectedValue === button.dataset.digit)));
     renderNumberWindow();
@@ -483,7 +489,7 @@
     activeStroke = [];
     celebrationActive = false;
     celebrationStartedAt = 0;
-    feedback.textContent = "Observe le chiffre " + selectedDigit + ", puis suis le chemin pointillé.";
+    feedback.textContent = selectedType === "letters" ? "Observe la lettre " + selectedValue + ", puis suis le chemin pointillé." : "Observe le chiffre " + selectedDigit + ", puis suis le chemin pointillé.";
     rewardStar.textContent = "★";
     rewardTitle.textContent = "Chaque essai compte !";
     rewardText.textContent = "Prends ton temps. Tu peux recommencer autant de fois que tu veux.";
@@ -504,7 +510,7 @@
     const routeGroups = [];
     let routeOffset = 0;
     selectedValue.split("").forEach((char, index) => {
-      const count = char === "1" ? 2 : 1;
+      const count = routesForCharacter(char).length;
       routeGroups.push({ index, routes: routes.slice(routeOffset, routeOffset + count) });
       routeOffset += count;
     });
@@ -610,7 +616,18 @@
     button.addEventListener("click", () => selectDigit(button.dataset.digit));
   });
 
-  function renderNumberWindow() {
+  function selectLetter(letter) {
+    selectedType="letters"; successState=false; completedCharacters.clear(); celebrationColors=[]; celebrationModes=[];
+    selectedValue=letter; selectedDigit=0; points=[]; strokes=[]; activeStroke=[]; celebrationActive=false;
+    numberTitle.textContent="La lettre "+letter; if(customNumberInput) customNumberInput.value="";
+    letterGrid.querySelectorAll(".letter-choice").forEach(button=>button.setAttribute("aria-pressed",String(button.textContent===letter)));
+    feedback.textContent="Observe la lettre "+letter+", puis suis le chemin pointillé.";
+    rewardStar.textContent="★"; rewardTitle.textContent="Chaque essai compte !"; rewardText.textContent="Prends ton temps. Tu peux recommencer autant de fois que tu veux.";
+    drawStrokes(); startDemo();
+  }
+  function renderLetterGrid(){if(!letterGrid||letterGrid.childElementCount)return;for(const letter of "ABCDEFGHIJKLMNOPQRSTUVWXYZ"){const b=document.createElement("button");b.type="button";b.className="letter-choice";b.textContent=letter;b.setAttribute("aria-pressed","false");b.setAttribute("aria-label","Tracer la lettre "+letter);b.addEventListener("click",()=>selectLetter(letter));letterGrid.appendChild(b);}}
+  modeButtons.forEach(button=>button.addEventListener("click",()=>{const letters=button.dataset.mode==="letters";modeButtons.forEach(option=>option.setAttribute("aria-pressed",String(option===button)));numberControls.hidden=letters;letterPicker.hidden=!letters;if(letters){renderLetterGrid();selectLetter("A");}else{selectedType="digits";selectDigit("1");}}));
+\n  function renderNumberWindow() {
     if (!numberWindow) return;
     const windowEnd = Math.min(100, numberWindowStart + 9);
     numberWindow.innerHTML = "";

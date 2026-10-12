@@ -465,6 +465,10 @@
     celebrationColors = [];
     celebrationModes = [];
     selectedValue = String(value);
+    const numericValue = Number(selectedValue);
+    if (numericValue >= 1 && numericValue <= 100 && (numericValue < numberWindowStart || numericValue > Math.min(100, numberWindowStart + 9))) {
+      numberWindowStart = Math.max(1, Math.min(91, numericValue - 4));
+    }
     selectedDigit = Number(selectedValue[0]);
     numberTitle.textContent = selectedValue.length === 1 ? "Le chiffre " + selectedValue : "Le nombre " + selectedValue;
     guideGlyph.textContent = selectedValue;

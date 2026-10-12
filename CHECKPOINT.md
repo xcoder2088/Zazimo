@@ -240,3 +240,10 @@ Commit `0f71423` : le visage n’est plus rendu dans une couche SVG séparée. L
 
 ## Correction du visage décalé — 2026-10-11
 Commit `9f35fe7` : cause identifiée dans la capture/vidéo : les routes du chiffre étaient adaptées à la taille réelle du canevas, mais les ancres des yeux et de la bouche restaient dans le repère fixe 450×250. Conversion responsive ajoutée pour dessiner le visage dans le même repère que le chiffre, et centre des animations calculé à partir des dimensions réelles du canevas. Syntaxe JavaScript vérifiée. Le test visuel dans le navigateur reste à faire; ne pas déclarer le défaut visuellement résolu avant cette vérification.
+
+
+## Point de reprise — 2026-10-12
+- Ajout d'une saisie personnalisée de 1 à 4 chiffres et composition des routes de chiffres dans le même canevas.
+- Lissage plus dense de la route du 5 pour réduire l'effet saccadé.
+- Commits : `8f3dab8` (champ HTML), `911c36c` (routes et logique), `735cd50` (styles).
+- Syntaxe JavaScript et rendu navigateur multi-chiffres à vérifier avant de considérer cette passe comme acceptée.

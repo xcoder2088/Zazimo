@@ -174,6 +174,8 @@
   function drawGuide() {
     const routes = tracePaths();
     drawFriendlyNumeral();
+    // Une fois le tracé réussi, retirer entièrement le guide pointillé.
+    if (successState) return;
     ctx.save();
     ctx.lineCap = "round";
     ctx.lineJoin = "round";

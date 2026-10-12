@@ -130,12 +130,15 @@ body.calm .reward-star { background: #e9f1e7; color: #789b7a; }
 
 
 /* Sélecteur compact : préserver la carte de traçage sans une grille de 101 boutons. */
-.number-carousel { display:grid; grid-template-columns:52px minmax(0,1fr) 52px; align-items:center; gap:14px; margin:16px 0 12px; padding:8px 12px; border:1px solid #e2e8f1; border-radius:18px; background:linear-gradient(135deg,#fff,#f7faff); }
+.number-carousel { display:grid; grid-template-columns:52px minmax(0,1fr) 52px; align-items:center; gap:12px; margin:16px 0 12px; padding:8px 12px; border:1px solid #e2e8f1; border-radius:18px; background:linear-gradient(135deg,#fff,#f7faff); }
 .number-arrow { display:grid; place-items:center; width:48px; height:48px; border:2px solid #e1e8f1; border-radius:15px; background:#fff; color:var(--ink,#243344); font-size:2rem; line-height:1; font-weight:800; cursor:pointer; transition:background .16s ease,border-color .16s ease,transform .16s ease; }
 .number-arrow:hover:not(:disabled) { border-color:var(--orange,#ff9228); background:#fff0d9; transform:scale(1.04); }
 .number-arrow:disabled { opacity:.35; cursor:not-allowed; }
-.number-carousel-current { display:flex; flex-direction:column; align-items:center; gap:1px; min-width:0; }
-.number-carousel-caption { font-size:.65rem; font-weight:900; letter-spacing:.12em; color:#c94d2d; }
-#selected-number { font-size:1.8rem; line-height:1.15; font-weight:900; color:var(--ink,#243344); font-variant-numeric:tabular-nums; }
-.number-carousel-hint { color:#77849a; font-size:.75rem; }
-@media (max-width:520px) { .number-carousel { grid-template-columns:44px minmax(0,1fr) 44px; gap:8px; padding:7px; } .number-arrow { width:42px; height:44px; } }
+.number-carousel-current { display:flex; flex-direction:column; align-items:stretch; gap:7px; min-width:0; }
+.number-window { display:grid; grid-template-columns:repeat(10,minmax(0,1fr)); gap:5px; width:100%; }
+.number-choice { min-width:0; min-height:42px; padding:5px 2px; border:2px solid #e1e8f1; border-radius:11px; background:#fff; color:var(--ink,#243344); font:800 .92rem/1 system-ui,sans-serif; cursor:pointer; transition:background .16s ease,border-color .16s ease,transform .16s ease; }
+.number-choice:hover { border-color:var(--orange,#ff9228); background:#fff4e2; }
+.number-choice[aria-pressed="true"] { border-color:var(--orange,#ff9228); background:#fff0d9; color:#934a0c; box-shadow:inset 0 -2px 0 var(--orange,#ff9228); }
+.number-carousel-hint { color:#77849a; font-size:.72rem; text-align:center; }
+@media (max-width:700px) { .number-carousel { grid-template-columns:42px minmax(0,1fr) 42px; gap:6px; padding:7px; } .number-arrow { width:40px; height:42px; } .number-window { gap:3px; } .number-choice { min-height:39px; font-size:.82rem; border-radius:8px; } }
+@media (max-width:420px) { .number-choice { font-size:.7rem; padding-inline:0; } .number-window { gap:2px; } }

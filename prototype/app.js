@@ -20,6 +20,7 @@
   let successState = false;
   const celebrationPalette = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83","#19b7b0","#5b8def"];
   let activeCharacterColor = celebrationPalette[0];
+  let celebrationColors = [];
   let previousCharacterColor = "";
   function chooseCelebrationColor() {
     const choices = celebrationPalette.filter(color => color !== previousCharacterColor);
@@ -78,7 +79,7 @@
       const pathCount = char === "1" ? 2 : 1;
       const ownRoutes = routes.slice(routeIndex, routeIndex + pathCount);
       routeIndex += pathCount;
-      const color = celebrationPalette[(Number(char) + index * 3 + Math.floor(elapsed / 600)) % celebrationPalette.length];
+      const color = celebrationColors[index] || celebrationPalette[(Number(char) + index * 3) % celebrationPalette.length];
       ctx.strokeStyle = "#243344";
       ctx.lineWidth = Math.max(42, Math.min(54, canvas.clientWidth * 0.09)) + 5;
       ownRoutes.forEach(path => {
@@ -481,6 +482,7 @@
       successState = true;
       celebrationActive = true;
       chooseCelebrationColor();
+      celebrationColors = selectedValue.split("").map(() => celebrationPalette[Math.floor(Math.random() * celebrationPalette.length)]);
       celebrationMode = ["bounce", "wiggle", "pulse"][Math.floor(Math.random() * 3)];
       faceExpression = ["smile", "tongue"][Math.floor(Math.random() * 2)];
       celebrationStartedAt = performance.now();

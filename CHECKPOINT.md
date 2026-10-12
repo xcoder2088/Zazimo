@@ -265,3 +265,6 @@ Commit `9f35fe7` : cause identifiée dans la capture/vidéo : les routes du chif
 - Les nombres visibles sont des boutons sélectionnables; les nombres saisis entre 1 et 100 recentrent le carousel.
 - Ajustement de l'échelle et de l'épaisseur pour quatre chiffres, plus ajout de points de contrôle à la courbe du 5.
 - Syntaxe JS vérifiée; le test visuel/interactif doit encore être effectué dans le navigateur local.
+
+## 2026-10-12 — proportion des chiffres composés
+Le contour et le remplissage des chiffres sont maintenant mis à l'échelle avec leur géométrie, plutôt que de garder une épaisseur presque identique quand les chiffres sont réduits. Cela cible le 5 dans les nombres à trois chiffres. Syntaxe vérifiée; contrôle visuel dans le navigateur encore requis.

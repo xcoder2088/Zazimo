@@ -261,3 +261,6 @@ Dernière modification : commits `2b6fb20` et `8842e2f`. Trois animations de ré
 
 
 Correctif le plus récent — commit `0f71423` : les yeux et la bouche sont maintenant dessinés directement dans le Canvas du chiffre. Le visage et le chiffre partagent la même transformation, ce qui évite le décalage inhérent à deux couches animées séparément. Syntaxe JavaScript vérifiée et fonctions de tracé/validation présentes. Prochaine vérification : test visuel des chiffres 0 à 9 dans le navigateur.
+
+
+Correctif `9f35fe7` : la cause du visage qui flottait en haut à gauche a été identifiée : les ancres du visage utilisaient des coordonnées fixes alors que le chiffre était mis à l’échelle selon la taille du canevas. Les ancres sont maintenant transformées dans le même repère responsive, et le centre des animations suit les dimensions réelles. Syntaxe JavaScript vérifiée. Le placement visuel doit encore être confirmé dans le navigateur sur les chiffres 0 à 9; aucune validation visuelle n’est revendiquée.

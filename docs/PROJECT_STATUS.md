@@ -255,3 +255,6 @@ Dernier changement `55b6244` : couche SVG séparée pour les visages; le Canvas 
 
 
 Correctif récent `e46d203` : masquage du SVG décoratif qui recouvrait le Canvas et masquait le chemin de guidage. La syntaxe JavaScript passe; validation visuelle dans le navigateur encore requise.
+
+
+Dernière modification : commits `2b6fb20` et `8842e2f`. Trois animations de réussite aléatoires (rebond, balancement, pulsation) appliquent une transformation partagée au chiffre Canvas et au visage SVG. L’animation CSS autonome du visage a été retirée. La syntaxe JavaScript a été vérifiée; aucun test navigateur n’a encore été exécuté. Les fonctions de tracé et de validation n’ont pas été remplacées.

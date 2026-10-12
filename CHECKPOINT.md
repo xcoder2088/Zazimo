@@ -252,3 +252,10 @@ Commit `9f35fe7` : cause identifiée dans la capture/vidéo : les routes du chif
 - Correction poussée : le glyphe complet reste visible en couleur neutre avant la réussite; le visage est masqué avant validation.
 - Cette passe ne résout pas encore la validation indépendante de chaque chiffre dans un nombre composé.
 - À poursuivre : état de réussite par caractère, puis tests syntaxiques et vérification navigateur avant annonce de validation.
+
+## Point de reprise — 2026-10-12 (tracé indépendant)
+- Commit `ef2958c` : la réussite, la couleur et l'animation sont suivies séparément pour chaque caractère; la couverture du chemin est vérifiée pour éviter de valider une simple portion.
+- Les pointillés sont masqués uniquement pour les chiffres terminés; les autres restent neutres et traçables.
+- Le nombre personnalisé est prévisualisé en direct pendant la saisie.
+- Le lissage du chemin est désormais déterminé par chaque chiffre individuel, et non par le premier chiffre du nombre.
+- Syntaxe JavaScript vérifiée avant push. Les interactions et l'apparence doivent encore être testées dans le navigateur local.

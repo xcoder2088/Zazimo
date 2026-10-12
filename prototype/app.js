@@ -119,7 +119,37 @@
       // Keep the face hidden until the trace has been validated.
       if (!isCompleted) { ctx.restore(); return; }
       // Chaque visage est ancré sur son propre chiffre et partage sa transformation.
-      const anchor = anchors[char] || (selectedType === "letters" ? {eyes:{x:225,y:36},mouth:{x:225,y:62}} : anchors[0]);
+      const letterAnchors = {
+        A:{eyes:{x:225,y:48},mouth:{x:225,y:72}},
+        B:{eyes:{x:230,y:53},mouth:{x:230,y:78}},
+        C:{eyes:{x:225,y:48},mouth:{x:225,y:72}},
+        D:{eyes:{x:225,y:49},mouth:{x:225,y:74}},
+        E:{eyes:{x:220,y:52},mouth:{x:220,y:77}},
+        F:{eyes:{x:220,y:52},mouth:{x:220,y:77}},
+        G:{eyes:{x:225,y:49},mouth:{x:225,y:74}},
+        H:{eyes:{x:225,y:51},mouth:{x:225,y:76}},
+        I:{eyes:{x:225,y:55},mouth:{x:225,y:80}},
+        J:{eyes:{x:260,y:55},mouth:{x:260,y:80}},
+        K:{eyes:{x:225,y:55},mouth:{x:225,y:80}},
+        L:{eyes:{x:220,y:55},mouth:{x:220,y:80}},
+        M:{eyes:{x:225,y:49},mouth:{x:225,y:73}},
+        N:{eyes:{x:225,y:49},mouth:{x:225,y:73}},
+        O:{eyes:{x:225,y:48},mouth:{x:225,y:73}},
+        P:{eyes:{x:225,y:50},mouth:{x:225,y:75}},
+        Q:{eyes:{x:225,y:48},mouth:{x:225,y:73}},
+        R:{eyes:{x:225,y:50},mouth:{x:225,y:75}},
+        S:{eyes:{x:225,y:48},mouth:{x:225,y:73}},
+        T:{eyes:{x:225,y:55},mouth:{x:225,y:80}},
+        U:{eyes:{x:225,y:55},mouth:{x:225,y:80}},
+        V:{eyes:{x:225,y:55},mouth:{x:225,y:80}},
+        W:{eyes:{x:225,y:55},mouth:{x:225,y:80}},
+        X:{eyes:{x:225,y:55},mouth:{x:225,y:80}},
+        Y:{eyes:{x:225,y:55},mouth:{x:225,y:80}},
+        Z:{eyes:{x:225,y:55},mouth:{x:225,y:80}}
+      };
+      const anchor = selectedType === "letters"
+        ? (letterAnchors[char] || letterAnchors.A)
+        : (anchors[char] || anchors[0]);
       const eyes = transformPoint(anchor.eyes, index);
       const mouth = transformPoint(anchor.mouth, index);
       const faceScale = scale * digitScale;

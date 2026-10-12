@@ -407,3 +407,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - Le champ personnalisé accepte toujours de 1 à 4 chiffres.
 - [ ] Vérifier dans le navigateur 7, 20, 100 et 2026 (refus attendu car plus de 4 chiffres).
 - [ ] Vérifier sélection, démonstration, tracé, validation, recommencer et animations.
+
+
+## Ajustement UX du sélecteur (poussé, validation navigateur requise)
+- Retrait de la grille de 101 boutons qui agrandissait excessivement la page.
+- Remplacement par un sélecteur compact avec flèche précédente/suivante, bornes 0 et 100 et affichage du nombre actif.
+- Le champ de nombre personnalisé reste disponible.
+- [ ] Confirmer dans le navigateur que les flèches changent le nombre, relancent la démonstration et que le tracé conserve sa taille et son apparence.

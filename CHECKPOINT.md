@@ -292,3 +292,7 @@ Le lissage est activé pour les lettres à courbes afin de réduire les contours
 
 ## Correction de la typographie des lettres
 La condition de lissage était inversée : les lettres courbes conservaient leurs points anguleux et certaines lettres droites étaient lissées. Elle a été corrigée pour lisser les lettres à courbes et préserver les segments droits. Une validation visuelle de A à Z reste nécessaire; le modèle n'est pas déclaré final.
+
+
+## 2026-10-11 — Ajustement ciblé de la géométrie
+Modification commitée : plusieurs capitales (A, B, D, P et R incluses) ne passent plus par le lissage spline, pour préserver les traits droits et limiter les déformations. Cette modification n'est pas une reconstruction complète des glyphes à partir de la référence. Vérification navigateur A–Z encore requise.

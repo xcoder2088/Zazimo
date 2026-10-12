@@ -236,3 +236,7 @@ Commits `2b6fb20` et `8842e2f` : trois animations de réussite sont choisies al�
 
 ## Correctif de synchronisation robuste — 2026-10-11
 Commit `0f71423` : le visage n’est plus rendu dans une couche SVG séparée. Les yeux, les pupilles et la bouche sont dessinés dans le même Canvas que le chiffre, à l’intérieur de la transformation déjà appliquée au chiffre. Cela supprime la cause structurelle des décalages entre couches. Syntaxe JavaScript vérifiée; les fonctions de tracé et de validation sont conservées. Il reste à vérifier visuellement les ancres de chaque chiffre dans le navigateur.
+
+
+## Correction du visage décalé — 2026-10-11
+Commit `9f35fe7` : cause identifiée dans la capture/vidéo : les routes du chiffre étaient adaptées à la taille réelle du canevas, mais les ancres des yeux et de la bouche restaient dans le repère fixe 450×250. Conversion responsive ajoutée pour dessiner le visage dans le même repère que le chiffre, et centre des animations calculé à partir des dimensions réelles du canevas. Syntaxe JavaScript vérifiée. Le test visuel dans le navigateur reste à faire; ne pas déclarer le défaut visuellement résolu avant cette vérification.

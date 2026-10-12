@@ -265,3 +265,10 @@
 - Les chiffres restent visibles en gris neutre avant la validation au lieu de laisser uniquement le chemin pointillé.
 - Le visage est masqué tant que la réussite n'a pas été validée.
 - La validation et l'animation par caractère pour les nombres composés restent à compléter.
+
+## Tracé indépendant des nombres composés
+- Correction : un tracé réussi ne colore/anime plus tous les chiffres du nombre; chaque chiffre doit être tracé séparément.
+- Le guide pointillé disparaît chiffre par chiffre après validation.
+- Ajout d'un contrôle de couverture du chemin à la validation.
+- Le nombre personnalisé se met à jour en direct pendant la saisie.
+- Correction du choix de lissage par chiffre pour les nombres composés (ex. 130).

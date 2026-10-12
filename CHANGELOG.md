@@ -272,3 +272,8 @@
 - Ajout d'un contrôle de couverture du chemin à la validation.
 - Le nombre personnalisé se met à jour en direct pendant la saisie.
 - Correction du choix de lissage par chiffre pour les nombres composés (ex. 130).
+
+## Carousel de nombres et formes
+- Remplacement de l'affichage unique par un carousel de dix nombres sélectionnables.
+- Les flèches déplacent la plage d'un nombre à la fois, jusqu'à 100.
+- Ajustement de l'échelle et du contour pour les nombres à quatre chiffres; contour du 5 rendu plus régulier.

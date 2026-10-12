@@ -457,3 +457,6 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 
 - [x] Première adaptation du parcours pédagogique : réactiver le lissage des lettres à courbes (dont C, D, G, J, O, P, Q, R, S et U) tout en conservant les traits des lettres plus géométriques.
 - [ ] Valider visuellement chaque lettre A–Z dans le navigateur; ce commit est une amélioration ciblée, pas une validation complète de l'alphabet.
+
+- [x] Corriger la condition de lissage des lettres : les lettres à courbes (dont B, C, D, G, O, P, Q, R, S et U) utilisent maintenant le lissage, tandis que les lettres à segments droits conservent leurs angles.
+- [ ] Vérifier visuellement chaque lettre A–Z dans le navigateur et ajuster individuellement les tracés qui s'écartent encore du modèle scolaire fourni.

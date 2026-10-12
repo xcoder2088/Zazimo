@@ -292,3 +292,5 @@
 - Désactivation du lissage spline pour B et D afin de préserver leurs formes plus géométriques.
 
 - Ajustement des guides de lettres : courbes lissées pour les lettres à contours arrondis, traits droits préservés pour les lettres géométriques.
+
+- Correction de la logique de lissage des lettres afin de mieux respecter les capitales scolaires : courbes lissées, segments droits préservés.

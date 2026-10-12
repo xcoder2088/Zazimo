@@ -280,3 +280,7 @@ Le guide pointillé utilisait à tort un nombre de traits propre aux chiffres (d
 
 ## Géométrie des lettres et visage
 Le lissage spline est maintenant réservé aux lettres à contours courbes; les lettres géométriques conservent leurs segments droits afin d'éviter les déformations de barres et d'angles. Les ancres de visage de A à F ont aussi été rapprochées du contour supérieur, avec la bouche plus basse dans la zone colorée. Le rendu complet A–Z doit encore être contrôlé dans le navigateur.
+
+
+## Correction ciblée des lettres B et D
+Le lissage spline est désactivé pour B et D, car il déformait leurs formes. Cette correction est commitée, mais elle ne remplace pas encore une validation visuelle de tout l'alphabet dans le navigateur.

@@ -58,12 +58,11 @@
         <span class="step-pill">Défi découverte</span>
       </div>
 
-      <div class="number-carousel" role="group" aria-label="Naviguer entre les nombres de 0 à 100">
+      <div class="number-carousel" role="group" aria-label="Choisir parmi les nombres de 1 à 100">
         <button type="button" class="number-arrow" id="previous-number" aria-label="Nombre précédent" title="Nombre précédent">‹</button>
         <div class="number-carousel-current">
-          <span class="number-carousel-caption">NOMBRE</span>
-          <output id="selected-number" aria-live="polite">1</output>
-          <span class="number-carousel-hint">de 0 à 100</span>
+          <div id="number-window" class="number-window" aria-label="Choisir un nombre de 1 à 100"></div>
+          <span class="number-carousel-hint" id="number-window-hint">1 à 10 · sélectionne un nombre</span>
         </div>
         <button type="button" class="number-arrow" id="next-number" aria-label="Nombre suivant" title="Nombre suivant">›</button>
       </div>

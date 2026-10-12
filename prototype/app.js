@@ -31,120 +31,121 @@
   const numeralPalette = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83"];
   function drawFriendlyNumeral() {
     const routes = tracePaths();
-    const now = performance.now();
-    const celebrationElapsed = now - celebrationStartedAt;
-    const celebrating = successState || (celebrationActive && celebrationElapsed < 1800);
-    const palette = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83"];
-    const width = Math.max(42, Math.min(54, canvas.clientWidth * 0.09));
-    // Trois mouvements complets : rebond, balancement et pulsation.
-    // Le visage reçoit exactement la même transformation que le chiffre.
-    const phase = celebrationElapsed / 230;
-    const wave = celebrating && !reducedMotion.matches ? Math.sin(phase) : 0;
+    const elapsed = performance.now() - celebrationStartedAt;
+    const celebrating = successState || (celebrationActive && elapsed < 1800);
+    if (!celebrating) return;
+
+    const viewWidth = 450, viewHeight = 250;
+    const rect = canvas.getBoundingClientRect();
+    const scale = Math.min(rect.width / viewWidth, rect.height / viewHeight);
+    const offsetX = (rect.width - viewWidth * scale) / 2;
+    const offsetY = (rect.height - viewHeight * scale) / 2;
+    const chars = selectedValue.split("");
+    const digitScale = chars.length === 1 ? 1 : chars.length === 2 ? 0.82 : chars.length === 3 ? 0.64 : 0.5;
+    const phase = elapsed / 230;
+    const wave = reducedMotion.matches ? 0 : Math.sin(phase);
     const bounce = celebrationMode === "bounce" ? Math.max(0, wave) * 12 : 0;
     const wiggle = celebrationMode === "wiggle" ? wave * 0.055 : 0;
     const pulse = celebrationMode === "pulse" ? 1 + wave * 0.045 : 1;
+    const anchors = {
+      0:{eyes:{x:225,y:26},mouth:{x:225,y:53}},
+      1:{eyes:{x:229,y:39},mouth:{x:229,y:64}},
+      2:{eyes:{x:224,y:28},mouth:{x:222,y:55}},
+      3:{eyes:{x:224,y:28},mouth:{x:224,y:55}},
+      4:{eyes:{x:239,y:29},mouth:{x:239,y:56}},
+      5:{eyes:{x:260,y:32},mouth:{x:257,y:58}},
+      6:{eyes:{x:231,y:29},mouth:{x:233,y:57}},
+      7:{eyes:{x:193,y:31},mouth:{x:191,y:57}},
+      8:{eyes:{x:225,y:27},mouth:{x:225,y:55}},
+      9:{eyes:{x:226,y:29},mouth:{x:226,y:56}}
+    };
+    const transformPoint = (p, index) => {
+      const shift = (index - (chars.length - 1) / 2) * 108;
+      const localX = 225 + shift + (p.x - 225) * digitScale;
+      const localY = 125 + (p.y - 125) * digitScale;
+      return {x:offsetX + localX * scale, y:offsetY + localY * scale};
+    };
     ctx.save();
-    // Les transformations utilisent le centre réel de la zone d'affichage,
-    // et non les coordonnées fixes du viewBox 450x250.
-    const canvasCenterX = canvas.clientWidth / 2;
-    const canvasCenterY = canvas.clientHeight / 2;
-    ctx.translate(canvasCenterX, canvasCenterY);
+    ctx.translate(rect.width / 2, rect.height / 2);
     ctx.rotate(wiggle);
     ctx.scale(pulse, pulse);
-    ctx.translate(-canvasCenterX, -canvasCenterY);
-    ctx.translate(0, -bounce);
+    ctx.translate(-rect.width / 2, -rect.height / 2 - bounce);
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
     ctx.setLineDash([]);
-    ctx.strokeStyle = celebrating ? "#243344" : "#c4cfdf";
-    ctx.lineWidth = celebrating ? width + 5 : width;
-    for (const path of routes) {
-      if (path.length < 2) continue;
-      ctx.beginPath(); ctx.moveTo(path[0].x, path[0].y);
-      for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
-      ctx.stroke();
-    }
-    if (celebrating) {
-      ctx.strokeStyle = activeCharacterColor;
-      ctx.lineWidth = width;
-      for (const path of routes) {
-        if (path.length < 2) continue;
+    let routeIndex = 0;
+    chars.forEach((char, index) => {
+      const pathCount = char === "1" ? 2 : 1;
+      const ownRoutes = routes.slice(routeIndex, routeIndex + pathCount);
+      routeIndex += pathCount;
+      const color = celebrationPalette[(Number(char) + index * 3 + Math.floor(elapsed / 600)) % celebrationPalette.length];
+      ctx.strokeStyle = "#243344";
+      ctx.lineWidth = Math.max(42, Math.min(54, canvas.clientWidth * 0.09)) + 5;
+      ownRoutes.forEach(path => {
+        if (path.length < 2) return;
         ctx.beginPath(); ctx.moveTo(path[0].x, path[0].y);
-        for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
+        path.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
         ctx.stroke();
-      }
-      // Le visage est dessiné dans le même Canvas et sous la même transformation que le chiffre.
-      // Les ancres sont calibrées chiffre par chiffre dans les coordonnées de tracePaths().
-      const eyeAnchors = {
-        0:{x:225,y:26}, 1:{x:229,y:39}, 2:{x:224,y:28}, 3:{x:224,y:28},
-        4:{x:239,y:29}, 5:{x:260,y:32}, 6:{x:231,y:29}, 7:{x:193,y:31},
-        8:{x:225,y:27}, 9:{x:226,y:29}
-      };
-      const mouthAnchors = {
-        0:{x:225,y:53}, 1:{x:229,y:64}, 2:{x:222,y:55}, 3:{x:224,y:55},
-        4:{x:239,y:56}, 5:{x:257,y:58}, 6:{x:233,y:57}, 7:{x:191,y:57},
-        8:{x:225,y:55}, 9:{x:226,y:56}
-      };
-      // Les ancres du visage sont définies manuellement dans le viewBox 450x250.
-      // Convertir ces coordonnées dans le même repère responsive que les routes
-      // évite que les yeux et la bouche restent en haut à gauche sur les grands écrans.
-      const faceRect = canvas.getBoundingClientRect();
-      const viewScale = Math.min(faceRect.width / 450, faceRect.height / 250);
-      const viewOffsetX = (faceRect.width - 450 * viewScale) / 2;
-      const viewOffsetY = (faceRect.height - 250 * viewScale) / 2;
-      const toCanvasPoint = point => ({
-        x: viewOffsetX + point.x * viewScale,
-        y: viewOffsetY + point.y * viewScale
       });
-      const eyes = eyeAnchors[selectedDigit];
-      const mouth = mouthAnchors[selectedDigit];
-      const faceScale = viewScale;
-      const blink = celebrationElapsed % 2400 > 2200;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = Math.max(42, Math.min(54, canvas.clientWidth * 0.09));
+      ownRoutes.forEach(path => {
+        if (path.length < 2) return;
+        ctx.beginPath(); ctx.moveTo(path[0].x, path[0].y);
+        path.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+        ctx.stroke();
+      });
+
+      // Chaque visage est ancré sur son propre chiffre et partage sa transformation.
+      const anchor = anchors[char] || anchors[0];
+      const eyes = transformPoint(anchor.eyes, index);
+      const mouth = transformPoint(anchor.mouth, index);
+      const faceScale = scale * digitScale;
+      const blink = ((elapsed + index * 370) % 2400) > 2200;
       ctx.save();
-      ctx.translate(viewOffsetX, viewOffsetY);
-      ctx.scale(faceScale, faceScale);
       ctx.lineCap = "round";
       ctx.lineJoin = "round";
       if (blink) {
         ctx.strokeStyle = "#243344";
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 3 * faceScale;
         ctx.beginPath();
-        ctx.moveTo(eyes.x - 20, eyes.y); ctx.quadraticCurveTo(eyes.x - 11, eyes.y + 5, eyes.x - 2, eyes.y);
-        ctx.moveTo(eyes.x + 2, eyes.y); ctx.quadraticCurveTo(eyes.x + 11, eyes.y + 5, eyes.x + 20, eyes.y);
+        ctx.moveTo(eyes.x - 20 * faceScale, eyes.y);
+        ctx.quadraticCurveTo(eyes.x - 11 * faceScale, eyes.y + 5 * faceScale, eyes.x - 2 * faceScale, eyes.y);
+        ctx.moveTo(eyes.x + 2 * faceScale, eyes.y);
+        ctx.quadraticCurveTo(eyes.x + 11 * faceScale, eyes.y + 5 * faceScale, eyes.x + 20 * faceScale, eyes.y);
         ctx.stroke();
       } else {
-        for (const ex of [eyes.x - 11, eyes.x + 11]) {
-          ctx.beginPath(); ctx.ellipse(ex, eyes.y, 11, 14, 0, 0, Math.PI * 2);
-          ctx.fillStyle = "#ffffff"; ctx.fill(); ctx.strokeStyle = "#243344"; ctx.lineWidth = 2.5; ctx.stroke();
+        for (const ex of [eyes.x - 11 * faceScale, eyes.x + 11 * faceScale]) {
+          ctx.beginPath(); ctx.ellipse(ex, eyes.y, 11 * faceScale, 14 * faceScale, 0, 0, Math.PI * 2);
+          ctx.fillStyle = "#fff"; ctx.fill(); ctx.strokeStyle = "#243344"; ctx.lineWidth = 2.5 * faceScale; ctx.stroke();
         }
-        for (const p of [{x:eyes.x-9,y:eyes.y+2},{x:eyes.x+13,y:eyes.y+2}]) {
-          ctx.beginPath(); ctx.ellipse(p.x, p.y, 4, 7, 0, 0, Math.PI * 2); ctx.fillStyle = "#243344"; ctx.fill();
-          ctx.beginPath(); ctx.arc(p.x-1, p.y-3, 1.8, 0, Math.PI*2); ctx.fillStyle = "#ffffff"; ctx.fill();
+        for (const p of [{x:eyes.x - 9 * faceScale,y:eyes.y + 2 * faceScale},{x:eyes.x + 13 * faceScale,y:eyes.y + 2 * faceScale}]) {
+          ctx.beginPath(); ctx.ellipse(p.x, p.y, 4 * faceScale, 7 * faceScale, 0, 0, Math.PI * 2);
+          ctx.fillStyle = "#243344"; ctx.fill();
+          ctx.beginPath(); ctx.arc(p.x - faceScale, p.y - 3 * faceScale, 1.8 * faceScale, 0, Math.PI * 2);
+          ctx.fillStyle = "#fff"; ctx.fill();
         }
       }
       ctx.beginPath();
-      ctx.moveTo(mouth.x - 8, mouth.y);
-      ctx.quadraticCurveTo(mouth.x, mouth.y + 6, mouth.x + 8, mouth.y);
-      ctx.quadraticCurveTo(mouth.x + 6, mouth.y + 10, mouth.x, mouth.y + 10);
-      ctx.quadraticCurveTo(mouth.x - 6, mouth.y + 10, mouth.x - 8, mouth.y);
-      ctx.closePath();
-      ctx.fillStyle = "#243344"; ctx.fill();
+      ctx.moveTo(mouth.x - 8 * faceScale, mouth.y);
+      ctx.quadraticCurveTo(mouth.x, mouth.y + 6 * faceScale, mouth.x + 8 * faceScale, mouth.y);
+      ctx.quadraticCurveTo(mouth.x + 6 * faceScale, mouth.y + 10 * faceScale, mouth.x, mouth.y + 10 * faceScale);
+      ctx.quadraticCurveTo(mouth.x - 6 * faceScale, mouth.y + 10 * faceScale, mouth.x - 8 * faceScale, mouth.y);
+      ctx.closePath(); ctx.fillStyle = "#243344"; ctx.fill();
       ctx.beginPath();
-      ctx.moveTo(mouth.x - 5, mouth.y + 2);
-      ctx.quadraticCurveTo(mouth.x, mouth.y + 5, mouth.x + 5, mouth.y + 2);
-      ctx.lineTo(mouth.x + 4, mouth.y + 5); ctx.lineTo(mouth.x - 4, mouth.y + 5); ctx.closePath();
-      ctx.fillStyle = "#ffffff"; ctx.fill();
-      if (faceExpression === "tongue") {
-        ctx.beginPath(); ctx.moveTo(mouth.x - 2, mouth.y + 7);
-        ctx.quadraticCurveTo(mouth.x + 5, mouth.y + 7, mouth.x + 3, mouth.y + 13);
-        ctx.quadraticCurveTo(mouth.x - 1, mouth.y + 14, mouth.x - 2, mouth.y + 7);
+      ctx.moveTo(mouth.x - 5 * faceScale, mouth.y + 2 * faceScale);
+      ctx.quadraticCurveTo(mouth.x, mouth.y + 5 * faceScale, mouth.x + 5 * faceScale, mouth.y + 2 * faceScale);
+      ctx.lineTo(mouth.x + 4 * faceScale, mouth.y + 5 * faceScale);
+      ctx.lineTo(mouth.x - 4 * faceScale, mouth.y + 5 * faceScale);
+      ctx.closePath(); ctx.fillStyle = "#fff"; ctx.fill();
+      if ((index + (faceExpression === "tongue" ? 1 : 0)) % 2 === 1) {
+        ctx.beginPath(); ctx.moveTo(mouth.x - 2 * faceScale, mouth.y + 7 * faceScale);
+        ctx.quadraticCurveTo(mouth.x + 5 * faceScale, mouth.y + 7 * faceScale, mouth.x + 3 * faceScale, mouth.y + 13 * faceScale);
+        ctx.quadraticCurveTo(mouth.x - faceScale, mouth.y + 14 * faceScale, mouth.x - 2 * faceScale, mouth.y + 7 * faceScale);
         ctx.fillStyle = "#f02670"; ctx.fill();
       }
       ctx.restore();
-      characterFace.classList.remove("is-visible");
-      characterFace.innerHTML = "";
-    }
-    if (!celebrating) { characterFace.classList.remove("is-visible"); characterFace.innerHTML = ""; }
+    });
     ctx.restore();
   }
 

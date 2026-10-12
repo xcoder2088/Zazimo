@@ -391,3 +391,10 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Vérifier la syntaxe JavaScript.
 - [ ] Vérifier visuellement les chiffres 0 à 9 après actualisation forcée, notamment la position des yeux et de la bouche sur la forme colorée.
 - [ ] Vérifier que le tracé, la démonstration, la réussite persistante, recommencer et les trois animations fonctionnent toujours.
+
+
+## Extension du prototype — nombres personnalisés et lissage du 5 (en validation)
+- Le chiffre 5 utilise davantage d'échantillons d'interpolation pour adoucir sa courbe sans changer le tracé de référence.
+- Ajout d'un champ pour choisir un nombre personnalisé de 1 à 4 chiffres; les routes sont composées horizontalement et réduites pour tenir dans la zone.
+- Implémenté dans `prototype/index.html`, `prototype/styles.css` et `prototype/app.js`.
+- **À vérifier dans le navigateur :** 5, 10, 25, 1000; vérifier les points, la démonstration, la validation et le visage en mode multi-chiffres. Ne pas déclarer la fonction validée avant ces essais.

@@ -372,3 +372,8 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Corriger le SVG décoratif qui recouvrait le Canvas et masquait le chemin pointillé; le guide de tracé est maintenant rendu par le Canvas.
 
 - [x] Synchroniser le déplacement vertical du visage (yeux et bouche) avec le rebond du chiffre pendant la célébration.
+
+- [x] Ajouter trois animations de réussite aléatoires : rebond, balancement et pulsation.
+- [x] Appliquer la même transformation au chiffre et au groupe des yeux/bouche.
+- [x] Retirer l’animation CSS indépendante du visage, qui pouvait désynchroniser ses mouvements.
+- [ ] Vérifier visuellement les animations dans le navigateur sur les chiffres 0 à 9.

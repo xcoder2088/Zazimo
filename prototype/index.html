@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#fff6e8">
   <meta name="description" content="Prototype tactile éducatif Zazimo pour découvrir les chiffres.">
-  <title>Zazimo — Découverte des chiffres</title>
+  <title>Zazimo — Découverte des chiffres et des lettres</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,7 +21,7 @@
     <section class="welcome" aria-labelledby="page-title">
       <p class="eyebrow">ON APPREND EN JOUANT</p>
       <h1 id="page-title">À toi de tracer !</h1>
-      <p class="intro">Suis le chemin du chiffre avec ton doigt, un stylet ou la souris.</p>
+      <p class="intro">Suis le chemin du chiffre ou de la lettre avec ton doigt, un stylet ou la souris.</p>
     </section>
 
     <section class="theme-picker" aria-labelledby="theme-title">
@@ -58,7 +58,10 @@
         <span class="step-pill">Défi découverte</span>
       </div>
 
-      <div class="number-carousel" role="group" aria-label="Choisir parmi les nombres de 1 à 100">
+      <div class="learning-mode" role="group" aria-label="Type d’exercice"><button type="button" class="mode-choice" data-mode="digits" aria-pressed="true">Chiffres</button><button type="button" class="mode-choice" data-mode="letters" aria-pressed="false">Lettres</button></div>
+<section id="letter-picker" class="letter-picker" aria-label="Choisir une lettre" hidden><p class="picker-label">Choisis une lettre majuscule</p><div id="letter-grid" class="letter-grid"></div></section>
+<div id="number-controls">
+<div class="number-carousel" role="group" aria-label="Choisir parmi les nombres de 1 à 100">
         <button type="button" class="number-arrow" id="previous-number" aria-label="Nombre précédent" title="Nombre précédent">‹</button>
         <div class="number-carousel-current">
           <div id="number-window" class="number-window" aria-label="Choisir un nombre de 1 à 100"></div>
@@ -66,14 +69,14 @@
         </div>
         <button type="button" class="number-arrow" id="next-number" aria-label="Nombre suivant" title="Nombre suivant">›</button>
       </div>
-      <form class="custom-number-picker" id="custom-number-form" onsubmit="return false">
+      </div>\n      <form class="custom-number-picker" id="custom-number-form" onsubmit="return false">
         <label for="custom-number">Ou entre ton propre nombre (jusqu’à 4 chiffres)</label>
         <div class="custom-number-controls">
           <input id="custom-number" name="custom-number" type="text" inputmode="numeric" pattern="[0-9]{1,4}" maxlength="4" value="1" aria-label="Nombre à tracer">
           <button id="custom-number-button" class="secondary-button" type="button">Tracer ce nombre</button>
         </div>
       </form>
-      <div class="drawing-wrap">
+      </div>\n      <div class="drawing-wrap">
         <svg class="guide" viewBox="0 0 450 250" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
           <text class="guide-glyph" x="225" y="202" text-anchor="middle">1</text>
         </svg>

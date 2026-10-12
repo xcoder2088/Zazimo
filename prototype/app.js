@@ -14,6 +14,9 @@
   const numberTitle = document.getElementById("number-title");
   const guideGlyph = document.querySelector(".guide-glyph");
   let selectedDigit = 1;
+  let selectedValue = "1";
+  const customNumberInput = document.getElementById("custom-number");
+  const customNumberButton = document.getElementById("custom-number-button");
   let successState = false;
   const celebrationPalette = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83","#19b7b0","#5b8def"];
   let activeCharacterColor = celebrationPalette[0];
@@ -184,14 +187,20 @@
     const scale = Math.min(rect.width / viewWidth, rect.height / viewHeight);
     const offsetX = (rect.width - viewWidth * scale) / 2;
     const offsetY = (rect.height - viewHeight * scale) / 2;
-    const rawRoutes = selectedDigit === 1
-      ? [[{x:190,y:76},{x:229,y:48}], [{x:229,y:48},{x:229,y:204}]]
-      : [digitRoutes[selectedDigit]];
+    const digitCount = selectedValue.length;
+    const digitScale = digitCount === 1 ? 1 : digitCount === 2 ? 0.82 : digitCount === 3 ? 0.64 : 0.5;
+    const rawRoutes = [];
+    selectedValue.split("").forEach((digitChar, index) => {
+      const digit = Number(digitChar);
+      const base = digit === 1 ? [[{x:190,y:76},{x:229,y:48}], [{x:229,y:48},{x:229,y:204}]] : [digitRoutes[digit]];
+      const shift = (index - (digitCount - 1) / 2) * 108;
+      base.forEach(route => rawRoutes.push(route.map(point => ({x:225 + shift + (point.x - 225) * digitScale,y:125 + (point.y - 125) * digitScale}))));
+    });
     return rawRoutes.map(svgPoints => {
     const smooth = [];
     if (svgPoints.length < 3) {
       for (const point of svgPoints) smooth.push(point);
-    } else if ([1, 4, 5, 7].includes(selectedDigit)) {
+    } else if ([1, 4, 7].includes(selectedDigit)) {
       smooth.push(...svgPoints);
     } else {
       // Smooth only the digits designed with curved strokes; keep angular digits angular.
@@ -200,7 +209,7 @@
         const p1 = svgPoints[i];
         const p2 = svgPoints[i + 1];
         const p3 = svgPoints[Math.min(svgPoints.length - 1, i + 2)];
-        const steps = 8;
+        const steps = selectedDigit === 5 ? 20 : 12;
         for (let step = 0; step < steps; step++) {
           const t = step / steps, t2 = t * t, t3 = t2 * t;
           smooth.push({
@@ -422,10 +431,12 @@
 
   function selectDigit(value) {
     successState = false;
-    selectedDigit = Number(value);
-    numberTitle.textContent = "Le chiffre " + selectedDigit;
-    guideGlyph.textContent = String(selectedDigit);
-    digitButtons.forEach(button => button.setAttribute("aria-pressed", String(Number(button.dataset.digit) === selectedDigit)));
+    selectedValue = String(value);
+    selectedDigit = Number(selectedValue[0]);
+    numberTitle.textContent = selectedValue.length === 1 ? "Le chiffre " + selectedValue : "Le nombre " + selectedValue;
+    guideGlyph.textContent = selectedValue;
+    digitButtons.forEach(button => button.setAttribute("aria-pressed", String(selectedValue === button.dataset.digit)));
+    if (customNumberInput) customNumberInput.value = selectedValue;
     points = [];
     strokes = [];
     activeStroke = [];
@@ -472,7 +483,7 @@
       celebrationMode = ["bounce", "wiggle", "pulse"][Math.floor(Math.random() * 3)];
       faceExpression = ["smile", "tongue"][Math.floor(Math.random() * 2)];
       celebrationStartedAt = performance.now();
-      feedback.textContent = "Bravo ! Tu as réussi le chiffre " + selectedDigit + " !";
+      feedback.textContent = "Bravo ! Tu as réussi " + (selectedValue.length === 1 ? "le chiffre " : "le nombre ") + selectedValue + " !";
       drawStrokes();
       const celebrationLoop = () => {
         if (!successState) { celebrationActive = false; return; }
@@ -510,6 +521,12 @@
   }
 
   checkButton.addEventListener("click", validateTrace);
+  customNumberButton.addEventListener("click", () => {
+    const value = (customNumberInput.value || "").trim();
+    if (!/^[0-9]{1,4}$/.test(value)) { feedback.textContent = "Entre un nombre de 1 à 4 chiffres, sans espace."; customNumberInput.focus(); return; }
+    selectDigit(value);
+  });
+  customNumberInput.addEventListener("keydown", event => { if (event.key === "Enter") customNumberButton.click(); });
 
   digitButtons.forEach(button => {
     button.addEventListener("click", () => selectDigit(button.dataset.digit));

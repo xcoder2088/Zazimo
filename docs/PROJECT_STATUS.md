@@ -276,3 +276,6 @@ Le prototype propose maintenant les nombres de 0 à 100 dans le sélecteur. Le c
 
 ## Ajustement du sélecteur
 La grille de 101 nombres a été remplacée par un carrousel compact avec flèches précédent/suivant, nombre courant visible et limites de 0 à 100. La saisie personnalisée reste en place. Validation visuelle dans le navigateur encore requise.
+
+## Visibilité du glyphe — correction partielle
+Le chiffre complet est désormais affiché en gris neutre avant la réussite, et le visage reste masqué avant validation. La validation indépendante et l'animation individuelle des chiffres composés restent à implémenter et tester; cette étape n'est pas considérée comme terminée.

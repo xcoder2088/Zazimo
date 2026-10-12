@@ -121,3 +121,9 @@ body.calm .reward-star { background: #e9f1e7; color: #789b7a; }
 .custom-number-controls input { width: 110px; min-width: 0; border: 2px solid #e2e8f0; border-radius: 12px; padding: 10px 12px; color: var(--ink); background: #fff; font: inherit; font-weight: 850; }
 .custom-number-controls button { min-height: 44px; padding: 9px 12px; font-size: .85rem; }
 @media (max-width: 420px) { .custom-number-controls { flex-direction: column; } .custom-number-controls input { width: 100%; } }
+
+
+/* Sélecteur complet de 0 à 100 : les nombres restent lisibles et accessibles. */
+.digit-picker { grid-template-columns: repeat(10, minmax(0, 1fr)); max-height: 300px; overflow-y: auto; overscroll-behavior: contain; padding: 2px 3px 8px 0; }
+.digit-option { font-variant-numeric: tabular-nums; }
+@media (max-width: 520px) { .digit-picker { grid-template-columns: repeat(5, minmax(0, 1fr)); max-height: 260px; } }

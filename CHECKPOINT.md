@@ -232,3 +232,7 @@ Commit `ee7e36c` : le groupe SVG contenant les yeux et la bouche reçoit mainten
 
 ## Animations synchronisées — 2026-10-11
 Commits `2b6fb20` et `8842e2f` : trois animations de réussite sont choisies aléatoirement (rebond, balancement, pulsation). La transformation géométrique est appliquée au chiffre Canvas et au visage SVG pour qu’ils bougent ensemble. L’animation CSS indépendante du visage a été retirée pour éviter les conflits. Syntaxe JavaScript vérifiée; test navigateur non effectué. Le tracé, la validation et le masquage du pointillé après réussite ont été conservés.
+
+
+## Correctif de synchronisation robuste — 2026-10-11
+Commit `0f71423` : le visage n’est plus rendu dans une couche SVG séparée. Les yeux, les pupilles et la bouche sont dessinés dans le même Canvas que le chiffre, à l’intérieur de la transformation déjà appliquée au chiffre. Cela supprime la cause structurelle des décalages entre couches. Syntaxe JavaScript vérifiée; les fonctions de tracé et de validation sont conservées. Il reste à vérifier visuellement les ancres de chaque chiffre dans le navigateur.

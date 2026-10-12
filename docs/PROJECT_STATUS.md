@@ -272,3 +272,7 @@ Le prototype inclut maintenant un champ pour saisir un nombre de 1 à 4 chiffres
 
 ## Mise à jour — sélecteur et nombres composés
 Le prototype propose maintenant les nombres de 0 à 100 dans le sélecteur. Le champ personnalisé reste disponible jusqu’à quatre chiffres. Après réussite, les chiffres d’un nombre composé sont colorés et animés individuellement, avec des couleurs et mouvements choisis aléatoirement par chiffre. Tests visuels réels encore requis avant de déclarer cette évolution validée.
+
+
+## Ajustement du sélecteur
+La grille de 101 nombres a été remplacée par un carrousel compact avec flèches précédent/suivant, nombre courant visible et limites de 0 à 100. La saisie personnalisée reste en place. Validation visuelle dans le navigateur encore requise.

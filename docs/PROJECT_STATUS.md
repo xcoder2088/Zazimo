@@ -279,3 +279,6 @@ La grille de 101 nombres a été remplacée par un carrousel compact avec flèch
 
 ## Visibilité du glyphe — correction partielle
 Le chiffre complet est désormais affiché en gris neutre avant la réussite, et le visage reste masqué avant validation. La validation indépendante et l'animation individuelle des chiffres composés restent à implémenter et tester; cette étape n'est pas considérée comme terminée.
+
+## Validation individuelle des nombres composés
+Le prototype suit maintenant la réussite caractère par caractère : seuls les chiffres tracés correctement passent en couleur et s'animent; leurs pointillés disparaissent individuellement. La saisie personnalisée met à jour l'aperçu en direct. Le lissage des routes est déterminé par le chiffre concerné, même au sein d'un nombre composé. La syntaxe JavaScript a été vérifiée avant le push; les tests interactifs dans le navigateur restent nécessaires.

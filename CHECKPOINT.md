@@ -259,3 +259,9 @@ Commit `9f35fe7` : cause identifiée dans la capture/vidéo : les routes du chif
 - Le nombre personnalisé est prévisualisé en direct pendant la saisie.
 - Le lissage du chemin est désormais déterminé par chaque chiffre individuel, et non par le premier chiffre du nombre.
 - Syntaxe JavaScript vérifiée avant push. Les interactions et l'apparence doivent encore être testées dans le navigateur local.
+
+## Point de reprise — 2026-10-12 (carousel de nombres)
+- Le sélecteur horizontal montre dix choix au départ (1 à 10). Les flèches déplacent la plage d'une unité à chaque clic : 2 à 11, 3 à 12, etc., jusqu'à 100.
+- Les nombres visibles sont des boutons sélectionnables; les nombres saisis entre 1 et 100 recentrent le carousel.
+- Ajustement de l'échelle et de l'épaisseur pour quatre chiffres, plus ajout de points de contrôle à la courbe du 5.
+- Syntaxe JS vérifiée; le test visuel/interactif doit encore être effectué dans le navigateur local.

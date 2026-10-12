@@ -66,30 +66,62 @@
         for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
         ctx.stroke();
       }
-      // Vector face overlay, manually calibrated per numeral.
+      // Le visage est dessiné dans le même Canvas et sous la même transformation que le chiffre.
+      // Les ancres sont calibrées chiffre par chiffre dans les coordonnées de tracePaths().
       const eyeAnchors = {
-        0:{x:225,y:18}, 1:{x:229,y:26}, 2:{x:224,y:19}, 3:{x:224,y:19},
-        4:{x:239,y:20}, 5:{x:260,y:23}, 6:{x:231,y:19}, 7:{x:193,y:23},
-        8:{x:225,y:18}, 9:{x:226,y:20}
+        0:{x:225,y:26}, 1:{x:229,y:39}, 2:{x:224,y:28}, 3:{x:224,y:28},
+        4:{x:239,y:29}, 5:{x:260,y:32}, 6:{x:231,y:29}, 7:{x:193,y:31},
+        8:{x:225,y:27}, 9:{x:226,y:29}
       };
       const mouthAnchors = {
-        0:{x:225,y:48}, 1:{x:229,y:56}, 2:{x:222,y:51}, 3:{x:224,y:50},
-        4:{x:239,y:51}, 5:{x:257,y:53}, 6:{x:233,y:52}, 7:{x:191,y:51},
-        8:{x:225,y:50}, 9:{x:226,y:51}
+        0:{x:225,y:53}, 1:{x:229,y:64}, 2:{x:222,y:55}, 3:{x:224,y:55},
+        4:{x:239,y:56}, 5:{x:257,y:58}, 6:{x:233,y:57}, 7:{x:191,y:57},
+        8:{x:225,y:55}, 9:{x:226,y:56}
       };
       const eyes = eyeAnchors[selectedDigit];
       const mouth = mouthAnchors[selectedDigit];
       const blink = celebrationElapsed % 2400 > 2200;
-      const wink = celebrationMode.includes("wink") && celebrationElapsed % 3200 > 2850;
-      const eyeMarkup = blink
-        ? '<path d="M '+(eyes.x-22)+' '+eyes.y+' q 7 5 14 0 M '+(eyes.x+8)+' '+eyes.y+' q 7 5 14 0" fill="none" stroke="#243344" stroke-width="3" stroke-linecap="round"/>'
-        : '<ellipse class="face-eye" cx="'+(eyes.x-11)+'" cy="'+eyes.y+'" rx="11" ry="14"/><ellipse class="face-eye" cx="'+(eyes.x+11)+'" cy="'+eyes.y+'" rx="11" ry="14"/><ellipse class="face-pupil" cx="'+(eyes.x-9)+'" cy="'+(eyes.y+2)+'" rx="4" ry="7"/><ellipse class="face-pupil" cx="'+(eyes.x+13)+'" cy="'+(eyes.y+2)+'" rx="4" ry="7"/><circle class="face-glint" cx="'+(eyes.x-10)+'" cy="'+(eyes.y-2)+'" r="2"/><circle class="face-glint" cx="'+(eyes.x+12)+'" cy="'+(eyes.y-2)+'" r="2"/>';
-      const mouthMarkup = faceExpression === "tongue"
-        ? '<path class="face-mouth" d="M '+(mouth.x-8)+' '+mouth.y+' Q '+mouth.x+' '+(mouth.y+5)+' '+(mouth.x+8)+' '+mouth.y+' Q '+(mouth.x+8)+' '+(mouth.y+10)+' '+mouth.x+' '+(mouth.y+9)+' Q '+(mouth.x-8)+' '+(mouth.y+9)+' '+(mouth.x-8)+' '+mouth.y+' Z"/><path class="face-teeth" d="M '+(mouth.x-5)+' '+(mouth.y+2)+' Q '+mouth.x+' '+(mouth.y+4)+' '+(mouth.x+5)+' '+(mouth.y+2)+' L '+(mouth.x+4)+' '+(mouth.y+5)+' L '+(mouth.x-4)+' '+(mouth.y+5)+' Z"/><path class="face-tongue" d="M '+(mouth.x-2)+' '+(mouth.y+7)+' Q '+(mouth.x+5)+' '+(mouth.y+7)+' '+(mouth.x+3)+' '+(mouth.y+13)+' Q '+(mouth.x-1)+' '+(mouth.y+13)+' '+(mouth.x-2)+' '+(mouth.y+7)+' Z"/>'
-        : '<path class="face-mouth" d="M '+(mouth.x-8)+' '+mouth.y+' Q '+mouth.x+' '+(mouth.y+6)+' '+(mouth.x+8)+' '+mouth.y+' Q '+(mouth.x+6)+' '+(mouth.y+10)+' '+mouth.x+' '+(mouth.y+10)+' Q '+(mouth.x-6)+' '+(mouth.y+10)+' '+(mouth.x-8)+' '+mouth.y+' Z"/><path class="face-teeth" d="M '+(mouth.x-5)+' '+(mouth.y+2)+' Q '+mouth.x+' '+(mouth.y+5)+' '+(mouth.x+5)+' '+(mouth.y+2)+' L '+(mouth.x+4)+' '+(mouth.y+5)+' L '+(mouth.x-4)+' '+(mouth.y+5)+' Z"/>';
-      const winkMarkup = wink ? '<path d="M '+(eyes.x+5)+' '+eyes.y+' q 7 5 14 0" fill="none" stroke="#243344" stroke-width="3" stroke-linecap="round"/>' : '';
-      characterFace.innerHTML = '<g class="face-group" transform="translate(0 '+(-bounce)+') translate(225 125) rotate('+wiggle+') scale('+pulse+') translate(-225 -125)">'+eyeMarkup+winkMarkup+mouthMarkup+'</g>';
-      characterFace.classList.add("is-visible");
+      ctx.save();
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      if (blink) {
+        ctx.strokeStyle = "#243344";
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(eyes.x - 20, eyes.y); ctx.quadraticCurveTo(eyes.x - 11, eyes.y + 5, eyes.x - 2, eyes.y);
+        ctx.moveTo(eyes.x + 2, eyes.y); ctx.quadraticCurveTo(eyes.x + 11, eyes.y + 5, eyes.x + 20, eyes.y);
+        ctx.stroke();
+      } else {
+        for (const ex of [eyes.x - 11, eyes.x + 11]) {
+          ctx.beginPath(); ctx.ellipse(ex, eyes.y, 11, 14, 0, 0, Math.PI * 2);
+          ctx.fillStyle = "#ffffff"; ctx.fill(); ctx.strokeStyle = "#243344"; ctx.lineWidth = 2.5; ctx.stroke();
+        }
+        for (const p of [{x:eyes.x-9,y:eyes.y+2},{x:eyes.x+13,y:eyes.y+2}]) {
+          ctx.beginPath(); ctx.ellipse(p.x, p.y, 4, 7, 0, 0, Math.PI * 2); ctx.fillStyle = "#243344"; ctx.fill();
+          ctx.beginPath(); ctx.arc(p.x-1, p.y-3, 1.8, 0, Math.PI*2); ctx.fillStyle = "#ffffff"; ctx.fill();
+        }
+      }
+      ctx.beginPath();
+      ctx.moveTo(mouth.x - 8, mouth.y);
+      ctx.quadraticCurveTo(mouth.x, mouth.y + 6, mouth.x + 8, mouth.y);
+      ctx.quadraticCurveTo(mouth.x + 6, mouth.y + 10, mouth.x, mouth.y + 10);
+      ctx.quadraticCurveTo(mouth.x - 6, mouth.y + 10, mouth.x - 8, mouth.y);
+      ctx.closePath();
+      ctx.fillStyle = "#243344"; ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(mouth.x - 5, mouth.y + 2);
+      ctx.quadraticCurveTo(mouth.x, mouth.y + 5, mouth.x + 5, mouth.y + 2);
+      ctx.lineTo(mouth.x + 4, mouth.y + 5); ctx.lineTo(mouth.x - 4, mouth.y + 5); ctx.closePath();
+      ctx.fillStyle = "#ffffff"; ctx.fill();
+      if (faceExpression === "tongue") {
+        ctx.beginPath(); ctx.moveTo(mouth.x - 2, mouth.y + 7);
+        ctx.quadraticCurveTo(mouth.x + 5, mouth.y + 7, mouth.x + 3, mouth.y + 13);
+        ctx.quadraticCurveTo(mouth.x - 1, mouth.y + 14, mouth.x - 2, mouth.y + 7);
+        ctx.fillStyle = "#f02670"; ctx.fill();
+      }
+      ctx.restore();
+      characterFace.classList.remove("is-visible");
+      characterFace.innerHTML = "";
     }
     if (!celebrating) { characterFace.classList.remove("is-visible"); characterFace.innerHTML = ""; }
     ctx.restore();

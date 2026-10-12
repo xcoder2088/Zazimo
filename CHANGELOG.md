@@ -240,3 +240,10 @@
 - Correction du centre de rotation/pulsation pour utiliser le centre réel du canevas plutôt que des coordonnées fixes.
 - Le visage reste dessiné dans le même Canvas et reçoit la même transformation que le chiffre.
 - Vérification syntaxique JavaScript réussie; test visuel navigateur encore requis.
+
+
+## 2026-10-12 — nombres personnalisés et courbe du 5
+- Ajout d'un champ de saisie pour choisir un nombre de 1 à 4 chiffres.
+- Les routes de chaque chiffre sont composées dans la zone de traçage et réduites selon la longueur du nombre.
+- Interpolation plus fine pour le chiffre 5.
+- Vérification visuelle et tests de régression encore requis.

@@ -258,3 +258,6 @@ Correctif récent `e46d203` : masquage du SVG décoratif qui recouvrait le Canva
 
 
 Dernière modification : commits `2b6fb20` et `8842e2f`. Trois animations de réussite aléatoires (rebond, balancement, pulsation) appliquent une transformation partagée au chiffre Canvas et au visage SVG. L’animation CSS autonome du visage a été retirée. La syntaxe JavaScript a été vérifiée; aucun test navigateur n’a encore été exécuté. Les fonctions de tracé et de validation n’ont pas été remplacées.
+
+
+Correctif le plus récent — commit `0f71423` : les yeux et la bouche sont maintenant dessinés directement dans le Canvas du chiffre. Le visage et le chiffre partagent la même transformation, ce qui évite le décalage inhérent à deux couches animées séparément. Syntaxe JavaScript vérifiée et fonctions de tracé/validation présentes. Prochaine vérification : test visuel des chiffres 0 à 9 dans le navigateur.

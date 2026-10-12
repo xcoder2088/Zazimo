@@ -94,7 +94,8 @@
       routeIndex += pathCount;
       const color = isCompleted ? (celebrationColors[index] || "#c4cfdf") : "#c4cfdf";
       ctx.strokeStyle = "#243344";
-      ctx.lineWidth = Math.max(30, Math.min(54, canvas.clientWidth * (chars.length >= 4 ? 0.055 : chars.length === 3 ? 0.07 : 0.09))) + 5;
+      const baseDigitLineWidth = Math.max(42, Math.min(54, canvas.clientWidth * 0.09));
+      ctx.lineWidth = baseDigitLineWidth * digitScale + 5 * digitScale;
       ownRoutes.forEach(path => {
         if (path.length < 2) return;
         ctx.beginPath(); ctx.moveTo(path[0].x, path[0].y);
@@ -102,7 +103,7 @@
         ctx.stroke();
       });
       ctx.strokeStyle = color;
-      ctx.lineWidth = Math.max(30, Math.min(54, canvas.clientWidth * (chars.length >= 4 ? 0.055 : chars.length === 3 ? 0.07 : 0.09)));
+      ctx.lineWidth = baseDigitLineWidth * digitScale;
       ownRoutes.forEach(path => {
         if (path.length < 2) return;
         ctx.beginPath(); ctx.moveTo(path[0].x, path[0].y);

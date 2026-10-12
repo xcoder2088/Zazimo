@@ -377,3 +377,8 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Appliquer la même transformation au chiffre et au groupe des yeux/bouche.
 - [x] Retirer l’animation CSS indépendante du visage, qui pouvait désynchroniser ses mouvements.
 - [ ] Vérifier visuellement les animations dans le navigateur sur les chiffres 0 à 9.
+
+
+- [x] Correctif durable : dessiner yeux et bouche directement dans le Canvas du chiffre, après le tracé et avant de restaurer le contexte. Le visage partage donc réellement la même transformation Canvas (rebond, rotation, pulsation), sans synchronisation inter-couches.
+- [x] Vérifier la syntaxe JavaScript et la présence des fonctions de tracé et de validation après le changement.
+- [ ] Test visuel navigateur requis pour confirmer le placement sur les chiffres 0 à 9.

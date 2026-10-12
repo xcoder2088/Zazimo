@@ -21,6 +21,7 @@
   const customNumberInput = document.getElementById("custom-number");
   const customNumberButton = document.getElementById("custom-number-button");
   let successState = false;
+  const completedCharacters = new Set();
   const celebrationPalette = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83","#19b7b0","#5b8def"];
   let activeCharacterColor = celebrationPalette[0];
   let celebrationColors = [];
@@ -72,9 +73,10 @@
     ctx.setLineDash([]);
     let routeIndex = 0;
     chars.forEach((char, index) => {
+      const isCompleted = completedCharacters.has(index);
       const mode = celebrationModes[index] || celebrationMode;
       const phase = (elapsed + index * 310) / 230;
-      const wave = reducedMotion.matches ? 0 : Math.sin(phase);
+      const wave = (!isCompleted || reducedMotion.matches) ? 0 : Math.sin(phase);
       const bounce = mode === "bounce" ? Math.max(0, wave) * 12 * scale : 0;
       const wiggle = mode === "wiggle" ? wave * 0.055 : 0;
       const pulse = mode === "pulse" ? 1 + wave * 0.045 : 1;
@@ -88,7 +90,7 @@
       const pathCount = char === "1" ? 2 : 1;
       const ownRoutes = routes.slice(routeIndex, routeIndex + pathCount);
       routeIndex += pathCount;
-      const color = celebrating ? (celebrationColors[index] || celebrationPalette[(Number(char) + index * 3) % celebrationPalette.length]) : "#c4cfdf";
+      const color = isCompleted ? (celebrationColors[index] || "#c4cfdf") : "#c4cfdf";
       ctx.strokeStyle = "#243344";
       ctx.lineWidth = Math.max(42, Math.min(54, canvas.clientWidth * 0.09)) + 5;
       ownRoutes.forEach(path => {
@@ -107,7 +109,7 @@
       });
 
       // Keep the face hidden until the trace has been validated.
-      if (!celebrating) { ctx.restore(); return; }
+      if (!isCompleted) { ctx.restore(); return; }
       // Chaque visage est ancré sur son propre chiffre et partage sa transformation.
       const anchor = anchors[char] || anchors[0];
       const eyes = transformPoint(anchor.eyes, index);
@@ -204,17 +206,19 @@
     const digitCount = selectedValue.length;
     const digitScale = digitCount === 1 ? 1 : digitCount === 2 ? 0.82 : digitCount === 3 ? 0.64 : 0.5;
     const rawRoutes = [];
+    const routeDigits = [];
     selectedValue.split("").forEach((digitChar, index) => {
       const digit = Number(digitChar);
       const base = digit === 1 ? [[{x:190,y:76},{x:229,y:48}], [{x:229,y:48},{x:229,y:204}]] : [digitRoutes[digit]];
       const shift = (index - (digitCount - 1) / 2) * 108;
-      base.forEach(route => rawRoutes.push(route.map(point => ({x:225 + shift + (point.x - 225) * digitScale,y:125 + (point.y - 125) * digitScale}))));
+      base.forEach(route => { routeDigits.push(digit); rawRoutes.push(route.map(point => ({x:225 + shift + (point.x - 225) * digitScale,y:125 + (point.y - 125) * digitScale}))); });
     });
-    return rawRoutes.map(svgPoints => {
+    return rawRoutes.map((svgPoints, routeIndex) => {
+    const routeDigit = routeDigits[routeIndex];
     const smooth = [];
     if (svgPoints.length < 3) {
       for (const point of svgPoints) smooth.push(point);
-    } else if ([1, 4, 7].includes(selectedDigit)) {
+    } else if ([1, 4, 7].includes(routeDigit)) {
       smooth.push(...svgPoints);
     } else {
       // Smooth only the digits designed with curved strokes; keep angular digits angular.
@@ -257,7 +261,7 @@
   function drawGuide() {
     const routes = tracePaths();
     drawFriendlyNumeral();
-    // Une fois le tracé réussi, retirer entièrement le guide pointillé.
+    // Remove dotted guides only for characters that have been completed.
     if (successState) return;
     ctx.save();
     ctx.lineCap = "round";
@@ -266,13 +270,20 @@
     ctx.strokeStyle = document.body.classList.contains("calm") ? "#6e9d87" : "#6686ad";
     ctx.lineWidth = 3;
     ctx.setLineDash([5, 8]);
-    for (const path of routes) {
+    let guideRouteIndex = 0;
+    selectedValue.split("").forEach((char, characterIndex) => {
+      const pathCount = char === "1" ? 2 : 1;
+      const characterRoutes = routes.slice(guideRouteIndex, guideRouteIndex + pathCount);
+      guideRouteIndex += pathCount;
+      if (completedCharacters.has(characterIndex)) return;
+      for (const path of characterRoutes) {
       if (!path.length) continue;
       ctx.beginPath();
       ctx.moveTo(path[0].x, path[0].y);
       for (let i = 1; i < path.length; i++) ctx.lineTo(path[i].x, path[i].y);
       ctx.stroke();
-    }
+      }
+    });
     ctx.restore();
   }
 
@@ -430,6 +441,9 @@
 
   clearButton.addEventListener("click", () => {
     successState = false;
+    completedCharacters.clear();
+    celebrationColors = [];
+    celebrationModes = [];
     celebrationActive = false;
     points = [];
     strokes = [];
@@ -443,8 +457,11 @@
 
   demoButton.addEventListener("click", startDemo);
 
-  function selectDigit(value) {
+  function selectDigit(value, options = {}) {
     successState = false;
+    completedCharacters.clear();
+    celebrationColors = [];
+    celebrationModes = [];
     selectedValue = String(value);
     selectedDigit = Number(selectedValue[0]);
     numberTitle.textContent = selectedValue.length === 1 ? "Le chiffre " + selectedValue : "Le nombre " + selectedValue;
@@ -453,7 +470,7 @@
     if (selectedNumberOutput) selectedNumberOutput.textContent = selectedValue;
     if (previousNumberButton) previousNumberButton.disabled = Number(selectedValue) <= 0;
     if (nextNumberButton) nextNumberButton.disabled = Number(selectedValue) >= 100;
-    if (customNumberInput) customNumberInput.value = selectedValue;
+    if (customNumberInput && !options.preserveInput) customNumberInput.value = selectedValue;
     points = [];
     strokes = [];
     activeStroke = [];
@@ -463,7 +480,8 @@
     rewardStar.textContent = "★";
     rewardTitle.textContent = "Chaque essai compte !";
     rewardText.textContent = "Prends ton temps. Tu peux recommencer autant de fois que tu veux.";
-    startDemo();
+    if (options.demo !== false) startDemo();
+    else drawStrokes();
   }
 
   function validateTrace() {
@@ -476,9 +494,16 @@
     const ys = points.map(p => p.y);
     const yRange = Math.max(...ys) - Math.min(...ys);
     const routes = tracePaths();
-    const meanDistance = points.reduce((sum, point) => {
+    const routeGroups = [];
+    let routeOffset = 0;
+    selectedValue.split("").forEach((char, index) => {
+      const count = char === "1" ? 2 : 1;
+      routeGroups.push({ index, routes: routes.slice(routeOffset, routeOffset + count) });
+      routeOffset += count;
+    });
+    const distanceForGroup = group => points.reduce((sum, point) => {
       let closest = Infinity;
-      for (const route of routes) {
+      for (const route of group.routes) {
         for (let i = 1; i < route.length; i++) {
           const a = route[i - 1], b = route[i];
           const dx = b.x - a.x, dy = b.y - a.y;
@@ -489,31 +514,52 @@
       }
       return sum + closest;
     }, 0) / points.length;
-    if (yRange > rect.height * 0.22 && meanDistance < Math.min(rect.width, rect.height) * 0.2) {
-      // Successful tracing clears the temporary stroke before the character celebrates.
+    const coverageForGroup = group => {
+      const tolerance = Math.max(18, Math.min(rect.width, rect.height) * 0.035);
+      let checked = 0, covered = 0;
+      group.routes.forEach(route => route.forEach((point, index) => {
+        if (index % 3 !== 0 && index !== route.length - 1) return;
+        checked++;
+        if (points.some(sample => Math.hypot(sample.x - point.x, sample.y - point.y) <= tolerance)) covered++;
+      }));
+      return checked ? covered / checked : 0;
+    };
+    const xRange = Math.max(...xs) - Math.min(...xs);
+    const spread = Math.max(xRange, yRange);
+    const candidate = routeGroups.filter(group => !completedCharacters.has(group.index))
+      .map(group => ({...group, distance: distanceForGroup(group), coverage: coverageForGroup(group)}))
+      .sort((a, b) => a.distance - b.distance)[0];
+    if (candidate && spread > rect.height * 0.12 && candidate.distance < Math.min(rect.width, rect.height) * 0.12 && candidate.coverage >= 0.55) {
       points = [];
       strokes = [];
       activeStroke = [];
-      successState = true;
+      completedCharacters.add(candidate.index);
+      successState = completedCharacters.size === selectedValue.length;
       celebrationActive = true;
+      if (!celebrationColors[candidate.index]) {
+        const choices = celebrationPalette.filter(color => color !== celebrationColors.find(Boolean));
+        celebrationColors[candidate.index] = choices[Math.floor(Math.random() * choices.length)];
+      }
+      celebrationModes[candidate.index] = ["bounce", "wiggle", "pulse"][Math.floor(Math.random() * 3)];
+      celebrationMode = celebrationModes[candidate.index];
       chooseCelebrationColor();
-      celebrationColors = selectedValue.split("").map(() => celebrationPalette[Math.floor(Math.random() * celebrationPalette.length)]);
-      celebrationMode = ["bounce", "wiggle", "pulse"][Math.floor(Math.random() * 3)];
-      celebrationModes = selectedValue.split("").map(() => ["bounce", "wiggle", "pulse"][Math.floor(Math.random() * 3)]);
       faceExpression = ["smile", "tongue"][Math.floor(Math.random() * 2)];
       celebrationStartedAt = performance.now();
-      feedback.textContent = "Bravo ! Tu as réussi " + (selectedValue.length === 1 ? "le chiffre " : "le nombre ") + selectedValue + " !";
+      feedback.textContent = successState
+        ? "Bravo ! Tu as réussi le nombre " + selectedValue + " !"
+        : "Bravo ! Le chiffre " + selectedValue[candidate.index] + " est réussi. Continue avec le suivant !";
       drawStrokes();
       const celebrationLoop = () => {
-        if (!successState) { celebrationActive = false; return; }
+        if (completedCharacters.size === 0) { celebrationActive = false; return; }
         drawStrokes();
-        // Keep subtle blinking and mouth movement alive until the child changes digit or restarts.
         requestAnimationFrame(celebrationLoop);
       };
       requestAnimationFrame(celebrationLoop);
       rewardStar.textContent = "★";
-      rewardTitle.textContent = "Super effort !";
-      rewardText.textContent = "Tu as terminé cet essai. Tu peux recommencer pour t'entraîner encore.";
+      rewardTitle.textContent = successState ? "Super effort !" : "Un chiffre de réussi !";
+      rewardText.textContent = successState
+        ? "Tu as terminé ce nombre. Tu peux recommencer pour t'entraîner encore."
+        : "Chaque chiffre se valide séparément. Continue avec le prochain.";
       try {
         const audio = new AudioContext();
         const oscillator = audio.createOscillator();
@@ -545,6 +591,10 @@
       const value = (customNumberInput.value || "").trim();
       if (!/^[0-9]{1,4}$/.test(value)) { feedback.textContent = "Entre un nombre de 1 à 4 chiffres, sans espace."; customNumberInput.focus(); return; }
       selectDigit(value);
+    });
+    customNumberInput.addEventListener("input", () => {
+      const value = customNumberInput.value.trim();
+      if (/^[0-9]{1,4}$/.test(value)) selectDigit(value, { preserveInput: true, demo: false });
     });
     customNumberInput.addEventListener("keydown", event => { if (event.key === "Enter") customNumberButton.click(); });
   }

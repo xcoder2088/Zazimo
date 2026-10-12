@@ -285,3 +285,6 @@ Le prototype suit maintenant la réussite caractère par caractère : seuls les 
 
 ## Sélecteur de nombres et formes composées
 Le sélecteur présente maintenant dix nombres sélectionnables et se décale d'une position par clic sur une flèche (1–10, puis 2–11, etc.). Une saisie manuelle entre 1 et 100 recentre la plage. Les nombres à quatre chiffres utilisent une épaisseur et une échelle ajustées, et la route du 5 a été affinée. La syntaxe JavaScript est vérifiée; les essais dans le navigateur local restent à faire.
+
+## Proportions des chiffres composés
+L'épaisseur du contour et du remplissage est désormais proportionnelle à l'échelle géométrique du chiffre dans un nombre composé, afin que le chiffre 5 conserve une silhouette cohérente avec son affichage seul. Syntaxe vérifiée; essai visuel réel encore nécessaire.

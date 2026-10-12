@@ -225,3 +225,7 @@ Commit `55b6244` : les yeux et la bouche sont désormais dessinés dans une couc
 
 ## Correctif d’affichage — 2026-10-11
 Commit CSS `e46d203` : masquage du SVG décoratif `.guide`, qui recouvrait le Canvas et pouvait cacher le chemin pointillé. Le Canvas reste responsable du chiffre et du chemin; la couche SVG du visage reste au-dessus pour l’état de réussite. Syntaxe JavaScript revérifiée; test navigateur non effectué.
+
+
+## Synchronisation de l’animation du visage — 2026-10-11
+Commit `ee7e36c` : le groupe SVG contenant les yeux et la bouche reçoit maintenant le même décalage vertical que le chiffre pendant le rebond de célébration. Vérification de syntaxe JavaScript réussie; test visuel navigateur encore nécessaire.

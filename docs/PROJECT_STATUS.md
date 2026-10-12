@@ -303,3 +303,6 @@ Le moteur conserve désormais les segments géométriques des lettres au lieu d'
 
 
 Correction ciblée : B et D ne passent plus par le lissage spline qui déformait leur géométrie. La vérification visuelle complète de A–Z reste à faire.
+
+
+Le moteur de guides lisse maintenant les parcours des lettres à courbes, notamment D et J, et préserve les segments des lettres géométriques. La validation visuelle complète de A à Z reste à effectuer.

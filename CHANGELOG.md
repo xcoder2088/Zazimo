@@ -233,3 +233,10 @@
 - Le visage reçoit exactement la même transformation Canvas que le chiffre pendant les animations de rebond, balancement et pulsation.
 - Suppression de la dépendance à une couche SVG distincte pour l’animation du visage.
 - Syntaxe JavaScript vérifiée; validation visuelle navigateur encore requise.
+
+
+## 2026-10-11 — Alignement responsive du visage
+- Correction de la conversion des ancres manuelles des yeux et de la bouche depuis le viewBox 450×250 vers les dimensions réelles du canevas.
+- Correction du centre de rotation/pulsation pour utiliser le centre réel du canevas plutôt que des coordonnées fixes.
+- Le visage reste dessiné dans le même Canvas et reçoit la même transformation que le chiffre.
+- Vérification syntaxique JavaScript réussie; test visuel navigateur encore requis.

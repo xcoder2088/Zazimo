@@ -370,3 +370,5 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [ ] Valider visuellement chaque chiffre dans un navigateur et ajuster les ancres.
 
 - [x] Corriger le SVG décoratif qui recouvrait le Canvas et masquait le chemin pointillé; le guide de tracé est maintenant rendu par le Canvas.
+
+- [x] Synchroniser le déplacement vertical du visage (yeux et bouche) avec le rebond du chiffre pendant la célébration.

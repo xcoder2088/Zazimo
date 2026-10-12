@@ -454,3 +454,6 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 
 - [x] Désactiver le lissage spline sur B et D pour éviter les déformations et conserver les segments plus droits.
 - [ ] Revoir les 26 lettres sur une référence typographique cohérente, puis vérifier visuellement les guides et les silhouettes.
+
+- [x] Première adaptation du parcours pédagogique : réactiver le lissage des lettres à courbes (dont C, D, G, J, O, P, Q, R, S et U) tout en conservant les traits des lettres plus géométriques.
+- [ ] Valider visuellement chaque lettre A–Z dans le navigateur; ce commit est une amélioration ciblée, pas une validation complète de l'alphabet.

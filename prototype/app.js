@@ -33,8 +33,18 @@
     const celebrating = successState || (celebrationActive && celebrationElapsed < 1800);
     const palette = ["#ffd22f","#f0262e","#83c51c","#ff9228","#08a9c9","#ffb632","#e46ac0","#35a878","#9b55b7","#e23c83"];
     const width = Math.max(42, Math.min(54, canvas.clientWidth * 0.09));
-    const bounce = celebrating && celebrationMode.includes("jump") ? Math.sin(celebrationElapsed / 85) * 5 : 0;
+    // Trois mouvements complets : rebond, balancement et pulsation.
+    // Le visage reçoit exactement la même transformation que le chiffre.
+    const phase = celebrationElapsed / 230;
+    const wave = celebrating && !reducedMotion.matches ? Math.sin(phase) : 0;
+    const bounce = celebrationMode === "bounce" ? Math.max(0, wave) * 12 : 0;
+    const wiggle = celebrationMode === "wiggle" ? wave * 0.055 : 0;
+    const pulse = celebrationMode === "pulse" ? 1 + wave * 0.045 : 1;
     ctx.save();
+    ctx.translate(225, 125);
+    ctx.rotate(wiggle);
+    ctx.scale(pulse, pulse);
+    ctx.translate(-225, -125);
     ctx.translate(0, -bounce);
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
@@ -78,7 +88,7 @@
         ? '<path class="face-mouth" d="M '+(mouth.x-8)+' '+mouth.y+' Q '+mouth.x+' '+(mouth.y+5)+' '+(mouth.x+8)+' '+mouth.y+' Q '+(mouth.x+8)+' '+(mouth.y+10)+' '+mouth.x+' '+(mouth.y+9)+' Q '+(mouth.x-8)+' '+(mouth.y+9)+' '+(mouth.x-8)+' '+mouth.y+' Z"/><path class="face-teeth" d="M '+(mouth.x-5)+' '+(mouth.y+2)+' Q '+mouth.x+' '+(mouth.y+4)+' '+(mouth.x+5)+' '+(mouth.y+2)+' L '+(mouth.x+4)+' '+(mouth.y+5)+' L '+(mouth.x-4)+' '+(mouth.y+5)+' Z"/><path class="face-tongue" d="M '+(mouth.x-2)+' '+(mouth.y+7)+' Q '+(mouth.x+5)+' '+(mouth.y+7)+' '+(mouth.x+3)+' '+(mouth.y+13)+' Q '+(mouth.x-1)+' '+(mouth.y+13)+' '+(mouth.x-2)+' '+(mouth.y+7)+' Z"/>'
         : '<path class="face-mouth" d="M '+(mouth.x-8)+' '+mouth.y+' Q '+mouth.x+' '+(mouth.y+6)+' '+(mouth.x+8)+' '+mouth.y+' Q '+(mouth.x+6)+' '+(mouth.y+10)+' '+mouth.x+' '+(mouth.y+10)+' Q '+(mouth.x-6)+' '+(mouth.y+10)+' '+(mouth.x-8)+' '+mouth.y+' Z"/><path class="face-teeth" d="M '+(mouth.x-5)+' '+(mouth.y+2)+' Q '+mouth.x+' '+(mouth.y+5)+' '+(mouth.x+5)+' '+(mouth.y+2)+' L '+(mouth.x+4)+' '+(mouth.y+5)+' L '+(mouth.x-4)+' '+(mouth.y+5)+' Z"/>';
       const winkMarkup = wink ? '<path d="M '+(eyes.x+5)+' '+eyes.y+' q 7 5 14 0" fill="none" stroke="#243344" stroke-width="3" stroke-linecap="round"/>' : '';
-      characterFace.innerHTML = '<g class="face-group" transform="translate(0 '+(-bounce)+')">'+eyeMarkup+winkMarkup+mouthMarkup+'</g>';
+      characterFace.innerHTML = '<g class="face-group" transform="translate(225 125) rotate('+wiggle+') scale('+pulse+') translate(-225 '+(-125-bounce)+')">'+eyeMarkup+winkMarkup+mouthMarkup+'</g>';
       characterFace.classList.add("is-visible");
     }
     if (!celebrating) { characterFace.classList.remove("is-visible"); characterFace.innerHTML = ""; }
@@ -409,7 +419,7 @@
       successState = true;
       celebrationActive = true;
       chooseCelebrationColor();
-      celebrationMode = ["blink", "wink", "jump", "wink-jump", "blink-jump"][Math.floor(Math.random() * 5)];
+      celebrationMode = ["bounce", "wiggle", "pulse"][Math.floor(Math.random() * 3)];
       faceExpression = ["smile", "tongue"][Math.floor(Math.random() * 2)];
       celebrationStartedAt = performance.now();
       feedback.textContent = "Bravo ! Tu as réussi le chiffre " + selectedDigit + " !";

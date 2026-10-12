@@ -38,7 +38,7 @@
     const routes = tracePaths();
     const elapsed = performance.now() - celebrationStartedAt;
     const celebrating = successState || (celebrationActive && elapsed < 1800);
-    if (!celebrating) return;
+    // Always render the complete numeral; unfinished digits stay neutral.
 
     const viewWidth = 450, viewHeight = 250;
     const rect = canvas.getBoundingClientRect();
@@ -88,7 +88,7 @@
       const pathCount = char === "1" ? 2 : 1;
       const ownRoutes = routes.slice(routeIndex, routeIndex + pathCount);
       routeIndex += pathCount;
-      const color = celebrationColors[index] || celebrationPalette[(Number(char) + index * 3) % celebrationPalette.length];
+      const color = celebrating ? (celebrationColors[index] || celebrationPalette[(Number(char) + index * 3) % celebrationPalette.length]) : "#c4cfdf";
       ctx.strokeStyle = "#243344";
       ctx.lineWidth = Math.max(42, Math.min(54, canvas.clientWidth * 0.09)) + 5;
       ownRoutes.forEach(path => {
@@ -106,6 +106,8 @@
         ctx.stroke();
       });
 
+      // Keep the face hidden until the trace has been validated.
+      if (!celebrating) { ctx.restore(); return; }
       // Chaque visage est ancré sur son propre chiffre et partage sa transformation.
       const anchor = anchors[char] || anchors[0];
       const eyes = transformPoint(anchor.eyes, index);

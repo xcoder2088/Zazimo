@@ -414,3 +414,9 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - Remplacement par un sélecteur compact avec flèche précédente/suivante, bornes 0 et 100 et affichage du nombre actif.
 - Le champ de nombre personnalisé reste disponible.
 - [ ] Confirmer dans le navigateur que les flèches changent le nombre, relancent la démonstration et que le tracé conserve sa taille et son apparence.
+
+## Visibilité du chiffre avant réussite
+- Le chiffre complet est maintenant dessiné en gris neutre avant la validation, au lieu de n'afficher que le chemin pointillé.
+- Les yeux et la bouche restent cachés avant la réussite.
+- [ ] Étape suivante obligatoire : validation, couleur et animation indépendantes pour chaque chiffre d'un nombre composé; ne pas considérer ce point comme terminé.
+- [ ] Vérifier la syntaxe et le comportement dans un navigateur réel.

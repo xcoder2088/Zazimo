@@ -247,3 +247,10 @@
 - Les routes de chaque chiffre sont composées dans la zone de traçage et réduites selon la longueur du nombre.
 - Interpolation plus fine pour le chiffre 5.
 - Vérification visuelle et tests de régression encore requis.
+
+
+## Prototype — nombres jusqu’à 100 et caractères indépendants
+- Ajout des choix 0 à 100 dans le sélecteur.
+- Animation de chaque chiffre séparément pour les nombres composés, avec couleurs aléatoires stables par caractère après réussite.
+- Correction du repérage du visage pour le calculer dans les coordonnées du chiffre correspondant.
+- Cette évolution est poussée sur la branche principale; la validation visuelle dans le navigateur reste à effectuer.

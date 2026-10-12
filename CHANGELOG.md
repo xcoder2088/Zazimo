@@ -260,3 +260,8 @@
 - Remplacement de la liste de 101 boutons par un carrousel compact avec flèches gauche/droite.
 - Affichage du nombre courant et désactivation des flèches aux limites 0 et 100.
 - Le champ de saisie personnalisée est conservé.
+
+## Glyphe visible avant réussite
+- Les chiffres restent visibles en gris neutre avant la validation au lieu de laisser uniquement le chemin pointillé.
+- Le visage est masqué tant que la réussite n'a pas été validée.
+- La validation et l'animation par caractère pour les nombres composés restent à compléter.

@@ -10,7 +10,12 @@
   const demoButton = document.getElementById("demo-button");
   const calmToggle = document.getElementById("calm-toggle");
   const themeButtons = Array.from(document.querySelectorAll("[data-theme]"));
-  const digitButtons = Array.from(document.querySelectorAll("[data-digit]"));\n  const modeButtons = Array.from(document.querySelectorAll("[data-mode]"));\n  const numberControls = document.getElementById("number-controls");\n  const letterPicker = document.getElementById("letter-picker");\n  const letterGrid = document.getElementById("letter-grid");\n  let selectedType = "digits";
+  const digitButtons = Array.from(document.querySelectorAll("[data-digit]"));
+  const modeButtons = Array.from(document.querySelectorAll("[data-mode]"));
+  const numberControls = document.getElementById("number-controls");
+  const letterPicker = document.getElementById("letter-picker");
+  const letterGrid = document.getElementById("letter-grid");
+  let selectedType = "digits";
   const previousNumberButton = document.getElementById("previous-number");
   const nextNumberButton = document.getElementById("next-number");
   const numberWindow = document.getElementById("number-window");
@@ -626,7 +631,8 @@
   }
   function renderLetterGrid(){if(!letterGrid||letterGrid.childElementCount)return;for(const letter of "ABCDEFGHIJKLMNOPQRSTUVWXYZ"){const b=document.createElement("button");b.type="button";b.className="letter-choice";b.textContent=letter;b.setAttribute("aria-pressed","false");b.setAttribute("aria-label","Tracer la lettre "+letter);b.addEventListener("click",()=>selectLetter(letter));letterGrid.appendChild(b);}}
   modeButtons.forEach(button=>button.addEventListener("click",()=>{const letters=button.dataset.mode==="letters";modeButtons.forEach(option=>option.setAttribute("aria-pressed",String(option===button)));numberControls.hidden=letters;letterPicker.hidden=!letters;if(letters){renderLetterGrid();selectLetter("A");}else{selectedType="digits";selectDigit("1");}}));
-\n  function renderNumberWindow() {
+
+  function renderNumberWindow() {
     if (!numberWindow) return;
     const windowEnd = Math.min(100, numberWindowStart + 9);
     numberWindow.innerHTML = "";

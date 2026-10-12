@@ -451,3 +451,6 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Préserver les traits droits et les angles des lettres au lieu de lisser toutes les lettres, ce qui déformait notamment F et les barres horizontales.
 - [x] Repositionner les yeux sur le haut de A–F et placer la bouche plus bas, à l'intérieur du remplissage.
 - [ ] Vérifier visuellement les 26 lettres et ajuster individuellement les ancres restantes après essai navigateur.
+
+- [x] Désactiver le lissage spline sur B et D pour éviter les déformations et conserver les segments plus droits.
+- [ ] Revoir les 26 lettres sur une référence typographique cohérente, puis vérifier visuellement les guides et les silhouettes.

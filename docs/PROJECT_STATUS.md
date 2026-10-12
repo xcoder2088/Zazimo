@@ -282,3 +282,6 @@ Le chiffre complet est désormais affiché en gris neutre avant la réussite, et
 
 ## Validation individuelle des nombres composés
 Le prototype suit maintenant la réussite caractère par caractère : seuls les chiffres tracés correctement passent en couleur et s'animent; leurs pointillés disparaissent individuellement. La saisie personnalisée met à jour l'aperçu en direct. Le lissage des routes est déterminé par le chiffre concerné, même au sein d'un nombre composé. La syntaxe JavaScript a été vérifiée avant le push; les tests interactifs dans le navigateur restent nécessaires.
+
+## Sélecteur de nombres et formes composées
+Le sélecteur présente maintenant dix nombres sélectionnables et se décale d'une position par clic sur une flèche (1–10, puis 2–11, etc.). Une saisie manuelle entre 1 et 100 recentre la plage. Les nombres à quatre chiffres utilisent une épaisseur et une échelle ajustées, et la route du 5 a été affinée. La syntaxe JavaScript est vérifiée; les essais dans le navigateur local restent à faire.

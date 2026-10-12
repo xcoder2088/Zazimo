@@ -460,3 +460,8 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 
 - [x] Corriger la condition de lissage des lettres : les lettres à courbes (dont B, C, D, G, O, P, Q, R, S et U) utilisent maintenant le lissage, tandis que les lettres à segments droits conservent leurs angles.
 - [ ] Vérifier visuellement chaque lettre A–Z dans le navigateur et ajuster individuellement les tracés qui s'écartent encore du modèle scolaire fourni.
+
+
+## Ajustement géométrique ciblé — 2026-10-11
+- [x] Élargir la liste des capitales qui conservent leurs segments droits sans lissage spline, afin de réduire les coins arrondis et les déformations sur A, B, D, P et R notamment.
+- [ ] Vérifier les 26 lettres dans le navigateur face au modèle scolaire de référence; ne pas considérer la typographie comme finalisée avant cette vérification.

@@ -220,3 +220,9 @@
 - Déplacement du rendu des visages dans une couche SVG séparée afin de faciliter le positionnement indépendant des yeux et de la bouche.
 
 - Correctif : le SVG décoratif ne recouvre plus le Canvas de traçage; le chemin pointillé est visible à travers le rendu Canvas.
+
+## 2026-10-11 — Animations synchronisées
+- Ajout de trois animations de réussite aléatoires : rebond, balancement et pulsation.
+- Synchronisation de la transformation des yeux et de la bouche avec celle du chiffre.
+- Suppression de l’animation CSS indépendante du visage pour éviter les mouvements désynchronisés.
+- Syntaxe vérifiée; test visuel navigateur à effectuer.

@@ -294,3 +294,6 @@
 - Ajustement des guides de lettres : courbes lissées pour les lettres à contours arrondis, traits droits préservés pour les lettres géométriques.
 
 - Correction de la logique de lissage des lettres afin de mieux respecter les capitales scolaires : courbes lissées, segments droits préservés.
+
+
+- 2026-10-11 : étendu le rendu géométrique sans spline à plusieurs capitales pour conserver les segments droits. Contrôle visuel de l'alphabet complet encore requis.

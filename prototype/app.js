@@ -11,6 +11,9 @@
   const calmToggle = document.getElementById("calm-toggle");
   const themeButtons = Array.from(document.querySelectorAll("[data-theme]"));
   const digitButtons = Array.from(document.querySelectorAll("[data-digit]"));
+  const previousNumberButton = document.getElementById("previous-number");
+  const nextNumberButton = document.getElementById("next-number");
+  const selectedNumberOutput = document.getElementById("selected-number");
   const numberTitle = document.getElementById("number-title");
   const guideGlyph = document.querySelector(".guide-glyph");
   let selectedDigit = 1;
@@ -445,6 +448,9 @@
     numberTitle.textContent = selectedValue.length === 1 ? "Le chiffre " + selectedValue : "Le nombre " + selectedValue;
     guideGlyph.textContent = selectedValue;
     digitButtons.forEach(button => button.setAttribute("aria-pressed", String(selectedValue === button.dataset.digit)));
+    if (selectedNumberOutput) selectedNumberOutput.textContent = selectedValue;
+    if (previousNumberButton) previousNumberButton.disabled = Number(selectedValue) <= 0;
+    if (nextNumberButton) nextNumberButton.disabled = Number(selectedValue) >= 100;
     if (customNumberInput) customNumberInput.value = selectedValue;
     points = [];
     strokes = [];
@@ -544,6 +550,9 @@
   digitButtons.forEach(button => {
     button.addEventListener("click", () => selectDigit(button.dataset.digit));
   });
+
+  if (previousNumberButton) previousNumberButton.addEventListener("click", () => { const current = Number(selectedValue); if (current > 0) selectDigit(current - 1); });
+  if (nextNumberButton) nextNumberButton.addEventListener("click", () => { const current = Number(selectedValue); if (current < 100) selectDigit(current + 1); });
 
   themeButtons.forEach(button => {
     button.addEventListener("click", () => {

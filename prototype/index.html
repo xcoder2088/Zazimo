@@ -70,6 +70,13 @@
         <button type="button" class="digit-option" data-digit="8" aria-pressed="false">8</button>
         <button type="button" class="digit-option" data-digit="9" aria-pressed="false">9</button>
       </nav>
+      <form class="custom-number-picker" id="custom-number-form" onsubmit="return false">
+        <label for="custom-number">Ou entre ton propre nombre (jusqu’à 4 chiffres)</label>
+        <div class="custom-number-controls">
+          <input id="custom-number" name="custom-number" type="text" inputmode="numeric" pattern="[0-9]{1,4}" maxlength="4" value="1" aria-label="Nombre à tracer">
+          <button id="custom-number-button" class="secondary-button" type="button">Tracer ce nombre</button>
+        </div>
+      </form>
       <div class="drawing-wrap">
         <svg class="guide" viewBox="0 0 450 250" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
           <text class="guide-glyph" x="225" y="202" text-anchor="middle">1</text>

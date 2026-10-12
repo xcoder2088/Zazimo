@@ -306,3 +306,6 @@ Correction ciblée : B et D ne passent plus par le lissage spline qui déformait
 
 
 Le moteur de guides lisse maintenant les parcours des lettres à courbes, notamment D et J, et préserve les segments des lettres géométriques. La validation visuelle complète de A à Z reste à effectuer.
+
+
+Le lissage des lettres a été corrigé : les formes à courbes utilisent désormais le lissage et les lettres géométriques conservent leurs segments droits. Une vérification visuelle complète de A à Z reste à faire avant validation pédagogique.

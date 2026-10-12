@@ -280,3 +280,5 @@
 
 - Correction de proportion : le contour et le remplissage suivent maintenant l'échelle géométrique des chiffres dans les nombres composés, pour préserver la silhouette du 5.
 \n\n## Première version des lettres majuscules\nAjout d’un mode Lettres A–Z séparé des chiffres. Chaque lettre possède un tracé central et réutilise le canevas tactile, la démonstration et la validation. Contrôle visuel navigateur encore requis.\n
+
+- Ajout d'ancres de visage propres à chaque lettre majuscule pour remplacer la position générique. Vérification visuelle A–Z encore nécessaire.

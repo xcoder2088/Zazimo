@@ -229,3 +229,6 @@ Commit CSS `e46d203` : masquage du SVG décoratif `.guide`, qui recouvrait le Ca
 
 ## Synchronisation de l’animation du visage — 2026-10-11
 Commit `ee7e36c` : le groupe SVG contenant les yeux et la bouche reçoit maintenant le même décalage vertical que le chiffre pendant le rebond de célébration. Vérification de syntaxe JavaScript réussie; test visuel navigateur encore nécessaire.
+
+## Animations synchronisées — 2026-10-11
+Commits `2b6fb20` et `8842e2f` : trois animations de réussite sont choisies aléatoirement (rebond, balancement, pulsation). La transformation géométrique est appliquée au chiffre Canvas et au visage SVG pour qu’ils bougent ensemble. L’animation CSS indépendante du visage a été retirée pour éviter les conflits. Syntaxe JavaScript vérifiée; test navigateur non effectué. Le tracé, la validation et le masquage du pointillé après réussite ont été conservés.

@@ -120,12 +120,12 @@
       if (!isCompleted) { ctx.restore(); return; }
       // Chaque visage est ancré sur son propre chiffre et partage sa transformation.
       const letterAnchors = {
-        A:{eyes:{x:180,y:64},mouth:{x:187,y:83}},
-        B:{eyes:{x:225,y:29},mouth:{x:225,y:52}},
-        C:{eyes:{x:224,y:28},mouth:{x:224,y:52}},
-        D:{eyes:{x:221,y:29},mouth:{x:221,y:52}},
-        E:{eyes:{x:220,y:30},mouth:{x:220,y:53}},
-        F:{eyes:{x:220,y:30},mouth:{x:220,y:53}},
+        A:{eyes:{x:225,y:45},mouth:{x:225,y:77}},
+        B:{eyes:{x:225,y:48},mouth:{x:225,y:73}},
+        C:{eyes:{x:230,y:44},mouth:{x:230,y:70}},
+        D:{eyes:{x:220,y:46},mouth:{x:220,y:72}},
+        E:{eyes:{x:220,y:48},mouth:{x:220,y:73}},
+        F:{eyes:{x:220,y:48},mouth:{x:220,y:73}},
         G:{eyes:{x:222,y:30},mouth:{x:222,y:53}},
         H:{eyes:{x:170,y:55},mouth:{x:170,y:78}},
         I:{eyes:{x:225,y:28},mouth:{x:225,y:52}},
@@ -261,10 +261,14 @@
     const smooth = [];
     if (svgPoints.length < 3) {
       for (const point of svgPoints) smooth.push(point);
-    } else if ([1, 4, 7].includes(routeDigit)) {
+    } else if (
+      (selectedType === "letters" && !["B","C","D","G","O","P","Q","R","S","U"].includes(routeDigit)) ||
+      (selectedType !== "letters" && [1, 4, 7].includes(routeDigit))
+    ) {
+      // Preserve straight, geometric letter strokes. Only letters with genuinely curved
+      // contours use spline smoothing; smoothing every letter distorted corners and bars.
       smooth.push(...svgPoints);
     } else {
-      // Smooth only the digits designed with curved strokes; keep angular digits angular.
       for (let i = 0; i < svgPoints.length - 1; i++) {
         const p0 = svgPoints[Math.max(0, i - 1)];
         const p1 = svgPoints[i];

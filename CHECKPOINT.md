@@ -284,3 +284,7 @@ Le lissage spline est maintenant réservé aux lettres à contours courbes; les 
 
 ## Correction ciblée des lettres B et D
 Le lissage spline est désactivé pour B et D, car il déformait leurs formes. Cette correction est commitée, mais elle ne remplace pas encore une validation visuelle de tout l'alphabet dans le navigateur.
+
+
+## Parcours pédagogique des lettres
+Le lissage est activé pour les lettres à courbes afin de réduire les contours polygonaux, notamment sur D et J. Les lettres à segments géométriques restent sans lissage pour préserver leurs barres. L'alphabet complet doit encore être contrôlé visuellement dans le navigateur.

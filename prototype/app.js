@@ -217,8 +217,7 @@
     const rawRoutes = [];
     const routeDigits = [];
     selectedValue.split("").forEach((digitChar, index) => {
-      const digit = Number(digitChar);
-      const base = digit === 1 ? [[{x:190,y:76},{x:229,y:48}], [{x:229,y:48},{x:229,y:204}]] : [digitRoutes[digit]];
+      const base = routesForCharacter(digitChar);
       const shift = (index - (digitCount - 1) / 2) * 108;
       base.forEach(route => { routeDigits.push(selectedType === "letters" ? digitChar : Number(digitChar)); rawRoutes.push(route.map(point => ({x:225 + shift + (point.x - 225) * digitScale,y:125 + (point.y - 125) * digitScale}))); });
     });

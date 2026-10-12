@@ -262,7 +262,7 @@
     if (svgPoints.length < 3) {
       for (const point of svgPoints) smooth.push(point);
     } else if (
-      (selectedType === "letters" && !["B","C","D","G","O","P","Q","R","S","U"].includes(routeDigit)) ||
+      (selectedType === "letters" && !["C","G","O","P","Q","R","S","U"].includes(routeDigit)) ||
       (selectedType !== "letters" && [1, 4, 7].includes(routeDigit))
     ) {
       // Preserve straight, geometric letter strokes. Only letters with genuinely curved

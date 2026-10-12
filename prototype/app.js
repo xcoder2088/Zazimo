@@ -315,7 +315,9 @@
     ctx.setLineDash([5, 8]);
     let guideRouteIndex = 0;
     selectedValue.split("").forEach((char, characterIndex) => {
-      const pathCount = char === "1" ? 2 : 1;
+      // Une lettre peut demander plusieurs traits (A : deux traits, B : trois, etc.).
+      // Le guide doit afficher chacun de ses traits, pas seulement le premier.
+      const pathCount = routesForCharacter(char).length;
       const characterRoutes = routes.slice(guideRouteIndex, guideRouteIndex + pathCount);
       guideRouteIndex += pathCount;
       if (completedCharacters.has(characterIndex)) return;

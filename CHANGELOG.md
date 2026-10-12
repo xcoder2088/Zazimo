@@ -285,3 +285,6 @@
 
 
 - Correction du guide pointillé des lettres : chaque lettre affiche désormais tous ses traits de traçage au lieu du seul premier trait.
+
+
+- Réduction des déformations des lettres : les traits droits ne sont plus lissés systématiquement. Ajustement des yeux et de la bouche sur A–F pour mieux respecter le contour supérieur et le remplissage.

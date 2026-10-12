@@ -447,3 +447,7 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 
 - [x] Corriger le guide des lettres : afficher tous les traits requis pour chaque lettre, y compris la barre du A et les trois traits du B.
 - [ ] Vérifier visuellement A–Z dans le navigateur; la validation visuelle reste à faire.
+
+- [x] Préserver les traits droits et les angles des lettres au lieu de lisser toutes les lettres, ce qui déformait notamment F et les barres horizontales.
+- [x] Repositionner les yeux sur le haut de A–F et placer la bouche plus bas, à l'intérieur du remplissage.
+- [ ] Vérifier visuellement les 26 lettres et ajuster individuellement les ancres restantes après essai navigateur.

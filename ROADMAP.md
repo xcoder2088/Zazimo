@@ -382,3 +382,12 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - [x] Correctif durable : dessiner yeux et bouche directement dans le Canvas du chiffre, après le tracé et avant de restaurer le contexte. Le visage partage donc réellement la même transformation Canvas (rebond, rotation, pulsation), sans synchronisation inter-couches.
 - [x] Vérifier la syntaxe JavaScript et la présence des fonctions de tracé et de validation après le changement.
 - [ ] Test visuel navigateur requis pour confirmer le placement sur les chiffres 0 à 9.
+
+
+## Correctif du visage décalé — 2026-10-11
+- [x] Identifier le décalage : les ancres du visage étaient en coordonnées fixes alors que le chiffre et son tracé étaient mis à l’échelle selon le canevas.
+- [x] Convertir les ancres manuelles du visage dans le repère responsive du tracé.
+- [x] Centrer les transformations d’animation sur les dimensions réelles du canevas.
+- [x] Vérifier la syntaxe JavaScript.
+- [ ] Vérifier visuellement les chiffres 0 à 9 après actualisation forcée, notamment la position des yeux et de la bouche sur la forme colorée.
+- [ ] Vérifier que le tracé, la démonstration, la réussite persistante, recommencer et les trois animations fonctionnent toujours.

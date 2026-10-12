@@ -247,3 +247,8 @@ Commit `9f35fe7` : cause identifiée dans la capture/vidéo : les routes du chif
 - Lissage plus dense de la route du 5 pour réduire l'effet saccadé.
 - Commits : `8f3dab8` (champ HTML), `911c36c` (routes et logique), `735cd50` (styles).
 - Syntaxe JavaScript et rendu navigateur multi-chiffres à vérifier avant de considérer cette passe comme acceptée.
+
+## Point de reprise — 2026-10-12 (visibilité du glyphe)
+- Correction poussée : le glyphe complet reste visible en couleur neutre avant la réussite; le visage est masqué avant validation.
+- Cette passe ne résout pas encore la validation indépendante de chaque chiffre dans un nombre composé.
+- À poursuivre : état de réussite par caractère, puis tests syntaxiques et vérification navigateur avant annonce de validation.

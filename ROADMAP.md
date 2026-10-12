@@ -428,3 +428,11 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - Le lissage des routes est maintenant choisi chiffre par chiffre, y compris dans un nombre composé comme 130; le chiffre 3 profite donc du lissage au lieu d'hériter du style du premier chiffre.
 - [x] Vérification de syntaxe JavaScript avec analyseur avant le push.
 - [ ] Vérification interactive réelle dans le navigateur : 25, 130, saisie caractère par caractère et reset.
+
+## Sélecteur de nombres et lisibilité des nombres composés — implémentés, tests navigateur requis
+- Le sélecteur affiche une fenêtre de dix nombres (1–10 au départ); les flèches déplacent la fenêtre d'une position (2–11, puis 3–12, etc.) jusqu'à 100.
+- Chaque nombre affiché est directement sélectionnable; une valeur saisie entre 1 et 100 recentre la fenêtre pour rester visible.
+- Les nombres à quatre chiffres utilisent une échelle et une épaisseur de contour adaptées pour mieux distinguer les chiffres.
+- La route du chiffre 5 a été enrichie en points de contrôle pour une courbe plus régulière.
+- [x] Syntaxe JavaScript vérifiée avant push.
+- [ ] Tester dans le navigateur : défilement 1–10 vers 2–11, sélection, saisie de 1250 et apparence du 5.

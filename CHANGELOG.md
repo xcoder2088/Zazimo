@@ -226,3 +226,10 @@
 - Synchronisation de la transformation des yeux et de la bouche avec celle du chiffre.
 - Suppression de l’animation CSS indépendante du visage pour éviter les mouvements désynchronisés.
 - Syntaxe vérifiée; test visuel navigateur à effectuer.
+
+
+## 2026-10-11 — Visage lié au chiffre dans le Canvas
+- Déplacement du dessin des yeux, pupilles, reflets et bouche dans le même Canvas que le chiffre.
+- Le visage reçoit exactement la même transformation Canvas que le chiffre pendant les animations de rebond, balancement et pulsation.
+- Suppression de la dépendance à une couche SVG distincte pour l’animation du visage.
+- Syntaxe JavaScript vérifiée; validation visuelle navigateur encore requise.

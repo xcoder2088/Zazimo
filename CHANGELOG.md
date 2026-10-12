@@ -254,3 +254,9 @@
 - Animation de chaque chiffre séparément pour les nombres composés, avec couleurs aléatoires stables par caractère après réussite.
 - Correction du repérage du visage pour le calculer dans les coordonnées du chiffre correspondant.
 - Cette évolution est poussée sur la branche principale; la validation visuelle dans le navigateur reste à effectuer.
+
+
+## Sélecteur de nombres — correction de présentation
+- Remplacement de la liste de 101 boutons par un carrousel compact avec flèches gauche/droite.
+- Affichage du nombre courant et désactivation des flèches aux limites 0 et 100.
+- Le champ de saisie personnalisée est conservé.

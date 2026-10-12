@@ -444,3 +444,6 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 \n\n## Lettres majuscules A–Z — première intégration\n- [x] Ajouter un sélecteur séparé Chiffres / Lettres sans remplacer le parcours des nombres existant.\n- [x] Ajouter les 26 lettres majuscules sélectionnables et des tracés dédiés, avec plusieurs traits lorsque nécessaire.\n- [x] Réutiliser le canevas tactile, la démonstration, la validation et les animations du moteur existant.\n- [ ] Vérifier visuellement les 26 lettres et affiner leurs tracés après essai navigateur réel.\n- [ ] Régression obligatoire : chiffres 1, 5, 25, 130 et saisie personnalisée; démonstration, recommencer et validation.\n- Note : première base technique expérimentale, pas encore validée pédagogiquement.\n
 - [x] Ajouter des ancres explicites de visage pour les 26 lettres, au lieu d'une position générique partagée.
 - [ ] Vérifier visuellement chaque ancre A–Z dans le navigateur; les coordonnées sont une première correction et ne sont pas déclarées validées sans essai réel.
+
+- [x] Corriger le guide des lettres : afficher tous les traits requis pour chaque lettre, y compris la barre du A et les trois traits du B.
+- [ ] Vérifier visuellement A–Z dans le navigateur; la validation visuelle reste à faire.

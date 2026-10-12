@@ -398,3 +398,12 @@ Principe : ces thèmes sont des préférences d'apparence uniquement. Aucun cont
 - Ajout d'un champ pour choisir un nombre personnalisé de 1 à 4 chiffres; les routes sont composées horizontalement et réduites pour tenir dans la zone.
 - Implémenté dans `prototype/index.html`, `prototype/styles.css` et `prototype/app.js`.
 - **À vérifier dans le navigateur :** 5, 10, 25, 1000; vérifier les points, la démonstration, la validation et le visage en mode multi-chiffres. Ne pas déclarer la fonction validée avant ces essais.
+
+
+## Sélecteur 0–100 et animation multi-chiffres (implémenté, validation navigateur requise)
+- Le sélecteur propose maintenant tous les nombres de 0 à 100.
+- Chaque chiffre d'un nombre personnalisé reçoit sa propre couleur aléatoire stable après réussite.
+- Les chiffres d'un nombre composé ont leurs propres modes de mouvement et le visage est transformé avec le chiffre correspondant, au lieu de flotter au-dessus du nombre complet.
+- Le champ personnalisé accepte toujours de 1 à 4 chiffres.
+- [ ] Vérifier dans le navigateur 7, 20, 100 et 2026 (refus attendu car plus de 4 chiffres).
+- [ ] Vérifier sélection, démonstration, tracé, validation, recommencer et animations.
